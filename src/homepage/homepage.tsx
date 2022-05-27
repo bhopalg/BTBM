@@ -7,6 +7,7 @@ import Mask from '../assets/images/mask.png';
 import MaskLeft from '../assets/images/mask-left.png';
 import {useMediaQuery} from "react-responsive";
 import Merch from './merch/merch';
+import Brands from './brands/brands';
 
 function Homepage() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -48,6 +49,7 @@ function Homepage() {
                 </Col>
             </Row>
             <Merch/>
+            <Brands/>
         </div>
     );
 }

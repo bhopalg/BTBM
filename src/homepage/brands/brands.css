@@ -1,0 +1,40 @@
+.llamaverse {
+    max-width: 87px;
+    max-height: 76px
+}
+
+.illogics {
+    max-width: 132px;
+    max-height: 29px
+}
+
+.squishy-squad {
+    max-width: 86px;
+    max-height: 56px
+}
+
+.dobies {
+    max-width: 105px;
+    max-height: 41px
+}
+
+.partners-row {
+    justify-content: center;
+    align-items: center;
+    background: rgba(237, 237, 237, 0.4);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.mobile-partners-row .characters-image {
+    max-width: 100%;
+}
+
+.mobile-partners-row {
+    width: 100%;
+}
+
+.mobile-partners-row .partners-col {
+    padding: 15px 0;
+    overflow-x: hidden;
+}
