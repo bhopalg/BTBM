@@ -1,0 +1,11 @@
+.video-row > div:nth-child(1) {
+    margin: 0 auto;
+}
+
+.video-container {
+    margin-top: 140px;
+}
+
+.mobile-video-container {
+    margin-top: 50px;
+}
