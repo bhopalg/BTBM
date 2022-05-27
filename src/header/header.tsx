@@ -1,6 +1,8 @@
 import React from "react";
 import { useMediaQuery } from 'react-responsive';
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+// @ts-ignore
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 import './header.css';
 import instagram from '../assets/socials/instagram.svg';
@@ -54,16 +56,16 @@ function Header() {
                         <Col xs={12}>
                             <Nav>
                                 <Nav.Item>
-                                    <Nav.Link href="/home">MISSION</Nav.Link>
+                                    <AnchorLink href='#our-team-section'>MISSION</AnchorLink>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link href="/home">MEE MAP</Nav.Link>
+                                    <AnchorLink href='#timeline-section'>MEE MAP</AnchorLink>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link href="/home">TEAM</Nav.Link>
+                                    <AnchorLink href='#meet-team-section'>TEAM</AnchorLink>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link href="/home">FAQ</Nav.Link>
+                                    <AnchorLink href='#faq-section'>FAQ</AnchorLink>
                                 </Nav.Item>
                             </Nav>
                         </Col>
@@ -94,10 +96,10 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="#home">MISSION</Nav.Link>
-                    <Nav.Link href="/home">MEE MAP</Nav.Link>
-                    <Nav.Link href="/home">TEAM</Nav.Link>
-                    <Nav.Link href="/home">FAQ</Nav.Link>
+                    <AnchorLink href='#our-team-section'>MISSION</AnchorLink>
+                    <AnchorLink href='#timeline-section'>MEE MAP</AnchorLink>
+                    <AnchorLink href='#meet-team-section'>TEAM</AnchorLink>
+                    <AnchorLink href='#faq-section'>FAQ</AnchorLink>
                 </Nav>
                 <Row className="nav-socials">
                     <Col xs={3}>

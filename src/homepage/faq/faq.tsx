@@ -10,7 +10,7 @@ function FAQ() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <div className={isMobile ? 'mobile-faq faq' : 'faq'}>
+        <div className={isMobile ? 'mobile-faq faq' : 'faq'} id={'faq-section'}>
             <Row>
                 <Col className={'faq-title'}>
                     <h2>FAQ</h2>

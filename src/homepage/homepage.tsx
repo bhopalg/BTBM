@@ -29,7 +29,7 @@ function Homepage() {
     });
 
     return (
-        <div className={isMobile ? 'mobile-homepage-container homepage-container' : 'homepage-container'}>
+        <div className={isMobile ? 'mobile-homepage-container homepage-container' : 'homepage-container'} id={'main-section'}>
             <img
                 alt="Mask Image"
                 src={Mask}

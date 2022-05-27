@@ -21,7 +21,7 @@ function Timeline() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <Row className={isMobile ? 'mobile-timeline-row timeline-row' : 'timeline-row'}>
+        <Row className={isMobile ? 'mobile-timeline-row timeline-row' : 'timeline-row'}  id={'timeline-section'}>
             <img
                 alt="Mask Image"
                 src={Mask}

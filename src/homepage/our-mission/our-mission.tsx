@@ -13,7 +13,7 @@ function OurMission() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <Row className={isMobile ? 'mobile-our-mission-row our-mission-row' : 'our-mission-row'}>
+        <Row className={isMobile ? 'mobile-our-mission-row our-mission-row' : 'our-mission-row'} id={'our-team-section'}>
             <img
                 alt="Mask Image"
                 src={Mask}

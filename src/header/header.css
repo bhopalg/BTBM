@@ -66,6 +66,9 @@
     line-height: 30px;
     text-align: center;
     color: #000000;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .wallet-display {
@@ -126,14 +129,17 @@
     background-color: white !important;
 }
 
-.mobile-navbar .nav-link {
+.mobile-navbar .navbar-nav a {
     font-style: normal;
     font-weight: 400;
     font-size: 25.1133px;
     line-height: 30px;
-    text-align: center;
     color: #000000 !important;
     border-bottom: 1px solid #ddd;
+    text-decoration: none;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .mobile-navbar .navbar-collapse {

@@ -9,10 +9,11 @@ function Video() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <Container className={isMobile ? 'mobile-video-container video-container' : 'video-container'}>
+        <Container className={isMobile ? 'mobile-video-container video-container' : 'video-container'} id={'video-section'}>
             <Row>
                 <Col style={{ overflow: 'hidden' }} className={'video-row'}>
                     <ReactPlayer url='https://vimeo.com/713864269'
+                                 playing={true}
                                  width={isMobile ? 'auto' : '1190px'}
                                  height={isMobile ? 'auto' : '658px'} />
                 </Col>

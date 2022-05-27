@@ -18,7 +18,7 @@ function MeetTeam() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <div className={isMobile ? 'mobile-meet-team meet-team' : 'meet-team'}>
+        <div className={isMobile ? 'mobile-meet-team meet-team' : 'meet-team'} id={'meet-team-section'}>
             <Row>
                 <Col className={'meet-team-title'}>
                     <h2>THE MEET TEAM</h2>
