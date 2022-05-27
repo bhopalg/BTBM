@@ -15,8 +15,18 @@ import MeetTeam from './meet-team/meet-team';
 import FAQ from './faq/faq';
 import Footer from './footer/footer';
 
+import {fadeIn, merge, slideInLeft} from 'react-animations';
+import { StyleSheet, css } from 'aphrodite';
+
 function Homepage() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
+
+    const fadeInStyle = StyleSheet.create({
+        bounce: {
+            animationName: merge(fadeIn, slideInLeft),
+            animationDuration: '2s'
+        }
+    });
 
     return (
         <div className={isMobile ? 'mobile-homepage-container homepage-container' : 'homepage-container'}>
@@ -30,7 +40,7 @@ function Homepage() {
                 src={MaskLeft}
                 className="d-inline-block mask mask-left"
             />{' '}
-            <Row className={'section-one'}>
+            <Row className={'section-one ' + css(fadeInStyle.bounce)}>
                 <Col sm={12} md={5} className={'section-one-column-one'}>
                     <img
                         alt="Section 1 Image"
