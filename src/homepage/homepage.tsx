@@ -11,6 +11,7 @@ import Brands from './brands/brands';
 import OurMission from './our-mission/our-mission';
 import Video from './video/video';
 import Timeline from './timeline/timeline';
+import MeetTeam from './meet-team/meet-team';
 
 
 function Homepage() {
@@ -57,6 +58,7 @@ function Homepage() {
             <Video/>
             <OurMission/>
             <Timeline/>
+            <MeetTeam/>
         </div>
     );
 }

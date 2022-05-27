@@ -1,0 +1,49 @@
+.meet-team {
+    margin-top: 106px;
+}
+
+.meet-team-title {
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 72px;
+    text-align: center;
+    color: #000000;
+}
+
+.meet-team-card-row {
+    justify-content: center;
+    margin-top: 63px;
+}
+
+.meet-team .card {
+    border: none;
+}
+
+.meet-team .card-title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 137.5%;
+    letter-spacing: 0.1em;
+    color: #000000;
+    text-align: left;
+}
+
+.meet-team .card-text {
+    font-size: 12px;
+    line-height: 130%;
+    color: #000000;
+    text-align: left;
+}
+
+.meet-team .team-member-name {
+    background: #000000;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.meet-team .team-member-name p {
+    font-size: 18px;
+    line-height: 137.5%;
+    color: #FFFFFF;
+    text-align: left;
+    padding-left: 14px;
+}
