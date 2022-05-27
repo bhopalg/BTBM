@@ -1,0 +1,23 @@
+.timeline-title {
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 72px;
+    text-align: center;
+    color: #000000;
+}
+
+.timeline-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    text-align: center;
+    color: #000000;
+    max-width: 539px;
+    max-height: 111px;
+}
+
+.timeline-text-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

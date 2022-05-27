@@ -10,6 +10,7 @@ import Merch from './merch/merch';
 import Brands from './brands/brands';
 import OurMission from './our-mission/our-mission';
 import Video from './video/video';
+import Timeline from './timeline/timeline';
 
 
 function Homepage() {
@@ -55,6 +56,7 @@ function Homepage() {
             <Brands/>
             <Video/>
             <OurMission/>
+            <Timeline/>
         </div>
     );
 }
