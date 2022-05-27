@@ -14,6 +14,7 @@ import HoodieImage from "../../assets/timeline/hoodie-merch.png";
 import MeeTokenImage from "../../assets/timeline/token.png";
 import VIPAccessImage from "../../assets/timeline/vip-access.png";
 import Giveaway from "../../assets/timeline/giveaway.png";
+import Mask from "../../assets/images/mask-two.png";
 
 
 function Timeline() {
@@ -21,6 +22,16 @@ function Timeline() {
 
     return (
         <Row className={isMobile ? 'mobile-timeline-row timeline-row' : 'timeline-row'}>
+            <img
+                alt="Mask Image"
+                src={Mask}
+                className="d-inline-block timeline-mark-image"
+            />{' '}
+            <img
+                alt="Mask Image"
+                src={Mask}
+                className="d-inline-block timeline-mark-image-two"
+            />{' '}
             <Col xs={12}>
                 <h2 className={'timeline-title'}>MEE MAP</h2>
             </Col>

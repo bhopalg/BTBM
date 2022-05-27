@@ -13,6 +13,7 @@ import Video from './video/video';
 import Timeline from './timeline/timeline';
 import MeetTeam from './meet-team/meet-team';
 import FAQ from './faq/faq';
+import Footer from './footer/footer';
 
 function Homepage() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -60,6 +61,7 @@ function Homepage() {
             <Timeline/>
             <MeetTeam/>
             <FAQ/>
+            <Footer/>
         </div>
     );
 }

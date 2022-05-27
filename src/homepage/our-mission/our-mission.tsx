@@ -3,6 +3,8 @@ import React from "react";
 import './our-mission.css';
 import {Col, Row} from "react-bootstrap";
 import OutMissionImage from '../../assets/images/our-mission.png';
+import Mask from '../../assets/images/mask-two.png';
+
 import {useMediaQuery} from "react-responsive";
 
 function OurMission() {
@@ -10,6 +12,11 @@ function OurMission() {
 
     return (
         <Row className={isMobile ? 'mobile-our-mission-row our-mission-row' : 'our-mission-row'}>
+            <img
+                alt="Mask Image"
+                src={Mask}
+                className="d-inline-block our-mission-mark-image"
+            />{' '}
             <Col sm={12}>
                 <h2 className={'our-mission-title'}>OUR MISSION</h2>
             </Col>
@@ -20,7 +27,7 @@ function OurMission() {
                             alt="Our Missions Image"
                             src={OutMissionImage}
                             className="d-inline-block our-mission-image"
-                        />{' '}`
+                        />{' '}
                     </Col>
                     <Col sm={12} md={4}>
                         <p className={'our-mission-text'}>

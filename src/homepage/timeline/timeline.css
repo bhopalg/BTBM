@@ -375,3 +375,39 @@
 .mobile-timeline-row .what-else-title-container .what-else-title-two {
     width: 270px;
 }
+
+.timeline-row {
+    position: relative;
+}
+
+.timeline-mark-image {
+    position: absolute;
+}
+
+.timeline-mark-image {
+    position: absolute;
+    bottom: -1090px;
+    max-width: 1100px;
+    right: 0;
+}
+
+.timeline-mark-image-two {
+    position: absolute;
+    top: -110px;
+    max-width: 1100px;
+    left: -440px;
+    transform: rotate(72deg);
+}
+
+.mobile-timeline-row .our-mission-mark-image {
+    top: 1140px;
+}
+
+.mobile-timeline-row .timeline-mark-image {
+    bottom: -330px;
+}
+
+.mobile-timeline-row .timeline-mark-image-two {
+    top: 0;
+    left: -170px;
+}

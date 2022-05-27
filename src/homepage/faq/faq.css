@@ -54,3 +54,11 @@
     color: #FFFFFF;
     background: #000000 !important;
 }
+
+.mobile-faq .accordion-item {
+    margin-top: 20px;
+}
+
+.mobile-faq .card-row-two {
+    margin-top: 0;
+}

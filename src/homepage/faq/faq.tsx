@@ -55,7 +55,7 @@ function FAQ() {
                     </Accordion>
                 </Col>
             </Row>
-            <Row className={'faq-card-row'}>
+            <Row className={'faq-card-row card-row-two'}>
                 <Col sm={12} md={3}>
                     <Accordion>
                         <Accordion.Item eventKey="0">

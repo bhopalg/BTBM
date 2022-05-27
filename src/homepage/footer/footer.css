@@ -1,0 +1,51 @@
+.footer {
+    margin-top: 110px;
+    margin-bottom: 65px;
+    text-align: center;
+}
+
+.footer-copyright-text p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    opacity: 0.8;
+}
+
+.faq-socials {
+    justify-content: center;
+}
+
+.faq-socials img {
+    width: 20px;
+}
+
+.faq-socials .instagram:hover img {
+    filter: invert(26%) sepia(57%) saturate(2281%) hue-rotate(257deg) brightness(91%) contrast(90%);
+}
+
+.faq-socials .twitter img, .faq-socials .instagram img, .faq-socials .discord img {
+    transition: 0.3s;
+}
+
+.faq-socials .twitter:hover img {
+    filter: invert(47%) sepia(87%) saturate(2486%) hue-rotate(166deg) brightness(102%) contrast(100%);
+}
+
+.faq-socials .discord:hover img {
+    filter: invert(34%) sepia(82%) saturate(3152%) hue-rotate(227deg) brightness(100%) contrast(89%);
+}
+
+.faq-socials a {
+    float: left;
+    width: 4%;
+    display: inline-block;
+    margin-bottom: 38.8px;
+}
+
+.mobile-footer .faq-socials a {
+    float: left;
+    width: 33.3%;
+    display: inline-block;
+    margin-bottom: 38.8px;
+}
