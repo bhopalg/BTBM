@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
 import './homepage.css';
 import Section1Image from '../assets/images/homepage-section-1.png';
-import {Button, Col, Row} from "react-bootstrap";
+import {Button, Col, Form, Row} from "react-bootstrap";
 import Mask from '../assets/images/mask.png';
 import MaskLeft from '../assets/images/mask-left.png';
 import {useMediaQuery} from "react-responsive";
@@ -18,6 +18,10 @@ import Footer from './footer/footer';
 import {fadeIn, merge, slideInLeft} from 'react-animations';
 import { StyleSheet, css } from 'aphrodite';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// @ts-ignore
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 function Homepage() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
@@ -27,6 +31,24 @@ function Homepage() {
             animationDuration: '2s'
         }
     });
+
+    const [mintAmount, setMintAmount] = useState(1);
+
+     function incrementMintAmount() {
+         if (mintAmount === 3) {
+             return;
+         }
+
+         setMintAmount(mintAmount + 1);
+     }
+
+    function decrementMintAmount() {
+        if (mintAmount === 1) {
+            return;
+        }
+
+        setMintAmount(mintAmount - 1);
+    }
 
     return (
         <div className={isMobile ? 'mobile-homepage-container homepage-container' : 'homepage-container'} id={'main-section'}>
@@ -61,6 +83,30 @@ function Homepage() {
                     </Row>
                 </Col>
                 <Col xs={12}>
+                    <Row className={'mint-input-container'}>
+                        <Col sm={12} md={2}>
+                            <Row>
+                                <Col xs={2} className={'mint-input-arrows mint-input-arrow-left'}>
+                                    <button className={'mint-amount-buttons'} onClick={decrementMintAmount} disabled={mintAmount === 1}>
+                                        <FontAwesomeIcon icon={faArrowLeft} />
+                                    </button>
+                                </Col>
+                                <Col xs={8}>
+                                    <Form.Control
+                                        type="number"
+                                        min={0}
+                                        aria-describedby="amount"
+                                        value={mintAmount}
+                                    />
+                                </Col>
+                                <Col xs={2} className={'mint-input-arrows mint-input-arrow-right'}>
+                                    <button className={'mint-amount-buttons'} onClick={incrementMintAmount} disabled={mintAmount === 3}>
+                                        <FontAwesomeIcon icon={faArrowRight} />
+                                    </button>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
                     <Button className={'mint-button'} variant="outline-dark">MINT</Button>
                 </Col>
             </Row>

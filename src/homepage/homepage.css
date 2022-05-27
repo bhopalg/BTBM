@@ -110,3 +110,25 @@
 .mobile-homepage-container .row {
     margin-left: 0;
 }
+
+.mint-input-arrows {
+    display: flex;
+    align-items: center;
+}
+
+.mint-input-container {
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.mint-input-container .form-control {
+    border: none;
+    text-align: center;
+    font-size: 40px;
+}
+
+.mint-amount-buttons {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
