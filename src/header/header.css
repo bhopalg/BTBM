@@ -7,9 +7,13 @@
     align-items: center;
 }
 
+.navbar {
+    padding-top: 49px;
+    background: white;
+}
+
 .nav-socials img {
-    height: 12.62px;
-    width: 12.62px;
+    width: 20px;
 }
 
 .nav-socials .col {
@@ -48,10 +52,6 @@
     line-height: 52px;
     text-align: center;
     padding-top: 3px;
-}
-
-.navbar {
-    margin-top: 49px;
 }
 
 .desktop-navbar .navbar-nav {
@@ -179,4 +179,8 @@
 .desktop-navbar .wallet-display {
     float: right;
     margin-right: 60px;
+}
+
+.desktop-navbar .logo-row {
+    margin-left: 0 !important;
 }

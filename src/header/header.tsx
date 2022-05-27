@@ -8,14 +8,14 @@ import twitter from '../assets/socials/twitter.svg';
 import discord from '../assets/socials/discord.svg';
 
 function Header() {
-    const isMobile = useMediaQuery({ query: '(max-width: 990px)' })
+    const isMobile = useMediaQuery({ query: '(max-width: 990px)' });
 
-    const desktopNav = <Navbar className={'desktop-navbar'}>
+    const desktopNav = <Navbar className={'desktop-navbar'} fixed="top">
         <Container>
             <Row>
                 <Col sm={3} className={'nav-socials-col'}>
                     <Row className="nav-socials">
-                        <Col sm={1}>
+                        <Col sm={2}>
                             <a href={'https://www.instagram.com/borntobemebrand/'} target={'_blank'} className={'instagram'}>
                                 <img
                                     alt="Instagram link"
@@ -24,7 +24,7 @@ function Header() {
                                 />{' '}
                             </a>
                         </Col>
-                        <Col sm={1}>
+                        <Col sm={2}>
                             <a href={'https://twitter.com/BornToBeMeBrand'} target={'_blank'} className={'twitter'}>
                                 <img
                                     alt="Twitter link"
@@ -33,7 +33,7 @@ function Header() {
                                 />{' '}
                             </a>
                         </Col>
-                        <Col sm={1}>
+                        <Col sm={2}>
                             <a href={'https://discord.gg/wA9GPa5En4'} target={'_blank'} className={'discord'}>
                                 <img
                                     alt="Discord link"
@@ -45,7 +45,7 @@ function Header() {
                     </Row>
                 </Col>
                 <Col sm={6}>
-                    <Row>
+                    <Row className={'logo-row'}>
                         <Col xs={12}>
                             <div className={'logo-container'}>
                                 <h2 className={'logo-name'}>BORN TO BE ME</h2>
