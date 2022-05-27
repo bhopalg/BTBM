@@ -21,3 +21,357 @@
     justify-content: center;
     margin-top: 30px;
 }
+
+
+.timeline-container.vertical-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 100%;
+    width: 11px;
+    background: black;
+    border-radius: 11px;
+    border-radius: 11px;
+}
+
+@media only screen and (min-width: 1170px) {
+    .timeline-container.vertical-timeline.vertical-timeline--two-columns:before {
+        left: 49.7%;
+    }
+}
+
+.timeline-vertical-element .vertical-timeline-element-icon {
+    background: white !important;
+    border: 4px solid #000;
+}
+
+.timeline-vertical-element .vertical-timeline-element-content {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding-left: 20px;
+}
+
+.timeline-vertical-element .timeline-element-title {
+    background: black;
+    width: 215px;
+    padding: 10px 0 0.6px 0;
+    border-radius: 15px;
+}
+
+.timeline-vertical-element .timeline-element-title h3 {
+    font-weight: 400;
+    font-size: 43.75px;
+    line-height: 52px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.timeline-element-text {
+    max-width: 344px;
+    max-height: 111px;
+}
+
+.timeline-element-text p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: #000000;
+}
+
+.timeline-right .timeline-element-text p {
+    text-align: left;
+}
+
+.timeline-left .timeline-element-text p {
+    text-align: right;
+}
+
+.timeline-left .timeline-element-title, .timeline-left .timeline-element-text {
+    margin: 0 0 0 auto;
+}
+
+.timeline-vertical-element {
+    position: relative;
+}
+
+.launch-day-image {
+    position: absolute;
+    top: -60px;
+    left: -235px;
+    max-width: 101px;
+    max-height: 124px;
+}
+
+.timeline-container {
+    margin-top: 117px !important;
+}
+
+.timeline-left.free-merch-drop .free-merch-drop-title {
+    width: 285px;
+}
+
+.timeline-left.free-merch-drop .free-merch-drop-text {
+    padding-left: 80px;
+}
+
+.timeline-left.free-merch-drop .free-merch-drop-text p {
+    text-align: left;
+}
+
+.free-merch-drop-image {
+    max-width: 108px;
+    max-height: 209px;
+    position: absolute;
+    top: -50px;
+    left: 0;
+}
+
+.partners-merch-drop-image {
+    max-width: 369px;
+    max-height: 141px;
+    margin-bottom: 30px;
+}
+
+.timeline-vertical-element .partners-merch-drop-title {
+    width: 390px;
+    float: left;
+}
+
+.timeline-vertical-element .partners-merch-drop-title-two {
+    width: 300px;
+    margin-top: 10px;
+    float: left;
+}
+
+.partners-merch-drop .vertical-timeline-element-content {
+    text-align: left;
+    float: left;
+}
+
+.partners-merch-drop .vertical-timeline-element-content p {
+    text-align: left;
+}
+
+.timeline-vertical-element .mee-marketing-title {
+    width: 315px;
+    float: right;
+}
+
+.timeline-vertical-element .mee-marketing-text {
+    float: right;
+    text-align: left;
+    width: 100%;
+    padding-top: 30px;
+    padding-left: 15px;
+}
+
+.mee-marketing .vertical-timeline-element-content {
+    text-align: left;
+}
+
+.mee-marketing .vertical-timeline-element-content ul li {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: #000000;
+}
+
+.partners-merch-drop-text {
+    float: left;
+}
+
+.mee-marketing-image, .hoodie {
+    position: absolute;
+    top: 0;
+}
+
+.love-t {
+    left: -160px;
+    z-index: 1;
+}
+
+.hoodie {
+    left: -250px;
+    top: -60px;
+    z-index: 0;
+}
+
+.partners-merch-drop-image {
+    max-width: 369px;
+    max-height: 141px;
+    margin-bottom: 30px;
+}
+
+.timeline-vertical-element .mee-token-title {
+    width: 250px;
+    float: left;
+}
+
+.timeline-vertical-element .mee-token-title-two {
+    width: 263.8px;
+    margin-top: 10px;
+    float: left;
+}
+
+.mee-token .vertical-timeline-element-content {
+    text-align: left;
+    float: left;
+}
+
+.mee-token .mee-token-text {
+    float: left;
+}
+
+.mee-token .vertical-timeline-element-content p {
+    text-align: left;
+}
+
+.mee-token-image {
+    max-width: 137px;
+    max-height: 144px;
+    position: absolute;
+    right: 50px;
+}
+
+.timeline-vertical-element .vip-access-title {
+    width: 290px;
+    float: right;
+}
+
+.timeline-vertical-element .vip-access-title-two {
+    width: 380px;
+    margin-top: 10px;
+    float: right;
+}
+.vip-access .vip-access-text {
+    float: right;
+}
+
+.vip-access .vertical-timeline-element-content p {
+    text-align: left;
+}
+
+.vip-access-image {
+    position: absolute;
+    max-width: 400px;
+    left: -310px;
+    top: -80px;
+}
+
+.what-else-image {
+    max-height: 156px;
+    max-width: 216px;
+    float: left;
+}
+
+.what-else-title-container {
+    position: absolute;
+    right: -90px;
+}
+
+.timeline-left .timeline-element-text.what-else-text p {
+    text-align: left;
+}
+
+.what-else-title-container .what-else-title-two {
+    width: 353px;
+}
+
+@media only screen and (min-width: 1170px) {
+    .timeline-container.vertical-timeline::before {
+        height: 96%;
+    }
+}
+
+.mobile-timeline-row .timeline-left.free-merch-drop .free-merch-drop-text {
+    padding-left: 0;
+}
+
+.mobile-timeline-row .free-merch-drop-image {
+    position: relative;
+    top: 0;
+    left: 0;
+    float: left;
+    margin-top: 30px;
+}
+
+.mobile-timeline-row .partners-merch-drop-image {
+    max-width: 70%;
+}
+
+.mobile-timeline-row .timeline-vertical-element .timeline-element-title h3 {
+    font-size: 31.75px;
+}
+
+.mobile-timeline-row .timeline-vertical-element .partners-merch-drop-title {
+    width: 280px;
+}
+
+.mobile-timeline-row .timeline-vertical-element .partners-merch-drop-title-two {
+    width: 220px;
+}
+
+.mobile-timeline-row .mee-marketing-image, .mobile-timeline-row .hoodie {
+    position: relative;
+    left: auto;
+}
+
+.mobile-timeline-row .mee-marketing-image {
+    margin-bottom: 30px;
+    margin-top: 60px;
+}
+
+.mobile-timeline-row .mee-marketing .vertical-timeline-element-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-timeline-row .mee-marketing .mee-marketing-title {
+    order: 1;
+}
+
+.mobile-timeline-row .mee-marketing .mee-marketing-text {
+    order: 2;
+    padding-left: 0;
+}
+
+.mobile-timeline-row .mee-marketing .love-t {
+    order: 3;
+}
+
+.mobile-timeline-row .mee-marketing .hoodie {
+    order: 4;
+}
+
+.mobile-timeline-row .timeline-vertical-element .mee-marketing-title {
+    width: 252px;
+    float: right;
+}
+
+.mobile-timeline-row .mee-token-image {
+    position: relative;
+    right: 0;
+    margin-bottom: 20px;
+}
+
+.mobile-timeline-row .vip-access-image {
+    position: relative;
+    max-width: 300px;
+    left: -28px;
+    top: 0;
+}
+
+.mobile-timeline-row  .timeline-vertical-element .vip-access-title-two {
+    width: 290px;
+}
+
+.mobile-timeline-row  .what-else-title-container {
+    position: relative;
+    float: left;
+    right: 0;
+}
+
+.mobile-timeline-row .what-else-title-container .what-else-title-two {
+    width: 270px;
+}

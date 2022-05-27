@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-responsive": "^8.0.5"
+    "@types/react-responsive": "^8.0.5",
+    "@types/react-vertical-timeline-component": "^3.3.3"
   }
 }
