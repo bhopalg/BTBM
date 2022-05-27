@@ -1,8 +1,8 @@
 import React from "react";
 import { useMediaQuery } from 'react-responsive';
+import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 
 import './header.css';
-import {Col, Container, Nav, Navbar, NavDropdown, Row} from "react-bootstrap";
 import instagram from '../assets/socials/instagram.svg';
 import twitter from '../assets/socials/twitter.svg';
 import discord from '../assets/socials/discord.svg';
@@ -65,9 +65,6 @@ function Header() {
                                 <Nav.Item>
                                     <Nav.Link href="/home">FAQ</Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link href="/home">MINT</Nav.Link>
-                                </Nav.Item>
                             </Nav>
                         </Col>
                     </Row>
@@ -101,7 +98,6 @@ function Header() {
                     <Nav.Link href="/home">MEE MAP</Nav.Link>
                     <Nav.Link href="/home">TEAM</Nav.Link>
                     <Nav.Link href="/home">FAQ</Nav.Link>
-                    <Nav.Link href="/home">MINT</Nav.Link>
                 </Nav>
                 <Row className="nav-socials">
                     <Col xs={3}>
