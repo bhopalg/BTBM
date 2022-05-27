@@ -1,0 +1,17 @@
+.merch-container {
+}
+
+.merch-title {
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 72px;
+    text-align: center;
+    color: #000000;
+}
+
+.characters-image {
+    max-width: 1141px;
+    max-height: 902px;
+    padding-top: 65.66px;
+    padding-bottom: 50px;
+}

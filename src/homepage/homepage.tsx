@@ -6,6 +6,7 @@ import {Button, Col, Row} from "react-bootstrap";
 import Mask from '../assets/images/mask.png';
 import MaskLeft from '../assets/images/mask-left.png';
 import {useMediaQuery} from "react-responsive";
+import Merch from './merch/merch';
 
 function Homepage() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -46,6 +47,7 @@ function Homepage() {
                     <Button className={'mint-button'} variant="outline-dark">MINT</Button>
                 </Col>
             </Row>
+            <Merch/>
         </div>
     );
 }
