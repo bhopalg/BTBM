@@ -70,3 +70,22 @@
     width: 165.75px;
     height: 79px;
 }
+
+.mobile-homepage-container .section-one-column-two p, .mobile-homepage-container .section-one-column-two h2 {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.mobile-homepage-container .section-one-column-two h2 {
+    padding-top: 30px;
+}
+
+.mobile-homepage-container .section-one-column-two p {
+    padding-bottom: 30px;
+}
+
+.mobile-homepage-container .mask {
+    top: 550px;
+    width: 100px;
+    height: 200px;
+}
