@@ -2,34 +2,156 @@ import React from "react";
 import { useMediaQuery } from 'react-responsive';
 
 import './header.css';
-import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import Logo from '../logo.svg'
+import {Col, Container, Nav, Navbar, NavDropdown, Row} from "react-bootstrap";
+import instagram from '../assets/socials/instagram.svg';
+import twitter from '../assets/socials/twitter.svg';
+import discord from '../assets/socials/discord.svg';
 
 function Header() {
     const isMobile = useMediaQuery({ query: '(max-width: 990px)' })
 
-    return (
-        <Navbar bg="light" expand="lg">
-            <Container>
-                {isMobile ? <Navbar.Brand href="#home">Hello Mobile</Navbar.Brand> : null}
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
-                {!isMobile ? <Navbar.Brand href="#home">Hello</Navbar.Brand> : null}
-            </Container>
-        </Navbar>
-    );
+    const desktopNav = <Navbar className={'desktop-navbar'}>
+        <Container>
+            <Row>
+                <Col sm={3} className={'nav-socials-col'}>
+                    <Row className="nav-socials">
+                        <Col sm={1}>
+                            <a href={'https://www.instagram.com/borntobemebrand/'} target={'_blank'} className={'instagram'}>
+                                <img
+                                    alt="Instagram link"
+                                    src={instagram}
+                                    className="d-inline-block social-link"
+                                />{' '}
+                            </a>
+                        </Col>
+                        <Col sm={1}>
+                            <a href={'https://twitter.com/BornToBeMeBrand'} target={'_blank'} className={'twitter'}>
+                                <img
+                                    alt="Twitter link"
+                                    src={twitter}
+                                    className="d-inline-block social-link"
+                                />{' '}
+                            </a>
+                        </Col>
+                        <Col sm={1}>
+                            <a href={'https://discord.gg/wA9GPa5En4'} target={'_blank'} className={'discord'}>
+                                <img
+                                    alt="Discord link"
+                                    src={discord}
+                                    className="d-inline-block social-link"
+                                />{' '}
+                            </a>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col sm={6}>
+                    <Row>
+                        <Col xs={12}>
+                            <div className={'logo-container'}>
+                                <h2 className={'logo-name'}>BORN TO BE ME</h2>
+                            </div>
+                        </Col>
+                        <Col xs={12}>
+                            <Nav>
+                                <Nav.Item>
+                                    <Nav.Link href="/home">MISSION</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link href="/home">MEE MAP</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link href="/home">TEAM</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link href="/home">FAQ</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link href="/home">MINT</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col sm={3}>
+                    <Row>
+                        <Col xs={12}>
+                            <div className={'wallet-display'}>
+                                <p className={'wallet-display-text'}>
+                                    <span className={'wallet-connected-dot'}></span>
+                                    0x74d...0de5 | 305
+                                    <span className={'token-name'}>$mee</span>
+                                </p>
+                            </div>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
+    </Navbar>;
+
+    const mobileNav = <Navbar bg="light" expand="lg" className={'mobile-navbar'}>
+        <Container>
+            <Navbar.Brand href="#home" className={'logo-container'}>
+                <h2 className={'logo-name'}>BORN TO BE ME</h2>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link href="#home">MISSION</Nav.Link>
+                    <Nav.Link href="/home">MEE MAP</Nav.Link>
+                    <Nav.Link href="/home">TEAM</Nav.Link>
+                    <Nav.Link href="/home">FAQ</Nav.Link>
+                    <Nav.Link href="/home">MINT</Nav.Link>
+                </Nav>
+                <Row className="nav-socials">
+                    <Col xs={3}>
+                        <a href={'https://www.instagram.com/borntobemebrand/'} target={'_blank'} className={'instagram'}>
+                            <img
+                                alt="Instagram link"
+                                src={instagram}
+                                className="d-inline-block social-link"
+                            />{' '}
+                        </a>
+                    </Col>
+                    <Col xs={3}>
+                        <a href={'https://twitter.com/BornToBeMeBrand'} target={'_blank'} className={'twitter'}>
+                            <img
+                                alt="Twitter link"
+                                src={twitter}
+                                className="d-inline-block social-link"
+                            />{' '}
+                        </a>
+                    </Col>
+                    <Col xs={3}>
+                        <a href={'https://discord.gg/wA9GPa5En4'} target={'_blank'} className={'discord'}>
+                            <img
+                                alt="Discord link"
+                                src={discord}
+                                className="d-inline-block social-link"
+                            />{' '}
+                        </a>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12} className={'wallet-col'}>
+                        <div className={'wallet-display'}>
+                            <p className={'wallet-display-text'}>
+                                <span className={'wallet-connected-dot'}></span>
+                                0x74d...0de5 | 305
+                                <span className={'token-name'}>$mee</span>
+                            </p>
+                        </div>
+                    </Col>
+                </Row>
+            </Navbar.Collapse>
+        </Container>
+    </Navbar>
+
+    if (isMobile) {
+        return (mobileNav);
+    } else {
+        return (desktopNav);
+    }
 }
 
 export default Header;
