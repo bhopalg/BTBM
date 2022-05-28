@@ -8,6 +8,7 @@ import './header.css';
 import instagram from '../assets/socials/instagram.svg';
 import twitter from '../assets/socials/twitter.svg';
 import discord from '../assets/socials/discord.svg';
+import logo from '../assets/logo.png';
 
 function Header() {
     const isMobile = useMediaQuery({ query: '(max-width: 990px)' });
@@ -49,17 +50,21 @@ function Header() {
                 <Col sm={6}>
                     <Row className={'logo-row'}>
                         <Col xs={12}>
-                            <div className={'logo-container'}>
-                                <h2 className={'logo-name'}>BORN TO BE ME</h2>
-                            </div>
-                        </Col>
-                        <Col xs={12}>
                             <Nav>
                                 <Nav.Item>
                                     <AnchorLink href='#our-team-section'>MISSION</AnchorLink>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <AnchorLink href='#timeline-section'>MEE MAP</AnchorLink>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <div className={'logo-container'}>
+                                        <img
+                                            alt="Logo"
+                                            src={logo}
+                                            className="d-inline-block logo"
+                                        />{' '}
+                                    </div>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <AnchorLink href='#meet-team-section'>TEAM</AnchorLink>
@@ -91,7 +96,13 @@ function Header() {
     const mobileNav = <Navbar bg="light" expand="lg" className={'mobile-navbar'}>
         <Container>
             <Navbar.Brand href="#home" className={'logo-container'}>
-                <h2 className={'logo-name'}>BORN TO BE ME</h2>
+                <div className={'logo-container'}>
+                    <img
+                        alt="Logo"
+                        src={logo}
+                        className="d-inline-block logo"
+                    />{' '}
+                </div>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

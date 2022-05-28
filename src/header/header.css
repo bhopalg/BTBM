@@ -37,13 +37,6 @@
     filter: invert(34%) sepia(82%) saturate(3152%) hue-rotate(227deg) brightness(100%) contrast(89%);
 }
 
-.desktop-navbar .logo-container {
-    background: #000000;
-    border-radius: 15px;
-    width: 260px;
-    margin: 0 auto 27px auto;
-}
-
 .desktop-navbar .logo-name {
     color: #FFFFFF;
     font-style: normal;
@@ -57,6 +50,7 @@
 .desktop-navbar .navbar-nav {
     justify-content: center;
     gap: 25px;
+    align-items: center;
 }
 
 .desktop-navbar .navbar-nav .nav-item a {
@@ -102,12 +96,6 @@
     color: #FFFFFF;
 }
 
-.mobile-navbar .logo-container {
-    background: #000000;
-    border-radius: 15px;
-    width: 260px;
-}
-
 .mobile-navbar .logo-name {
     color: #FFFFFF;
     font-style: normal;
@@ -127,6 +115,7 @@
 .mobile-navbar {
     margin-top: 0px;
     background-color: white !important;
+    padding-top: 15px;
 }
 
 .mobile-navbar .navbar-nav a {
@@ -189,4 +178,8 @@
 
 .desktop-navbar .logo-row {
     margin-left: 0 !important;
+}
+
+.logo {
+    max-width: 150px;
 }
