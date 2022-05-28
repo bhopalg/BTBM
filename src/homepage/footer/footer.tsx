@@ -11,9 +11,9 @@ function Footer() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <Row className={isMobile ? 'mobile-footer footer' : 'footer'}>
+        <div className={isMobile ? 'mobile-footer footer' : 'footer'}>
             <Col xs={12}>
-                <Row className="faq-socials">
+                <div className="footer-socials">
                     <a href={'https://www.instagram.com/borntobemebrand/'} target={'_blank'} className={'instagram'}>
                         <img
                             alt="Instagram link"
@@ -35,12 +35,12 @@ function Footer() {
                             className="d-inline-block social-link"
                         />{' '}
                     </a>
-                </Row>
+                </div>
             </Col>
             <Col xs={12} className={'footer-copyright-text'}>
                 <p>Copyright, BTBM. All rights reserved.</p>
             </Col>
-        </Row>
+        </div>
     );
 }
 

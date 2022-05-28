@@ -13,7 +13,7 @@ function OurMission() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <Row className={isMobile ? 'mobile-our-mission-row our-mission-row' : 'our-mission-row'} id={'our-team-section'}>
+        <div className={isMobile ? 'mobile-our-mission-row our-mission-row' : 'our-mission-row'} id={'our-team-section'}>
             <img
                 alt="Mask Image"
                 src={Mask}
@@ -56,7 +56,7 @@ function OurMission() {
 
                 </Col>
             </AnimationOnScroll>
-        </Row>
+        </div>
     );
 }
 

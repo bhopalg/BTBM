@@ -58,3 +58,9 @@
     right: 0;
     filter: invert(86%) sepia(2%) saturate(3%) hue-rotate(200deg) brightness(93%) contrast(89%);
 }
+
+.mobile-our-mission-row .our-mission-mark-image {
+    top: auto;
+    bottom: -280px;
+    width: 80%;
+}

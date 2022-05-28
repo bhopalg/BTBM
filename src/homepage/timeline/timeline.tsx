@@ -1,7 +1,7 @@
 import React from "react";
 
 import './timeline.css';
-import {Col, Row} from "react-bootstrap";
+import {Col} from "react-bootstrap";
 // @ts-ignore
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
@@ -21,17 +21,17 @@ function Timeline() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <Row className={isMobile ? 'mobile-timeline-row timeline-row' : 'timeline-row'}  id={'timeline-section'}>
+        <div className={isMobile ? 'mobile-timeline-row timeline-row' : 'timeline-row'}  id={'timeline-section'}>
             <img
                 alt="Mask Image"
                 src={Mask}
                 className="d-inline-block timeline-mark-image"
-            />{' '}
+            />
             <img
                 alt="Mask Image"
                 src={Mask}
                 className="d-inline-block timeline-mark-image-two"
-            />{' '}
+            />
             <Col xs={12}>
                 <h2 className={'timeline-title'}>MEE MAP</h2>
             </Col>
@@ -195,8 +195,8 @@ function Timeline() {
                     </VerticalTimelineElement>
                 </VerticalTimeline>
             </Col>
-        </Row>
-    )
+        </div>
+    );
 }
 
 export default Timeline;

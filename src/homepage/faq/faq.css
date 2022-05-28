@@ -67,3 +67,7 @@
 .mobile-faq .card-row-two {
     margin-top: 0;
 }
+
+.mobile-faq {
+    padding: 0 10px;
+}

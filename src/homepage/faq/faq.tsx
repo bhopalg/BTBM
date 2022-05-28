@@ -11,13 +11,10 @@ function FAQ() {
 
     return (
         <div className={isMobile ? 'mobile-faq faq' : 'faq'} id={'faq-section'}>
-            <Row>
-                <Col className={'faq-title'}>
-                    <h2>FAQ</h2>
-                </Col>
-            </Row>
-            <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
-                <Row className={'faq-card-row'}>
+            <Col className={'faq-title'}>
+                <h2>FAQ</h2>
+            </Col>
+            <AnimationOnScroll animateIn="animate__fadeIn" duration={1} className={'faq-card-row'}>
                     <Col sm={12} md={3}>
                         <Accordion>
                             <Accordion.Item eventKey="0">
@@ -57,10 +54,9 @@ function FAQ() {
                             </Accordion.Item>
                         </Accordion>
                     </Col>
-                </Row>
+
             </AnimationOnScroll>
-            <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
-                <Row className={'faq-card-row card-row-two'}>
+            <AnimationOnScroll animateIn="animate__fadeIn" duration={1} className={'faq-card-row card-row-two'}>
                     <Col sm={12} md={3}>
                         <Accordion>
                             <Accordion.Item eventKey="0">
@@ -97,7 +93,6 @@ function FAQ() {
                             </Accordion.Item>
                         </Accordion>
                     </Col>
-                </Row>
             </AnimationOnScroll>
         </div>
     );

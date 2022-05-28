@@ -410,12 +410,14 @@
 }
 
 .mobile-timeline-row .timeline-mark-image {
-    bottom: -330px;
+    bottom: -140px;
+    width: 80%;
 }
 
 .mobile-timeline-row .timeline-mark-image-two {
     top: 0;
     left: -170px;
+    width: 80%;
 }
 
 .timeline-mark-image, .timeline-mark-image-two {
@@ -424,4 +426,16 @@
 
 .free-merch-drop .vertical-timeline-element-content, .what-else .vertical-timeline-element-content {
     background: transparent;
+}
+
+.mobile-timeline-row {
+    overflow: hidden;
+}
+
+.mobile-timeline-row .timeline-text-container {
+    padding: 0 20px;
+}
+
+.mobile-timeline-row .timeline-container.vertical-timeline::before {
+    left: 14px;
 }

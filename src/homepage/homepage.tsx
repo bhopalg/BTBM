@@ -72,7 +72,7 @@ function Homepage() {
                         className="d-inline-block section-one-image"
                     />
                 </Col>
-                <Col sm={5} xs={12} className={'section-one-column-two'}>
+                <Col sm={12} md={5} className={'section-one-column-two'}>
                     <Row>
                         <Col xs={12}>
                             <h2>MEE NFT</h2>
@@ -86,7 +86,7 @@ function Homepage() {
                 </Col>
                 <Col xs={12}>
                     <Row className={'mint-input-container'}>
-                        <Col sm={12} md={2}>
+                        <Col sm={12} md={2} className={'mint-col-one'}>
                             <Row>
                                 <Col xs={2} className={'mint-input-arrows mint-input-arrow-left'}>
                                     <button className={'mint-amount-buttons'} onClick={decrementMintAmount} disabled={mintAmount === 1}>
@@ -117,7 +117,6 @@ function Homepage() {
             <Video/>
             <OurMission/>
             <Timeline/>
-            <MeetTeam/>
             <FAQ/>
             <Footer/>
         </div>
