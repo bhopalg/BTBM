@@ -1,11 +1,24 @@
 .llamaverse {
     max-width: 87px;
-    max-height: 76px
+    max-height: 76px;
+    filter: invert(31%) sepia(23%) saturate(12%) hue-rotate(11deg) brightness(102%) contrast(87%);
+    transition: all 0.3s ease-out;
+}
+
+.llamaverse:hover {
+    transition: all 0.3s ease-in;
+    filter: none;
 }
 
 .illogics {
-    max-width: 132px;
-    max-height: 29px
+    filter: invert(31%) sepia(23%) saturate(12%) hue-rotate(11deg) brightness(102%) contrast(87%);
+    transition: all 0.3s ease-out;
+    max-width: 150px;
+}
+
+.illogics:hover {
+    transition: all 0.3s ease-in;
+    filter: none;
 }
 
 .squishy-squad {
