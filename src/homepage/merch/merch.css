@@ -19,3 +19,7 @@
 .mobile-merch-container .characters-image {
     max-width: 100%;
 }
+
+.mobile-merch-container {
+    margin-top: 50px;
+}

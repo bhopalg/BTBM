@@ -10,6 +10,11 @@
     width: 100vw;
 }
 
+.mobile-homepage-container {
+    height: auto;
+    width: auto;
+}
+
 .homepage-container .section-one .section-one-column-one img {
     max-width: 445px;
     max-height: 445px;

@@ -15,7 +15,7 @@ function Brands() {
 
     return (
         <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
-            <Row className={isMobile ? 'mobile-partners-row partners-row' : 'partners-row'} id={'brands-section'}>
+            <Row className={isMobile ? 'mobile-partners-row partners-row' : 'partners-row'} id={'brands-seFction'}>
                 <Col className={'partners-col'} sm={4} md={2}>
                     <img
                         alt="llamaverse Image"

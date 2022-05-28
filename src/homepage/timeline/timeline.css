@@ -111,6 +111,11 @@
     width: 285px;
 }
 
+.mobile-timeline-row .timeline-left.free-merch-drop .free-merch-drop-title {
+    width: 205px;
+    float: left;
+}
+
 .timeline-left.free-merch-drop .free-merch-drop-text {
     padding-left: 80px;
 }
@@ -286,6 +291,7 @@
 
 .mobile-timeline-row .timeline-left.free-merch-drop .free-merch-drop-text {
     padding-left: 0;
+    float: left;
 }
 
 .mobile-timeline-row .free-merch-drop-image {
