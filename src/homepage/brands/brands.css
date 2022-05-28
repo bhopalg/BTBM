@@ -22,13 +22,27 @@
 }
 
 .squishy-squad {
+    filter: invert(31%) sepia(23%) saturate(12%) hue-rotate(11deg) brightness(102%) contrast(87%);
     max-width: 86px;
-    max-height: 56px
+    max-height: 56px;
+    transition: all 0.3s ease-out;
+}
+
+.squishy-squad:hover {
+    transition: all 0.3s ease-in;
+    filter: none;
 }
 
 .dobies {
+    filter: invert(31%) sepia(23%) saturate(12%) hue-rotate(11deg) brightness(102%) contrast(87%);
     max-width: 105px;
-    max-height: 41px
+    max-height: 41px;
+    transition: all 0.3s ease-out;
+}
+
+.dobies:hover {
+    transition: all 0.3s ease-in;
+    filter: none;
 }
 
 .partners-row {
