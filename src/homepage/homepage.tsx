@@ -21,6 +21,7 @@ import { StyleSheet, css } from 'aphrodite';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // @ts-ignore
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import {ethers} from "ethers";
 
 function Homepage() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -33,6 +34,7 @@ function Homepage() {
     });
 
     const [mintAmount, setMintAmount] = useState(1);
+    const [signer, setSigner] = useState(null);
 
      function incrementMintAmount() {
          if (mintAmount === 3) {
@@ -49,6 +51,16 @@ function Homepage() {
 
         setMintAmount(mintAmount - 1);
     }
+    
+    async function test() {
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        // setSigner(signer)
+    }
+
+    test();
+
 
     return (
         <div className={isMobile ? 'mobile-homepage-container homepage-container' : 'homepage-container'} id={'main-section'}>
