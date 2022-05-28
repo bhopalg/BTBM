@@ -43,8 +43,13 @@
 }
 
 .faq .accordion-button.collapsed {
-    background: rgba(0, 0, 0, 0.4) !important;
+    background: rgba(0, 0, 0, 0.6) !important;
     border-radius: 8px;
+}
+
+.faq .accordion-button.collapsed:hover {
+    background: black !important;
+    transition: 0.3s;
 }
 
 .faq .accordion-body {
