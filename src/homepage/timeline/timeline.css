@@ -421,3 +421,7 @@
 .timeline-mark-image, .timeline-mark-image-two {
     filter: invert(86%) sepia(2%) saturate(3%) hue-rotate(200deg) brightness(93%) contrast(89%);
 }
+
+.free-merch-drop .vertical-timeline-element-content, .what-else .vertical-timeline-element-content {
+    background: transparent;
+}
