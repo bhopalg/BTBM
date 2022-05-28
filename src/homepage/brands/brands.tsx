@@ -14,7 +14,7 @@ function Brands() {
     const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
 
     return (
-        <AnimationOnScroll animateIn="animate__shakeY" animateOut="animate__bounceOutRight" duration={1}>
+        <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
             <Row className={isMobile ? 'mobile-partners-row partners-row' : 'partners-row'} id={'brands-section'}>
                 <Col className={'partners-col'} sm={4} md={2}>
                     <img

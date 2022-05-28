@@ -16,7 +16,7 @@ function FAQ() {
                     <h2>FAQ</h2>
                 </Col>
             </Row>
-            <AnimationOnScroll animateIn="animate__fadeInRightBig" duration={1}>
+            <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
                 <Row className={'faq-card-row'}>
                     <Col sm={12} md={3}>
                         <Accordion>
@@ -59,7 +59,7 @@ function FAQ() {
                     </Col>
                 </Row>
             </AnimationOnScroll>
-            <AnimationOnScroll animateIn="animate__fadeInLeftBig" duration={1}>
+            <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
                 <Row className={'faq-card-row card-row-two'}>
                     <Col sm={12} md={3}>
                         <Accordion>

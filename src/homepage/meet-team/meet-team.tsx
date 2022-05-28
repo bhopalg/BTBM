@@ -24,7 +24,7 @@ function MeetTeam() {
                     <h2>THE MEET TEAM</h2>
                 </Col>
             </Row>
-            <AnimationOnScroll animateIn="animate__fadeInRightBig" duration={1}>
+            <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
                 <Row className={'meet-team-card-row'}>
                     <Col sm={12} md={3}>
                         <Card>
@@ -97,7 +97,7 @@ function MeetTeam() {
                     </Col>
                 </Row>
             </AnimationOnScroll>
-            <AnimationOnScroll animateIn="animate__fadeInLeftBig" duration={1}>
+            <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
                 <Row className={'meet-team-card-row'}>
                     <Col sm={12} md={3}>
                         <Card>
