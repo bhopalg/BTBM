@@ -417,3 +417,7 @@
     top: 0;
     left: -170px;
 }
+
+.timeline-mark-image, .timeline-mark-image-two {
+    filter: invert(86%) sepia(2%) saturate(3%) hue-rotate(200deg) brightness(93%) contrast(89%);
+}

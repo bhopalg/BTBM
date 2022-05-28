@@ -59,6 +59,7 @@
     top: 292px;
     max-width: 573.04px;
     max-height: 652.67px;
+    filter: invert(86%) sepia(2%) saturate(3%) hue-rotate(200deg) brightness(93%) contrast(89%);
 }
 
 .mask-right {
