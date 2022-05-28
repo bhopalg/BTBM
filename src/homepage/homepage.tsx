@@ -51,16 +51,6 @@ function Homepage() {
 
         setMintAmount(mintAmount - 1);
     }
-    
-    async function test() {
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner();
-        // setSigner(signer)
-    }
-
-    test();
-
 
     return (
         <div className={isMobile ? 'mobile-homepage-container homepage-container' : 'homepage-container'} id={'main-section'}>

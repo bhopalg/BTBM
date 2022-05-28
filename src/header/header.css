@@ -183,3 +183,22 @@
 .logo {
     max-width: 150px;
 }
+
+.connect-wallet-button {
+    background: #000000;
+    border-radius: 15px;
+    width: 200px;
+    padding-top: 4.36px;
+    padding-bottom: 4.36px;
+    float: right;
+    margin-right: 60px;
+}
+
+.wallet-disconnected-dot {
+    width: 13.49px;
+    height: 13.49px;
+    display: inline-block;
+    background: #FF0000;
+    border-radius: 50%;
+    margin-right: 7.14px;
+}

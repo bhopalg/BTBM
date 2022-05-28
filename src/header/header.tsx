@@ -1,17 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import { useMediaQuery } from 'react-responsive';
-import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import {Button, Col, Container, Nav, Navbar, Row} from "react-bootstrap";
 // @ts-ignore
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { ethers } from "ethers";
 
 import './header.css';
 import instagram from '../assets/socials/instagram.svg';
 import twitter from '../assets/socials/twitter.svg';
 import discord from '../assets/socials/discord.svg';
 import logo from '../assets/logo.png';
+import {JsonRpcSigner} from "@ethersproject/providers/src.ts/json-rpc-provider";
 
 function Header() {
     const isMobile = useMediaQuery({ query: '(max-width: 990px)' });
+    const [signer, setSinger] = useState<JsonRpcSigner | null>(null);
+    const [minterAddress, setMinterAddress] = useState<string | null>(null);
+
+    async function connect() {
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        setSinger(signer);
+        setMinterAddress(await signer.getAddress());
+    }
 
     const desktopNav = <Navbar className={'desktop-navbar'} fixed="top">
         <Container>
@@ -79,13 +91,20 @@ function Header() {
                 <Col sm={3}>
                     <Row>
                         <Col xs={12}>
-                            <div className={'wallet-display'}>
-                                <p className={'wallet-display-text'}>
-                                    <span className={'wallet-connected-dot'}></span>
-                                    0x74d...0de5 | 305
-                                    <span className={'token-name'}>$mee</span>
-                                </p>
-                            </div>
+                            {signer == null ?
+                                <Button variant="dark" className={'connect-wallet-button'} onClick={connect}>
+                                    <span className={'wallet-disconnected-dot'}></span>
+                                    Connect
+                                </Button> :
+                                <div className={'wallet-display'}>
+                                    <p className={'wallet-display-text'}>
+                                        <span className={'wallet-connected-dot'}></span>
+                                        {minterAddress?.slice(0, 5)}...{minterAddress?.slice(minterAddress?.length - 5, minterAddress?.length)}
+                                         | 305
+                                        <span className={'token-name'}>$mee</span>
+                                    </p>
+                                </div>
+                            }
                         </Col>
                     </Row>
                 </Col>
