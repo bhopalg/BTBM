@@ -15,6 +15,11 @@
     max-height: 445px;
 }
 
+.section-one-image {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 .homepage-container .section-one .section-one-column-one {
     display: flex;
     justify-content: end;
