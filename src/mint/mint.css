@@ -57,3 +57,8 @@
     box-shadow: none;
     border: none;
 }
+
+.mint-col-one-button {
+    justify-content: center;
+    margin-top: 20px;
+}
