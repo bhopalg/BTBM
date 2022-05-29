@@ -16,28 +16,28 @@ function Brands() {
     return (
         <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
             <Row className={isMobile ? 'mobile-partners-row partners-row' : 'partners-row'} id={'brands-seFction'}>
-                <Col className={'partners-col'} sm={4} md={2}>
+                <Col className={'partners-col'} xs={6} md={2}>
                     <img
                         alt="llamaverse Image"
                         src={llamaverse}
                         className="d-inline-block partners llamaverse"
                     />{' '}
                 </Col>
-                <Col className={'partners-col'} sm={4} md={2}>
+                <Col className={'partners-col'} xs={6} md={2}>
                     <img
                         alt="illogics Image"
                         src={illogics}
                         className="d-inline-block partners illogics"
                     />{' '}
                 </Col>
-                <Col className={'partners-col'} sm={4} md={2}>
+                <Col className={'partners-col'} xs={6} md={2}>
                     <img
                         alt="squishySquad Image"
                         src={squishySquad}
                         className="d-inline-block partners squishy-squad"
                     />{' '}
                 </Col>
-                <Col className={'partners-col'} sm={4} md={2}>
+                <Col className={'partners-col'} xs={6} md={2}>
                     <img
                         alt="dobies Image"
                         src={dobies}
