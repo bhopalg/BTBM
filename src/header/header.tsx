@@ -86,7 +86,11 @@ function Header() {
                     <AnchorLink href="#timeline-section">MEE MAP</AnchorLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <a rel={'noreferrer'} className={'logo-container'} href={'/'}>
+                    <a
+                      rel={'noreferrer'}
+                      className={'logo-container'}
+                      href={'/'}
+                    >
                       <img
                         alt="Logo"
                         src={logo}

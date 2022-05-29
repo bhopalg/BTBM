@@ -35,11 +35,7 @@ function Homepage() {
       }
       id={'main-section'}
     >
-      <img
-        alt="Mask"
-        src={Mask}
-        className="d-inline-block mask mask-right"
-      />
+      <img alt="Mask" src={Mask} className="d-inline-block mask mask-right" />
       <img
         alt="Mask"
         src={MaskLeft}
