@@ -70,13 +70,13 @@ function Header() {
                                     <AnchorLink href='#timeline-section'>MEE MAP</AnchorLink>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <div className={'logo-container'}>
+                                    <a className={'logo-container'} href={'/'}>
                                         <img
                                             alt="Logo"
                                             src={logo}
                                             className="d-inline-block logo"
-                                        />{' '}
-                                    </div>
+                                        />
+                                    </a>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <AnchorLink href='#meet-team-section'>TEAM</AnchorLink>
@@ -115,7 +115,7 @@ function Header() {
     const mobileNav = <Navbar bg="light" expand="lg" className={'mobile-navbar'}>
         <Container>
             <Navbar.Brand href="#home" className={'logo-container'}>
-                <h2 className={'logo-name'}>BORN TO BE ME</h2>
+                <a href={'/'} className={'logo-name'}>BORN TO BE ME</a>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
