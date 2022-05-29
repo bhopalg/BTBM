@@ -23,3 +23,13 @@
 .mobile-merch-container {
     margin-top: 50px;
 }
+
+.tablet-merch-container .characters-image {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.tablet-merch-container .merch-title-container, .tablet-merch-container .merch-image-container {
+    padding-right: 0;
+}

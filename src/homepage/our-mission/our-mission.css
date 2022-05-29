@@ -5,6 +5,7 @@
 .our-mission-image {
     max-width: 527px;
     max-height: 527px;
+    width: 100%;
 }
 
 .mobile-our-mission-row .our-mission-image {
@@ -63,4 +64,12 @@
     top: auto;
     bottom: -280px;
     width: 80%;
+}
+
+.tablet-our-mission-row .our-mission-content > .row {
+    margin-right: 0;
+}
+
+.tablet-our-mission-row .our-mission-text {
+    padding: 3% 8% 0 8%;
 }

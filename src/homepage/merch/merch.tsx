@@ -9,17 +9,27 @@ import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 function Merch() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 576px) and (max-width: 1224px)' })
+
+  let containerClassName = '';
+  if (isMobile) {
+    containerClassName = 'mobile-merch-container';
+  } else if (isTablet) {
+    containerClassName = 'tablet-merch-container';
+  } else {
+    containerClassName = 'merch-container';
+  }
 
   return (
     <AnimationOnScroll animateIn="animate__fadeInLeftBig" duration={1}>
       <Container
-        className={isMobile ? 'mobile-merch-container' : 'merch-container'}
+        className={containerClassName}
       >
         <Row>
-          <Col xs={12}>
+          <Col xs={12} className={'merch-title-container'}>
             <h2 className={'merch-title'}>OUR OFFICIAL MERCHANDISE PARTNERS</h2>
           </Col>
-          <Col xs={12}>
+          <Col xs={12} className={'merch-image-container'}>
             <img
               alt="characters"
               src={characters}

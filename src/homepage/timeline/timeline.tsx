@@ -18,9 +18,19 @@ import MeeTokenImage from '../../assets/timeline/token.png';
 import VIPAccessImage from '../../assets/timeline/vip-access.png';
 import Giveaway from '../../assets/timeline/giveaway.png';
 import Mask from '../../assets/images/mask-two.png';
+import Merch from '../../assets/timeline/merch.png';
 
 function Timeline() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 576px) and (max-width: 1224px)' })
+  const isTabletTimeLine = useMediaQuery({ query: '(min-width: 576px) and (max-width: 1169px)' })
+
+  let timeLineTabletMode = '';
+  if (isTabletTimeLine) {
+    timeLineTabletMode = 'timeline-tablet-between-container timeline-container';
+  } else {
+    timeLineTabletMode = 'timeline-container';
+  }
 
   return (
     <div
@@ -51,7 +61,7 @@ function Timeline() {
         </p>
       </Col>
       <Col xs={12}>
-        <VerticalTimeline className={'timeline-container'}>
+        <VerticalTimeline className={timeLineTabletMode}>
           <VerticalTimelineElement
             position={'right'}
             className="vertical-timeline-element--work timeline-vertical-element timeline-right"
@@ -124,15 +134,10 @@ function Timeline() {
             className="vertical-timeline-element--work timeline-vertical-element timeline-right mee-marketing"
           >
             <img
-              alt="Love T Shirt"
-              src={LoveIsFreeTShirtImage}
-              className="d-inline-block mee-marketing-image love-t"
-            />{' '}
-            <img
-              alt="Hoodie"
-              src={HoodieImage}
-              className="d-inline-block mee-marketing-image hoodie"
-            />{' '}
+              alt="Merch"
+              src={Merch}
+              className="d-inline-block mee-marketing-image merch"
+            />
             <div className={'timeline-element-title mee-marketing-title'}>
               <h3>$MEE MARKETPLACE</h3>
             </div>

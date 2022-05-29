@@ -44,40 +44,40 @@ function Mint() {
         <Col sm={12} md={5} className={'section-one-column-two'}>
           <Row className={'mint-input-container'}>
             <Col md={5} xs={12} className={'mint-col-one'}>
-                <Row>
-                  <Col
-                    xs={2}
-                    className={'mint-input-arrows mint-input-arrow-left'}
+              <Row>
+                <Col
+                  xs={2}
+                  className={'mint-input-arrows mint-input-arrow-left'}
+                >
+                  <button
+                    className={'mint-amount-buttons'}
+                    onClick={decrementMintAmount}
+                    disabled={mintAmount === 1}
                   >
-                    <button
-                      className={'mint-amount-buttons'}
-                      onClick={decrementMintAmount}
-                      disabled={mintAmount === 1}
-                    >
-                      <FontAwesomeIcon icon={faArrowLeft} />
-                    </button>
-                  </Col>
-                  <Col xs={8}>
-                    <Form.Control
-                      type="number"
-                      min={0}
-                      aria-describedby="amount"
-                      value={mintAmount}
-                    />
-                  </Col>
-                  <Col
-                    xs={2}
-                    className={'mint-input-arrows mint-input-arrow-right'}
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                  </button>
+                </Col>
+                <Col xs={8}>
+                  <Form.Control
+                    type="number"
+                    min={0}
+                    aria-describedby="amount"
+                    value={mintAmount}
+                  />
+                </Col>
+                <Col
+                  xs={2}
+                  className={'mint-input-arrows mint-input-arrow-right'}
+                >
+                  <button
+                    className={'mint-amount-buttons'}
+                    onClick={incrementMintAmount}
+                    disabled={mintAmount === 3}
                   >
-                    <button
-                      className={'mint-amount-buttons'}
-                      onClick={incrementMintAmount}
-                      disabled={mintAmount === 3}
-                    >
-                      <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
-                  </Col>
-                </Row>
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </button>
+                </Col>
+              </Row>
             </Col>
             <Col xs={12} className={'mint-col-one-button'}>
               <Row>

@@ -11,12 +11,20 @@ import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 function OurMission() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 576px) and (max-width: 1224px)' })
+
+  let containerClassName = '';
+  if (isMobile) {
+    containerClassName = 'mobile-our-mission-row our-mission-row';
+  } else if (isTablet) {
+    containerClassName = 'tablet-our-mission-row our-mission-row';
+  } else {
+    containerClassName = 'our-mission-row';
+  }
 
   return (
     <div
-      className={
-        isMobile ? 'mobile-our-mission-row our-mission-row' : 'our-mission-row'
-      }
+      className={containerClassName}
       id={'our-team-section'}
     >
       <img
