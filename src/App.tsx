@@ -7,6 +7,7 @@ import './App.css';
 import Header from './header/header';
 import Homepage from './homepage/homepage';
 import Mint from './mint/mint';
+import Footer from './footer/footer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

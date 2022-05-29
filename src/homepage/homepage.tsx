@@ -13,15 +13,9 @@ import Video from './video/video';
 import Timeline from './timeline/timeline';
 import MeetTeam from './meet-team/meet-team';
 import FAQ from './faq/faq';
-import Footer from './footer/footer';
 
 import { fadeIn, merge, slideInLeft } from 'react-animations';
 import { StyleSheet, css } from 'aphrodite';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// @ts-ignore
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { ethers } from 'ethers';
 
 function Homepage() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -32,25 +26,6 @@ function Homepage() {
       animationDuration: '2s',
     },
   });
-
-  const [mintAmount, setMintAmount] = useState(1);
-  const [signer, setSigner] = useState(null);
-
-  function incrementMintAmount() {
-    if (mintAmount === 3) {
-      return;
-    }
-
-    setMintAmount(mintAmount + 1);
-  }
-
-  function decrementMintAmount() {
-    if (mintAmount === 1) {
-      return;
-    }
-
-    setMintAmount(mintAmount - 1);
-  }
 
   return (
     <div
@@ -94,45 +69,7 @@ function Homepage() {
           </Row>
         </Col>
         <Col xs={12}>
-          <Row className={'mint-input-container'}>
-            <Col sm={12} md={2} className={'mint-col-one'}>
-              <Row>
-                <Col
-                  xs={2}
-                  className={'mint-input-arrows mint-input-arrow-left'}
-                >
-                  <button
-                    className={'mint-amount-buttons'}
-                    onClick={decrementMintAmount}
-                    disabled={mintAmount === 1}
-                  >
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                  </button>
-                </Col>
-                <Col xs={8}>
-                  <Form.Control
-                    type="number"
-                    min={0}
-                    aria-describedby="amount"
-                    value={mintAmount}
-                  />
-                </Col>
-                <Col
-                  xs={2}
-                  className={'mint-input-arrows mint-input-arrow-right'}
-                >
-                  <button
-                    className={'mint-amount-buttons'}
-                    onClick={incrementMintAmount}
-                    disabled={mintAmount === 3}
-                  >
-                    <FontAwesomeIcon icon={faArrowRight} />
-                  </button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Button className={'mint-button'} variant="outline-dark">
+          <Button disabled={true} className={'mint-button'} variant="outline-dark" href={'/mint'}>
             MINT
           </Button>
         </Col>
@@ -144,7 +81,6 @@ function Homepage() {
       <Timeline />
       <MeetTeam />
       <FAQ />
-      <Footer />
     </div>
   );
 }

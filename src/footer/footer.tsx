@@ -3,9 +3,9 @@ import React from 'react';
 import './footer.css';
 import { Row, Col } from 'react-bootstrap';
 import { useMediaQuery } from 'react-responsive';
-import instagram from '../../assets/socials/instagram.svg';
-import twitter from '../../assets/socials/twitter.svg';
-import discord from '../../assets/socials/discord.svg';
+import instagram from '../assets/socials/instagram.svg';
+import twitter from '../assets/socials/twitter.svg';
+import discord from '../assets/socials/discord.svg';
 
 function Footer() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
