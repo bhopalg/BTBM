@@ -117,6 +117,7 @@ function Homepage() {
             <Video/>
             <OurMission/>
             <Timeline/>
+            <MeetTeam/>
             <FAQ/>
             <Footer/>
         </div>

@@ -35,18 +35,6 @@ function FAQ() {
                         <Accordion>
                             <Accordion.Item eventKey="0">
                                 <Accordion.Header>
-                                    <span>STAKING</span>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    holders will need to stake their mee nft in order To earn $mee. Staking will be live after our reveal. Thanks to our partnership with the illogics dev team, we have set up a very minimal gas staking process mee nft. $mee is not backed by a liquidity pool.
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                    </Col>
-                    <Col sm={12} md={3}>
-                        <Accordion>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>
                                     <span>HOW MUCH DOES EACH MEE COST?</span>
                                 </Accordion.Header>
                                 <Accordion.Body>
@@ -55,10 +43,6 @@ function FAQ() {
                             </Accordion.Item>
                         </Accordion>
                     </Col>
-                </Row>
-            </AnimationOnScroll>
-            <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
-                <Row className={'faq-card-row card-row-two'}>
                     <Col sm={12} md={3}>
                         <Accordion>
                             <Accordion.Item eventKey="0">
@@ -71,6 +55,10 @@ function FAQ() {
                             </Accordion.Item>
                         </Accordion>
                     </Col>
+                </Row>
+            </AnimationOnScroll>
+            <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
+                <Row className={'faq-card-row card-row-two'}>
                     <Col sm={12} md={3}>
                         <Accordion>
                             <Accordion.Item eventKey="0">

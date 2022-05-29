@@ -9,7 +9,7 @@ import FounderImage from '../../assets/team/founder.png';
 import Founder2Image from '../../assets/team/founder-two.png';
 import HOMImage from '../../assets/team/hom.png';
 import SGOImage from '../../assets/team/sgo.png';
-import DevImage from '../../assets/team/dev.png';
+import DevImage from '../../assets/team/disc_doc_logo_dark.png';
 
 import 'animate.css/animate.min.css';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
@@ -30,7 +30,7 @@ function MeetTeam() {
                         <Card>
                             <Row>
                                 <Col sm={12} md={5}>
-                                    <Card.Img src={FounderImage} alt={'Founder'} />
+                                    <Card.Img src={FounderImage} alt={'Founder'}  className={'team-image'} />
                                     <div className={'team-member-name'}>
                                         <p>DANIEL T</p>
                                     </div>
@@ -53,7 +53,7 @@ function MeetTeam() {
                         <Card>
                             <Row>
                                 <Col sm={12} md={5}>
-                                    <Card.Img src={Founder2Image} alt={'Founder'} />
+                                    <Card.Img src={Founder2Image} alt={'Founder'} className={'team-image'} />
                                     <div className={'team-member-name'}>
                                         <p>BRAXTON L</p>
                                     </div>
@@ -76,7 +76,7 @@ function MeetTeam() {
                         <Card>
                             <Row>
                                 <Col sm={12} md={5}>
-                                    <Card.Img src={HOMImage} alt={'Head of marketing'} />
+                                    <Card.Img src={HOMImage} alt={'Head of marketing'} className={'team-image'} />
                                     <div className={'team-member-name'}>
                                         <p>ALEX C</p>
                                     </div>
@@ -103,7 +103,7 @@ function MeetTeam() {
                         <Card>
                             <Row>
                                 <Col sm={12} md={5}>
-                                    <Card.Img src={SGOImage} alt={'Senior governance officer'} />
+                                    <Card.Img src={SGOImage} alt={'Senior governance officer'} className={'team-image'} />
                                     <div className={'team-member-name'}>
                                         <p>PETER C</p>
                                     </div>
@@ -126,19 +126,19 @@ function MeetTeam() {
                         <Card>
                             <Row>
                                 <Col sm={12} md={5}>
-                                    <Card.Img src={DevImage} alt={'Dev'} />
+                                    <Card.Img src={DevImage} alt={'Dev'} className={'team-image'} />
                                     <div className={'team-member-name'}>
-                                        <p>OVERNIGHT</p>
+                                        <p>DISCORD DOC</p>
                                     </div>
                                 </Col>
                                 <Col sm={12} md={7}>
                                     <Card.Body>
-                                        <Card.Title>WEB3 DEV</Card.Title>
+                                        <Card.Title>Discord Doc</Card.Title>
                                         <Card.Text>
-                                            Overnight has been helping build in Web3 for 3+ years and been buying the dip since 2015.
+                                            Discord Doc has been helping build in Web3 for 3+ years and been buying the dip since 2015.
                                             <br/>
                                             <br/>
-                                            Overnight is part of the Dev team over at Illogics (One of our Official Merch Partners). The Illogics Dev Team are working with us to dev everything MEE. From the website you’re on right now, to our smart contract, marketplace & token; this is all the work of Overnight and the Illogics Team!
+                                            Discord Doc is part of the Dev team over at Illogics (One of our Official Merch Partners). The Illogics Dev Team are working with us to dev everything MEE. From the website you’re on right now, to our smart contract, marketplace & token; this is all the work of Overnight and the Illogics Team!
                                         </Card.Text>
                                     </Card.Body>
                                 </Col>
@@ -149,7 +149,7 @@ function MeetTeam() {
                         <Card>
                             <Row>
                                 <Col sm={12} md={5}>
-                                    <Card.Img src={ArtistImage} alt={'Artist'} />
+                                    <Card.Img src={ArtistImage} alt={'Artist'}  className={'team-image'} />
                                     <div className={'team-member-name'}>
                                         <p>ALIENS GRAPHIX</p>
                                     </div>
