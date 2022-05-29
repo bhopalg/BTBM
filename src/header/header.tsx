@@ -33,12 +33,13 @@ function Header() {
             <Row className="nav-socials">
               <Col sm={2}>
                 <a
+                  rel={'noreferrer'}
                   href={'https://www.instagram.com/borntobemebrand/'}
                   target={'_blank'}
                   className={'instagram'}
                 >
                   <img
-                    alt="Instagram link"
+                    alt="Instagram"
                     src={instagram}
                     className="d-inline-block social-link"
                   />{' '}
@@ -46,12 +47,13 @@ function Header() {
               </Col>
               <Col sm={2}>
                 <a
+                  rel={'noreferrer'}
                   href={'https://twitter.com/BornToBeMeBrand'}
                   target={'_blank'}
                   className={'twitter'}
                 >
                   <img
-                    alt="Twitter link"
+                    alt="Twitter"
                     src={twitter}
                     className="d-inline-block social-link"
                   />{' '}
@@ -59,12 +61,13 @@ function Header() {
               </Col>
               <Col sm={2}>
                 <a
+                  rel={'noreferrer'}
                   href={'https://discord.gg/wA9GPa5En4'}
                   target={'_blank'}
                   className={'discord'}
                 >
                   <img
-                    alt="Discord link"
+                    alt="Discord"
                     src={discord}
                     className="d-inline-block social-link"
                   />{' '}
@@ -83,7 +86,7 @@ function Header() {
                     <AnchorLink href="#timeline-section">MEE MAP</AnchorLink>
                   </Nav.Item>
                   <Nav.Item>
-                    <a className={'logo-container'} href={'/'}>
+                    <a rel={'noreferrer'} className={'logo-container'} href={'/'}>
                       <img
                         alt="Logo"
                         src={logo}
@@ -139,7 +142,7 @@ function Header() {
     <Navbar bg="light" expand="lg" className={'mobile-navbar'}>
       <Container>
         <Navbar.Brand href="#home" className={'logo-container'}>
-          <a href={'/'} className={'logo-name'}>
+          <a href={'/'} rel={'noreferrer'} className={'logo-name'}>
             BORN TO BE ME
           </a>
         </Navbar.Brand>
@@ -154,12 +157,13 @@ function Header() {
           <Row className="nav-socials">
             <Col xs={3}>
               <a
+                rel={'noreferrer'}
                 href={'https://www.instagram.com/borntobemebrand/'}
                 target={'_blank'}
                 className={'instagram'}
               >
                 <img
-                  alt="Instagram link"
+                  alt="Instagram"
                   src={instagram}
                   className="d-inline-block social-link"
                 />{' '}
@@ -167,12 +171,13 @@ function Header() {
             </Col>
             <Col xs={3}>
               <a
+                rel={'noreferrer'}
                 href={'https://twitter.com/BornToBeMeBrand'}
                 target={'_blank'}
                 className={'twitter'}
               >
                 <img
-                  alt="Twitter link"
+                  alt="Twitter"
                   src={twitter}
                   className="d-inline-block social-link"
                 />{' '}
@@ -180,12 +185,13 @@ function Header() {
             </Col>
             <Col xs={3}>
               <a
+                rel={'noreferrer'}
                 href={'https://discord.gg/wA9GPa5En4'}
                 target={'_blank'}
                 className={'discord'}
               >
                 <img
-                  alt="Discord link"
+                  alt="Discord"
                   src={discord}
                   className="d-inline-block social-link"
                 />{' '}

@@ -18,10 +18,11 @@ function Footer() {
             <a
               href={'https://www.instagram.com/borntobemebrand/'}
               target={'_blank'}
+              rel={'noreferrer'}
               className={'instagram'}
             >
               <img
-                alt="Instagram link"
+                alt="Instagram"
                 src={instagram}
                 className="d-inline-block social-link"
               />{' '}
@@ -29,10 +30,11 @@ function Footer() {
             <a
               href={'https://twitter.com/BornToBeMeBrand'}
               target={'_blank'}
+              rel={'noreferrer'}
               className={'twitter'}
             >
               <img
-                alt="Twitter link"
+                alt="Twitter"
                 src={twitter}
                 className="d-inline-block social-link"
               />{' '}
@@ -40,10 +42,11 @@ function Footer() {
             <a
               href={'https://discord.gg/wA9GPa5En4'}
               target={'_blank'}
+              rel={'noreferrer'}
               className={'discord'}
             >
               <img
-                alt="Discord link"
+                alt="Discord"
                 src={discord}
                 className="d-inline-block social-link"
               />{' '}

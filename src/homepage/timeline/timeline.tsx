@@ -28,12 +28,12 @@ function Timeline() {
       id={'timeline-section'}
     >
       <img
-        alt="Mask Image"
+        alt="Mask"
         src={Mask}
         className="d-inline-block timeline-mark-image"
       />
       <img
-        alt="Mask Image"
+        alt="Mask"
         src={Mask}
         className="d-inline-block timeline-mark-image-two"
       />
@@ -66,7 +66,7 @@ function Timeline() {
               </p>
             </div>
             <img
-              alt="Launch Day Image"
+              alt="Launch Day"
               src={LaunchDayImage}
               className="d-inline-block launch-day-image"
             />{' '}
@@ -87,7 +87,7 @@ function Timeline() {
               </p>
             </div>
             <img
-              alt="Free merch drop Image"
+              alt="Free merch drop"
               src={FreeMerchDropImage}
               className="d-inline-block free-merch-drop-image"
             />{' '}
@@ -98,7 +98,7 @@ function Timeline() {
             className="vertical-timeline-element--work timeline-vertical-element timeline-left partners-merch-drop"
           >
             <img
-              alt="Partners merch drop Image"
+              alt="Partners merch drop"
               src={PartnersMerchDropImage}
               className="d-inline-block partners-merch-drop-image"
             />{' '}
@@ -124,12 +124,12 @@ function Timeline() {
             className="vertical-timeline-element--work timeline-vertical-element timeline-right mee-marketing"
           >
             <img
-              alt="Love T Shirt Image"
+              alt="Love T Shirt"
               src={LoveIsFreeTShirtImage}
               className="d-inline-block mee-marketing-image love-t"
             />{' '}
             <img
-              alt="Hoodie Image"
+              alt="Hoodie"
               src={HoodieImage}
               className="d-inline-block mee-marketing-image hoodie"
             />{' '}
@@ -152,7 +152,7 @@ function Timeline() {
             className="vertical-timeline-element--work timeline-vertical-element timeline-left mee-token"
           >
             <img
-              alt="Mee Token Image"
+              alt="Mee Token"
               src={MeeTokenImage}
               className="d-inline-block mee-token-image"
             />{' '}
@@ -177,7 +177,7 @@ function Timeline() {
             className="vertical-timeline-element--work timeline-vertical-element timeline-left vip-access"
           >
             <img
-              alt="Vip Access Image"
+              alt="Vip Access"
               src={VIPAccessImage}
               className="d-inline-block vip-access-image"
             />{' '}
@@ -200,7 +200,7 @@ function Timeline() {
             className="vertical-timeline-element--work timeline-vertical-element timeline-left what-else"
           >
             <img
-              alt="Giveaway Image"
+              alt="Giveaway"
               src={Giveaway}
               className="d-inline-block what-else-image"
             />{' '}

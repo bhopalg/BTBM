@@ -23,28 +23,28 @@ function Brands() {
       >
         <Col className={'partners-col'} xs={6} md={2}>
           <img
-            alt="llamaverse Image"
+            alt="llamaverse logo"
             src={llamaverse}
             className="d-inline-block partners llamaverse"
           />{' '}
         </Col>
         <Col className={'partners-col'} xs={6} md={2}>
           <img
-            alt="illogics Image"
+            alt="illogics"
             src={illogics}
             className="d-inline-block partners illogics"
           />{' '}
         </Col>
         <Col className={'partners-col'} xs={6} md={2}>
           <img
-            alt="squishySquad Image"
+            alt="squishySquad logo"
             src={squishySquad}
             className="d-inline-block partners squishy-squad"
           />{' '}
         </Col>
         <Col className={'partners-col'} xs={6} md={2}>
           <img
-            alt="dobies Image"
+            alt="dobies logo"
             src={dobies}
             className="d-inline-block partners dobies"
           />{' '}

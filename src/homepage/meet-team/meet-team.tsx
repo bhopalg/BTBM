@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './meet-team.css';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import { useMediaQuery } from 'react-responsive';
 
 import ArtistImage from '../../assets/team/artist.png';

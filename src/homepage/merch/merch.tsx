@@ -21,7 +21,7 @@ function Merch() {
           </Col>
           <Col xs={12}>
             <img
-              alt="characters Image"
+              alt="characters"
               src={characters}
               className="d-inline-block characters-image"
             />{' '}

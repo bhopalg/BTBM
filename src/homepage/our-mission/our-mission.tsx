@@ -20,7 +20,7 @@ function OurMission() {
       id={'our-team-section'}
     >
       <img
-        alt="Mask Image"
+        alt="Mask"
         src={Mask}
         className="d-inline-block our-mission-mark-image"
       />{' '}
@@ -34,7 +34,7 @@ function OurMission() {
           <Row>
             <Col sm={12} md={4}>
               <img
-                alt="Our Missions Image"
+                alt="Our Missions"
                 src={OutMissionImage}
                 className="d-inline-block our-mission-image"
               />{' '}

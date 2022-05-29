@@ -5,7 +5,7 @@ import { css, StyleSheet } from 'aphrodite';
 import { Col, Form, Row } from 'react-bootstrap';
 import Section1Image from '../assets/images/homepage-section-1.png';
 import { fadeIn, merge, slideInLeft } from 'react-animations';
-import { ethers } from 'ethers';
+// import { ethers } from 'ethers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -39,15 +39,13 @@ function Mint() {
   return (
     <div
       className={
-        isMobile
-          ? 'mobile-mint-container mint-container'
-          : 'mint-container'
+        isMobile ? 'mobile-mint-container mint-container' : 'mint-container'
       }
     >
       <Row className={'section-one ' + css(fadeInStyle.bounce)}>
         <Col sm={12} md={5} className={'section-one-column-one'}>
           <img
-            alt="Section 1 Image"
+            alt="Section 1"
             src={Section1Image}
             className="d-inline-block section-one-image"
           />

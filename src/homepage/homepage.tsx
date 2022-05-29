@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { fadeIn, merge, slideInLeft } from 'react-animations';
+import { StyleSheet, css } from 'aphrodite';
 
 import './homepage.css';
 import Section1Image from '../assets/images/homepage-section-1.png';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import Mask from '../assets/images/mask.png';
 import MaskLeft from '../assets/images/mask-left.png';
 import { useMediaQuery } from 'react-responsive';
@@ -13,9 +15,6 @@ import Video from './video/video';
 import Timeline from './timeline/timeline';
 import MeetTeam from './meet-team/meet-team';
 import FAQ from './faq/faq';
-
-import { fadeIn, merge, slideInLeft } from 'react-animations';
-import { StyleSheet, css } from 'aphrodite';
 
 function Homepage() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -37,19 +36,19 @@ function Homepage() {
       id={'main-section'}
     >
       <img
-        alt="Mask Image"
+        alt="Mask"
         src={Mask}
         className="d-inline-block mask mask-right"
       />
       <img
-        alt="Mask Image"
+        alt="Mask"
         src={MaskLeft}
         className="d-inline-block mask mask-left"
       />
       <Row className={'section-one ' + css(fadeInStyle.bounce)}>
         <Col sm={12} md={5} className={'section-one-column-one'}>
           <img
-            alt="Section 1 Image"
+            alt="Main"
             src={Section1Image}
             className="d-inline-block section-one-image"
           />
@@ -69,7 +68,12 @@ function Homepage() {
           </Row>
         </Col>
         <Col xs={12}>
-          <Button disabled={true} className={'mint-button'} variant="outline-dark" href={'/mint'}>
+          <Button
+            disabled={true}
+            className={'mint-button'}
+            variant="outline-dark"
+            href={'/mint'}
+          >
             MINT
           </Button>
         </Col>
