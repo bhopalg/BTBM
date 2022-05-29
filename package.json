@@ -38,7 +38,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"**/*.+(tsx)\"",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +64,10 @@
     "@types/radium": "^0.24.4",
     "@types/react-animations": "^1.0.0",
     "@types/react-responsive": "^8.0.5",
-    "@types/react-vertical-timeline-component": "^3.3.3"
+    "@types/react-vertical-timeline-component": "^3.3.3",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.6.2"
   }
 }

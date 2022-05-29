@@ -11,15 +11,15 @@ import Mint from './mint/mint';
 function App() {
   return (
     <div className="App">
-      <Header/>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/">
-                    <Route index element={<Homepage/>} />
-                    <Route path="mint" element={<Mint />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Homepage />} />
+            <Route path="mint" element={<Mint />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
