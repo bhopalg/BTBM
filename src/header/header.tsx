@@ -115,13 +115,7 @@ function Header() {
     const mobileNav = <Navbar bg="light" expand="lg" className={'mobile-navbar'}>
         <Container>
             <Navbar.Brand href="#home" className={'logo-container'}>
-                <div className={'logo-container'}>
-                    <img
-                        alt="Logo"
-                        src={logo}
-                        className="d-inline-block logo"
-                    />{' '}
-                </div>
+                <h2 className={'logo-name'}>BORN TO BE ME</h2>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

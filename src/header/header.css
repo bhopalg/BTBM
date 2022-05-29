@@ -202,3 +202,11 @@
     border-radius: 50%;
     margin-right: 7.14px;
 }
+
+.mobile-navbar .logo-container {
+    background: #000000;
+    border-radius: 15px;
+    max-width: 260px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
