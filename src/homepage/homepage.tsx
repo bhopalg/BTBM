@@ -15,11 +15,13 @@ import Video from './video/video';
 import Timeline from './timeline/timeline';
 import MeetTeam from './meet-team/meet-team';
 import FAQ from './faq/faq';
-import Footer from '../footer/footer'
+import Footer from '../footer/footer';
 
 function Homepage() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
-  const isTablet = useMediaQuery({ query: '(min-width: 576px) and (max-width: 1224px)' })
+  const isTablet = useMediaQuery({
+    query: '(min-width: 576px) and (max-width: 1224px)',
+  });
 
   const fadeInStyle = StyleSheet.create({
     bounce: {
@@ -32,16 +34,13 @@ function Homepage() {
   if (isMobile) {
     containerClassName = 'mobile-homepage-container homepage-container';
   } else if (isTablet) {
-    containerClassName = 'table-homepage-container homepage-container'
+    containerClassName = 'table-homepage-container homepage-container';
   } else {
     containerClassName = 'homepage-container';
   }
 
   return (
-    <div
-      className={containerClassName}
-      id={'main-section'}
-    >
+    <div className={containerClassName} id={'main-section'}>
       <img alt="Mask" src={Mask} className="d-inline-block mask mask-right" />
       <img
         alt="Mask"

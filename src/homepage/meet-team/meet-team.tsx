@@ -24,7 +24,7 @@ function MeetTeam() {
     >
       <Row>
         <Col className={'meet-team-title'}>
-          <h2>THE MEET TEAM</h2>
+          <h2>THE MEE TEAM</h2>
         </Col>
       </Row>
       <AnimationOnScroll animateIn="animate__fadeIn" duration={1}>
@@ -177,16 +177,10 @@ function MeetTeam() {
                   <Card.Body>
                     <Card.Title>Discord Doc</Card.Title>
                     <Card.Text>
-                      Discord Doc has been helping build in Web3 for 3+ years
-                      and been buying the dip since 2015.
+                      Discord Doc has been helping build in Web3.
                       <br />
                       <br />
-                      Discord Doc is part of the Dev team over at Illogics (One
-                      of our Official Merch Partners). The Illogics Dev Team are
-                      working with us to dev everything MEE. From the website
-                      you’re on right now, to our smart contract, marketplace &
-                      token; this is all the work of Overnight and the Illogics
-                      Team!
+                      Discord Doc
                     </Card.Text>
                   </Card.Body>
                 </Col>

@@ -9,7 +9,9 @@ import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 function Merch() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
-  const isTablet = useMediaQuery({ query: '(min-width: 576px) and (max-width: 1224px)' })
+  const isTablet = useMediaQuery({
+    query: '(min-width: 576px) and (max-width: 1224px)',
+  });
 
   let containerClassName = '';
   if (isMobile) {
@@ -22,9 +24,7 @@ function Merch() {
 
   return (
     <AnimationOnScroll animateIn="animate__fadeInLeftBig" duration={1}>
-      <Container
-        className={containerClassName}
-      >
+      <Container className={containerClassName}>
         <Row>
           <Col xs={12} className={'merch-title-container'}>
             <h2 className={'merch-title'}>OUR OFFICIAL MERCHANDISE PARTNERS</h2>

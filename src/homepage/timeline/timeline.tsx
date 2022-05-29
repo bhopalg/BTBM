@@ -12,18 +12,17 @@ import { useMediaQuery } from 'react-responsive';
 import LaunchDayImage from '../../assets/timeline/launch-day.png';
 import FreeMerchDropImage from '../../assets/timeline/free-merch-drop.png';
 import PartnersMerchDropImage from '../../assets/timeline/partners-merch-drop.png';
-import LoveIsFreeTShirtImage from '../../assets/timeline/love-is-free-t-shirt.png';
-import HoodieImage from '../../assets/timeline/hoodie-merch.png';
 import MeeTokenImage from '../../assets/timeline/token.png';
 import VIPAccessImage from '../../assets/timeline/vip-access.png';
 import Giveaway from '../../assets/timeline/giveaway.png';
 import Mask from '../../assets/images/mask-two.png';
-import Merch from '../../assets/timeline/merch.png';
+import MeeMarketPlace from '../../assets/timeline/market-place.png';
 
 function Timeline() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
-  const isTablet = useMediaQuery({ query: '(min-width: 576px) and (max-width: 1224px)' })
-  const isTabletTimeLine = useMediaQuery({ query: '(min-width: 576px) and (max-width: 1169px)' })
+  const isTabletTimeLine = useMediaQuery({
+    query: '(min-width: 576px) and (max-width: 1169px)',
+  });
 
   let timeLineTabletMode = '';
   if (isTabletTimeLine) {
@@ -134,8 +133,8 @@ function Timeline() {
             className="vertical-timeline-element--work timeline-vertical-element timeline-right mee-marketing"
           >
             <img
-              alt="Merch"
-              src={Merch}
+              alt="Mee Market Place"
+              src={MeeMarketPlace}
               className="d-inline-block mee-marketing-image merch"
             />
             <div className={'timeline-element-title mee-marketing-title'}>

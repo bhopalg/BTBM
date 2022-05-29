@@ -451,10 +451,10 @@
 }
 
 .merch {
-    max-width: 790px;
+    max-width: 350px;
     width: 100%;
     left: -10%;
-    top: -125%;
+    top: -75%;
 }
 
 .timeline-tablet-between-container .vertical-timeline {

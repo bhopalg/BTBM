@@ -55,7 +55,7 @@ function FAQ() {
                   <span>WHEN IS THE OFFICIAL LAUNCH?</span>
                 </Accordion.Header>
                 <Accordion.Body>
-                  MEE NFT will be officially minting on June 7th 2022.
+                  MEE NFT will be officially minting on June 8th 2022.
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
