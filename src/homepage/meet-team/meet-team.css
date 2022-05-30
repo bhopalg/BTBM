@@ -53,3 +53,9 @@
     max-width: 147px;
     max-height: 151px;
 }
+
+.mobile-meet-team .team-image {
+    width: 100%;
+    max-height: none;
+    max-width: none;
+}

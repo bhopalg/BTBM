@@ -23,7 +23,7 @@ function FAQ() {
                   <span>WHAT IS MEE?</span>
                 </Accordion.Header>
                 <Accordion.Body>
-                  A collection of 4000 randomly generated unique NFT's, based on
+                  A collection of 4000 randomly generated unique NFTs, based on
                   many different assets: Backgrounds, masks, clothing, shoes,
                   etc. Each NFT will have its own set of unique traits... some
                   rarer than others.
