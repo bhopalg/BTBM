@@ -177,10 +177,7 @@ function MeetTeam() {
                   <Card.Body>
                     <Card.Title>Discord Doc</Card.Title>
                     <Card.Text>
-                      Discord Doc has been helping build in Web3.
-                      <br />
-                      <br />
-                      Discord Doc
+                      Founded by reputable individuals in the space, discord doc. is an agency dedicated to provide the best web3 services to ensure nothing but the best quality service!
                     </Card.Text>
                   </Card.Body>
                 </Col>

@@ -40,10 +40,8 @@ function Mint() {
     containerClass = 'mint-container';
   }
 
-
   return (
-    <Container
-      className={containerClass}>
+    <Container className={containerClass}>
       <Row>
         <Col sm={12} md={5}>
           <img
@@ -110,7 +108,6 @@ function Mint() {
       </Row>
     </Container>
   );
-
 
   return (
     <div
