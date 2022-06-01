@@ -1,34 +1,135 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './mint.css';
 import { useMediaQuery } from 'react-responsive';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row, Spinner } from 'react-bootstrap';
 import Section1Image from '../assets/images/homepage-section-1.png';
-// import { ethers } from 'ethers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import BTBM from '../assets/contract/btbm.json';
+import PreSaleList from '../assets/presale-list.json';
+import { ethers } from 'ethers';
+// @ts-ignore
+import { useSnackbar } from 'react-simple-snackbar';
 
-function Mint() {
+interface Props {
+  account: string | null;
+  setAccount: Dispatch<SetStateAction<string | null>>;
+}
+
+interface PreSale {
+  address: string | null;
+  max: number | null;
+  signature: string | null;
+  signer: string | null;
+}
+
+const BTBM_ADDRESS = '0x335B6Eb6E42d146fb28F7b0b618CeF44276D02d6';
+
+function Mint(props: Props) {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 576px) and (max-width: 1224px)',
   });
+  const isConnected = Boolean(props.account);
+  let mintButtonEnabled = false;
+  let showSpinner = false;
 
-  const [mintAmount, setMintAmount] = useState(1);
+  const errorSnackBar = {
+    position: 'center',
+    style: {
+      backgroundColor: '#8b0000',
+      border: '2px solid #8b0000',
+      color: 'white',
+      fontFamily: 'Bebas Neue, monospace',
+      fontSize: '18px',
+      textAlign: 'center',
+    },
+    closeStyle: {
+      color: 'white',
+      fontSize: '16px',
+    },
+  }
+
+  const successSnackBar = {
+    position: 'center',
+    style: {
+      backgroundColor: '#8b0000',
+      border: '2px solid #8b0000',
+      color: 'white',
+      fontFamily: 'Bebas Neue, monospace',
+      fontSize: '18px',
+      textAlign: 'center',
+    },
+    closeStyle: {
+      color: 'white',
+      fontSize: '16px',
+    },
+  }
+
+  const [quantity, setQuantity] = useState<number>(1);
+  const [maxQuantity, setMaxQuantity] = useState<number>(1);
+  const [signature, setSignature] = useState<string | null>(null)
+  const [openErrorSnackbar, ] = useSnackbar(errorSnackBar);
+  const [openSuccessSnackBar, ] = useSnackbar(successSnackBar);
+
+  useEffect(() => {
+    if (isConnected && window.ethereum && mintButtonEnabled) {
+      if (!props.account) return;
+      const paeSaleList = PreSaleList as { [key: string]: PreSale };
+      const preSaleData = paeSaleList[props.account];
+
+      if (!preSaleData) {
+        mintButtonEnabled = false;
+        openErrorSnackbar('You are not on the WL list');
+        return;
+      }
+
+      mintButtonEnabled = true;
+      setMaxQuantity(preSaleData.max ?? 1);
+      setSignature(preSaleData.signature);
+    }
+  }, [props.account]);
 
   function incrementMintAmount() {
-    if (mintAmount === 3) {
+    if (quantity === maxQuantity) {
       return;
     }
 
-    setMintAmount(mintAmount + 1);
+    setQuantity(quantity + 1);
   }
 
   function decrementMintAmount() {
-    if (mintAmount === 1) {
-      return;
-    }
+    if (quantity === 1) return;
 
-    setMintAmount(mintAmount - 1);
+    setQuantity(quantity - 1);
+  }
+
+  async function handleMint(e: any) {
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider((window.ethereum));
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        BTBM_ADDRESS,
+        BTBM,
+        signer,
+      );
+
+      showSpinner = true;
+      try {
+        e.preventDefault();
+        const response = await contract.mint(quantity, maxQuantity, signature);
+        openSuccessSnackBar('You have successfully minted');
+        showSpinner = false;
+      } catch (e) {
+        showSpinner = false;
+        // @ts-ignore error is a type of any
+        if (e.code === 4001) {
+          openErrorSnackbar('User denied transaction');
+        } else {
+          openErrorSnackbar('Error minting');
+        }
+      }
+    }
   }
 
   let containerClass = '';
@@ -52,6 +153,11 @@ function Mint() {
         </Col>
         <Col sm={12} md={3} className={'mint-section'}>
           <Row>
+            {showSpinner ? <Col xs={12}>
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </Col> : null}
             <Col xs={12}>
               <Row className={'mint-input-section'}>
                 <Col
@@ -61,7 +167,7 @@ function Mint() {
                   <button
                     className={'mint-amount-buttons'}
                     onClick={decrementMintAmount}
-                    disabled={mintAmount === 1}
+                    disabled={quantity === 1}
                   >
                     <FontAwesomeIcon icon={faArrowLeft} />
                   </button>
@@ -69,10 +175,11 @@ function Mint() {
                 <Col xs={6}>
                   <Form.Control
                     type="number"
-                    min="0"
-                    max="3"
+                    min={1}
+                    max={maxQuantity}
                     aria-describedby="amount"
-                    value={mintAmount}
+                    value={quantity}
+                    readOnly={true}
                   />
                 </Col>
                 <Col
@@ -82,7 +189,7 @@ function Mint() {
                   <button
                     className={'mint-amount-buttons'}
                     onClick={incrementMintAmount}
-                    disabled={mintAmount === 3}
+                    disabled={quantity === maxQuantity}
                   >
                     <FontAwesomeIcon icon={faArrowRight} />
                   </button>
@@ -93,6 +200,8 @@ function Mint() {
               <Row>
                 <Col>
                   <Button
+                    onClick={(e) => handleMint(e)}
+                    type={'button'}
                     disabled={true}
                     className={'mint-button'}
                     variant="outline-dark"
@@ -107,78 +216,6 @@ function Mint() {
         </Col>
       </Row>
     </Container>
-  );
-
-  return (
-    <div
-      className={
-        isMobile ? 'mobile-mint-container mint-container' : 'mint-container'
-      }
-    >
-      <Row className={'section-one'}>
-        <Col sm={12} md={5} className={'section-one-column-one'}>
-          <img
-            alt="Section 1"
-            src={Section1Image}
-            className="d-inline-block section-one-image"
-          />
-        </Col>
-        <Col sm={12} md={5} className={'section-one-column-two'}>
-          <Row className={'mint-input-container'}>
-            <Col md={5} xs={12} className={'mint-col-one'}>
-              <Row>
-                <Col
-                  xs={2}
-                  className={'mint-input-arrows mint-input-arrow-left'}
-                >
-                  <button
-                    className={'mint-amount-buttons'}
-                    onClick={decrementMintAmount}
-                    disabled={mintAmount === 1}
-                  >
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                  </button>
-                </Col>
-                <Col xs={8}>
-                  <Form.Control
-                    type="number"
-                    min={0}
-                    aria-describedby="amount"
-                    value={mintAmount}
-                  />
-                </Col>
-                <Col
-                  xs={2}
-                  className={'mint-input-arrows mint-input-arrow-right'}
-                >
-                  <button
-                    className={'mint-amount-buttons'}
-                    onClick={incrementMintAmount}
-                    disabled={mintAmount === 3}
-                  >
-                    <FontAwesomeIcon icon={faArrowRight} />
-                  </button>
-                </Col>
-              </Row>
-            </Col>
-            <Col xs={12} className={'mint-col-one-button'}>
-              <Row>
-                <Col md={4} xs={12}>
-                  <Button
-                    disabled={true}
-                    className={'mint-button'}
-                    variant="outline-dark"
-                    href={'/mint'}
-                  >
-                    MINT
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </div>
   );
 }
 

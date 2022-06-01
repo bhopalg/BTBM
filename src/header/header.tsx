@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Button, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 // @ts-ignore
@@ -12,17 +12,22 @@ import discord from '../assets/socials/discord.svg';
 import logo from '../assets/logo.png';
 import { JsonRpcSigner } from '@ethersproject/providers/src.ts/json-rpc-provider';
 
-function Header() {
-  const isMobile = useMediaQuery({ query: '(max-width: 990px)' });
-  const [signer, setSinger] = useState<JsonRpcSigner | null>(null);
-  const [minterAddress, setMinterAddress] = useState<string | null>(null);
+interface Props {
+  account: string | null;
+  setAccount: Dispatch<SetStateAction<string | null>>;
+}
 
-  async function connect() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send('eth_requestAccounts', []);
-    const signer = provider.getSigner();
-    setSinger(signer);
-    setMinterAddress(await signer.getAddress());
+function Header(props: Props) {
+  const isMobile = useMediaQuery({ query: '(max-width: 990px)' });
+  const isConnected = Boolean(props.account);
+
+  async function connectAccount() {
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send('eth_requestAccounts', []);
+      const signer = provider.getSigner();
+      props.setAccount(await signer.getAddress());
+    }
   }
 
   const desktopNav = (
@@ -111,11 +116,11 @@ function Header() {
           <Col sm={3}>
             <Row>
               <Col xs={12}>
-                {signer == null ? (
+                {!isConnected ? (
                   <Button
                     variant="dark"
                     className={'connect-wallet-button'}
-                    onClick={connect}
+                    onClick={connectAccount}
                   >
                     <span className={'wallet-disconnected-dot'}></span>
                     Connect
@@ -124,10 +129,10 @@ function Header() {
                   <div className={'wallet-display'}>
                     <p className={'wallet-display-text'}>
                       <span className={'wallet-connected-dot'}></span>
-                      {minterAddress?.slice(0, 5)}...
-                      {minterAddress?.slice(
-                        minterAddress?.length - 5,
-                        minterAddress?.length,
+                      {props.account?.slice(0, 5)}...
+                      {props.account?.slice(
+                        props.account?.length - 5,
+                        props.account?.length,
                       )}
                       | 305
                       <span className={'token-name'}>$mee</span>
