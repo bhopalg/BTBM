@@ -48,7 +48,7 @@ function Mint(props: Props) {
       color: 'white',
       fontSize: '16px',
     },
-  }
+  };
 
   const successSnackBar = {
     position: 'center',
@@ -64,16 +64,17 @@ function Mint(props: Props) {
       color: 'white',
       fontSize: '16px',
     },
-  }
+  };
 
   const [quantity, setQuantity] = useState<number>(1);
   const [maxQuantity, setMaxQuantity] = useState<number>(1);
-  const [signature, setSignature] = useState<string | null>(null)
-  const [openErrorSnackbar, ] = useSnackbar(errorSnackBar);
-  const [openSuccessSnackBar, ] = useSnackbar(successSnackBar);
+  const [signature, setSignature] = useState<string | null>(null);
+  const [openErrorSnackbar] = useSnackbar(errorSnackBar);
+  const [openSuccessSnackBar] = useSnackbar(successSnackBar);
+  const [maxMinted, setMaxMinted] = useState<number>(0);
 
   useEffect(() => {
-    if (isConnected && window.ethereum && mintButtonEnabled) {
+    if (isConnected && window.ethereum) {
       if (!props.account) return;
       const paeSaleList = PreSaleList as { [key: string]: PreSale };
       const preSaleData = paeSaleList[props.account];
@@ -105,19 +106,21 @@ function Mint(props: Props) {
   }
 
   async function handleMint(e: any) {
+    if (maxMinted === maxQuantity) {
+      openErrorSnackbar('You have minted the max allowed');
+      return;
+    }
+
     if (window.ethereum) {
-      const provider = new ethers.providers.Web3Provider((window.ethereum));
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-      const contract = new ethers.Contract(
-        BTBM_ADDRESS,
-        BTBM,
-        signer,
-      );
+      const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
 
       showSpinner = true;
       try {
         e.preventDefault();
-        const response = await contract.mint(quantity, maxQuantity, signature);
+        await contract.mint(quantity, maxQuantity, signature);
+        setMaxMinted(maxMinted + 1);
         openSuccessSnackBar('You have successfully minted');
         showSpinner = false;
       } catch (e) {
@@ -153,11 +156,13 @@ function Mint(props: Props) {
         </Col>
         <Col sm={12} md={3} className={'mint-section'}>
           <Row>
-            {showSpinner ? <Col xs={12}>
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            </Col> : null}
+            {showSpinner ? (
+              <Col xs={12}>
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              </Col>
+            ) : null}
             <Col xs={12}>
               <Row className={'mint-input-section'}>
                 <Col

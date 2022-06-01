@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Button, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 // @ts-ignore
@@ -10,7 +10,6 @@ import instagram from '../assets/socials/instagram.svg';
 import twitter from '../assets/socials/twitter.svg';
 import discord from '../assets/socials/discord.svg';
 import logo from '../assets/logo.png';
-import { JsonRpcSigner } from '@ethersproject/providers/src.ts/json-rpc-provider';
 
 interface Props {
   account: string | null;
