@@ -177,7 +177,9 @@ function MeetTeam() {
                   <Card.Body>
                     <Card.Title>Discord Doc</Card.Title>
                     <Card.Text>
-                      Founded by reputable individuals in the space, discord doc. is an agency dedicated to provide the best web3 services to ensure nothing but the best quality service!
+                      Founded by reputable individuals in the space, discord
+                      doc. is an agency dedicated to provide the best web3
+                      services to ensure nothing but the best quality service!
                     </Card.Text>
                   </Card.Body>
                 </Col>
