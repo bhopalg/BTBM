@@ -73,7 +73,21 @@ function OurMission() {
                 for these projects at this moment in time.
                 <br />
                 <br />
-                We plan on changing this. We are determined and driven to create long term success and value to MEE NFT and our holders through a number of benefits and utilities. Some of our benefits our holders can look forward to include a revolutionary way of integrating an NFT project into an already existing business structure with our revenue share distributions through our LLC. Our marketplace (off chain and gas-less) where we will be offering ‘traditional’ marketplace features, in addition to integrating more unique benefits and opportunities for our holders long term such as exclusive clothing drops, physical goods and more. At the end of the day, we do clothing; and we are striving to find unique ways to incorporate all things clothing into our project to benefit our community. Our holders can expect first and exclusive access to our limited edition clothing drops from not only our web2 but also our web3 brand.
+                We plan on changing this. We are determined and driven to create
+                long term success and value to MEE NFT and our holders through a
+                number of benefits and utilities. Some of our benefits our
+                holders can look forward to include a revolutionary way of
+                integrating an NFT project into an already existing business
+                structure with our revenue share distributions through our LLC.
+                Our marketplace (off chain and gas-less) where we will be
+                offering ‘traditional’ marketplace features, in addition to
+                integrating more unique benefits and opportunities for our
+                holders long term such as exclusive clothing drops, physical
+                goods and more. At the end of the day, we do clothing; and we
+                are striving to find unique ways to incorporate all things
+                clothing into our project to benefit our community. Our holders
+                can expect first and exclusive access to our limited edition
+                clothing drops from not only our web2 but also our web3 brand.
               </p>
             </Col>
           </Row>
