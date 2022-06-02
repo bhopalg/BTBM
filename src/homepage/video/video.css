@@ -1,0 +1,23 @@
+.video-row > div:nth-child(1) {
+    margin: 0 auto;
+}
+
+.video-container {
+    margin-top: 140px;
+}
+
+.mobile-video-container {
+    margin-top: 50px;
+}
+
+.tablet-video-container .video-row> div:nth-child(1) {
+    width: 100% !important;
+}
+
+.tablet-video-container .video-section {
+    padding-left: 27px;
+}
+
+.tablet-video-container {
+    padding-left: 4%;
+}

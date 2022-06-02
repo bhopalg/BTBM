@@ -1,0 +1,214 @@
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+}
+
+.navbar {
+    padding-top: 2%;
+    background: white;
+}
+
+.nav-socials img {
+    width: 20px;
+}
+
+.nav-socials .col {
+    display: flex;
+    align-items: center;
+}
+
+.nav-socials .twitter img, .nav-socials .instagram img, .nav-socials .discord img {
+    transition: 0.3s;
+}
+
+.nav-socials .twitter:hover img {
+    filter: invert(47%) sepia(87%) saturate(2486%) hue-rotate(166deg) brightness(102%) contrast(100%);
+}
+
+.nav-socials .instagram:hover img {
+    filter: invert(26%) sepia(57%) saturate(2281%) hue-rotate(257deg) brightness(91%) contrast(90%);
+}
+
+.nav-socials .discord:hover img {
+    filter: invert(34%) sepia(82%) saturate(3152%) hue-rotate(227deg) brightness(100%) contrast(89%);
+}
+
+.desktop-navbar .logo-name {
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 43.75px;
+    line-height: 52px;
+    text-align: center;
+    padding-top: 3px;
+}
+
+.desktop-navbar .navbar-nav {
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+}
+
+.desktop-navbar .navbar-nav .nav-item a {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25.1133px;
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.wallet-display {
+    background: #000000;
+    border-radius: 15px;
+    width: 200px;
+    padding-top: 4.36px;
+    padding-bottom: 4.36px;
+}
+
+.wallet-display .wallet-display-text {
+    color: #fff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wallet-display .wallet-display-text .wallet-connected-dot {
+    width: 13.49px;
+    height: 13.49px;
+    display: inline-block;
+    background: #47D645;
+    border-radius: 50%;
+    margin-right: 7.14px;
+}
+
+.token-name {
+    font-size: 8.89757px;
+    line-height: 11px;
+    color: #FFFFFF;
+}
+
+.mobile-navbar .logo-name {
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 43.75px;
+    line-height: 52px;
+    text-align: center;
+    padding-top: 3px;
+    margin: 0;
+    text-decoration: none;
+}
+
+.mobile-navbar .navbar-toggler {
+    color: black;
+    border-color: black;
+}
+
+.mobile-navbar {
+    margin-top: 0px;
+    background-color: white !important;
+    padding-top: 15px;
+    padding-left: 27px;
+}
+
+.mobile-navbar .navbar-nav a {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25.1133px;
+    line-height: 30px;
+    color: #000000 !important;
+    border-bottom: 1px solid #ddd;
+    text-decoration: none;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.mobile-navbar .navbar-collapse {
+    margin-top: 10px;
+}
+
+.mobile-navbar .nav-socials {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.mobile-navbar .nav-socials a img {
+    height: 20px;
+    width: 20px;
+}
+
+.mobile-navbar .wallet-col {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.desktop-navbar .container {
+    justify-content: center;
+}
+
+.desktop-navbar .container .row {
+    width: 100%;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 100%;
+}
+
+.nav-socials-col {
+    display: flex;
+}
+
+.desktop-navbar .wallet-display {
+    float: right;
+    margin-right: 60px;
+}
+
+.desktop-navbar .logo-row {
+    margin-left: 0 !important;
+}
+
+.logo {
+    max-width: 150px;
+}
+
+.connect-wallet-button {
+    background: #000000;
+    border-radius: 15px;
+    width: 200px;
+    padding-top: 4.36px;
+    padding-bottom: 4.36px;
+    float: right;
+    margin-right: 60px;
+}
+
+.wallet-disconnected-dot {
+    width: 13.49px;
+    height: 13.49px;
+    display: inline-block;
+    background: #FF0000;
+    border-radius: 50%;
+    margin-right: 7.14px;
+}
+
+.mobile-navbar .logo-container {
+    background: #000000;
+    border-radius: 15px;
+    max-width: 260px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

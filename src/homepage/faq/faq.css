@@ -1,0 +1,73 @@
+.faq {
+    margin-top: 147px;
+}
+
+.faq-card-row {
+    justify-content: center;
+    margin-top: 33px;
+}
+
+.faq-title {
+    font-size: 60px;
+    line-height: 72px;
+    text-align: center;
+    color: #000000;
+}
+
+.faq .accordion-button:not(.collapsed)::after, .faq .accordion-button::after {
+    display: none;
+}
+
+.faq .accordion-button {
+    display: flex;
+    justify-content: center;
+    background: #000000 !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.faq .accordion-button span {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 137.5%;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.faq .accordion-item {
+    border-radius: 8px;
+}
+
+.faq .accordion-collapse {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 0 0 8px 8px !important;
+}
+
+.faq .accordion-button.collapsed {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 8px;
+}
+
+.faq .accordion-button.collapsed:hover {
+    background: black !important;
+    transition: 0.3s;
+}
+
+.faq .accordion-body {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: #FFFFFF;
+    background: #000000 !important;
+}
+
+.mobile-faq .accordion-item {
+    margin-top: 20px;
+}
+
+.mobile-faq .card-row-two {
+    margin-top: 0;
+}
+
+.mobile-faq {
+    padding: 0 10px;
+}

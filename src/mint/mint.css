@@ -1,0 +1,50 @@
+.section-one-image {
+    max-width: 445px;
+    max-height: 445px;
+    width: 100%;
+}
+
+.mint-container > .row {
+    justify-content: center;
+}
+
+.mint-container {
+    padding-top: 15%;
+}
+
+.mint-section {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.mint-input-section {
+    display: flex;
+    justify-content: center;
+}
+
+.form-control {
+    text-align: center;
+}
+
+.mint-button {
+    margin-top: 0%;
+}
+
+.mobile-mint-container .mint-section {
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.tablet-mint-container .mint-section {
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.spinner-border {
+    margin-bottom: 5%;
+}
+
+.mint-page-button-span {
+    margin-top: 10%;
+}
