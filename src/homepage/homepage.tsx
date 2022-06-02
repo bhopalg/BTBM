@@ -72,16 +72,17 @@ function Homepage() {
         <Col xs={12}>
           <OverlayTrigger
             placement="top"
-            overlay={<Tooltip id="tooltip-disabled">Mint not live</Tooltip>}>
+            overlay={<Tooltip id="tooltip-disabled">Mint not live</Tooltip>}
+          >
             <span className="d-inline-block">
-                <Button
-                  disabled={true}
-                  className={'mint-button'}
-                  variant="outline-dark"
-                  href={'/mint'}
-                >
-                  MINT
-                </Button>
+              <Button
+                disabled={true}
+                className={'mint-button'}
+                variant="outline-dark"
+                href={'/mint'}
+              >
+                MINT
+              </Button>
             </span>
           </OverlayTrigger>
         </Col>
