@@ -122,9 +122,11 @@ function Timeline() {
             </div>
             <div className={'timeline-element-text partners-merch-drop-text'}>
               <p>
-                registered holders will recieve a free and exclusive limited
-                edition mee clothing drop; manufactured by our high end
-                streetwear manufacturer.
+                Holders of the MEE NFT will have access to our official partners
+                merchandise drops. the only way to have access to these limited
+                edition and exclusive merch collabs is through holding our
+                partners NFT or the MEE NFT. More official merchandise partners
+                will continue to be announced post mint.{' '}
               </p>
             </div>
           </VerticalTimelineElement>
@@ -161,18 +163,15 @@ function Timeline() {
               className="d-inline-block mee-token-image"
             />{' '}
             `
-            <div className={'timeline-element-title mee-token-title'}>
-              <h3>DISTRIBUTIONAL</h3>
-            </div>
             <div className={'timeline-element-title mee-token-title-two'}>
               <h3>REVENUE SHARES</h3>
             </div>
             <div className={'timeline-element-text mee-token-text'}>
               <p>
-                you will receive ownership within the born to be me brand in its
-                entirety. entitling you to a % Rev share of distributions! As
-                the brand grows, we all reap the rewards of our success. (more
-                info in our whitepaper){' '}
+                You will receive ownership within the Born To Be Me brand in its
+                entirety. Entitling you to a % of revenue shares! As the brand
+                grows, we all reap the rewards of our success. (more info in our
+                whitepaper)
               </p>
             </div>
           </VerticalTimelineElement>

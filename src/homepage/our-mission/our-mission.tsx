@@ -60,7 +60,7 @@ function OurMission() {
                 <br />
                 <br />
                 MEE NFT aims to become the exclusive clothing collaborators for
-                all high quality, long term focused and establised nft projects
+                all high quality, long term focused and established nft projects
                 and their communities. MEE will offer our partners and our
                 community second to none quality, exclusivity, & bespoke designs
                 that everyone would be proud to wear.
