@@ -122,7 +122,12 @@ function Timeline() {
             </div>
             <div className={'timeline-element-text partners-merch-drop-text'}>
               <p>
-                Holders of the MEE NFT will have access to our official partners merchandise drops. the only way to have access to these limited edition and exclusive merch collabs is through holding our partners NFT or the MEE NFT. More official merchandise partners will continue to be announced post mint.              </p>
+                Holders of the MEE NFT will have access to our official partners
+                merchandise drops. the only way to have access to these limited
+                edition and exclusive merch collabs is through holding our
+                partners NFT or the MEE NFT. More official merchandise partners
+                will continue to be announced post mint.{' '}
+              </p>
             </div>
           </VerticalTimelineElement>
           <VerticalTimelineElement
@@ -163,7 +168,10 @@ function Timeline() {
             </div>
             <div className={'timeline-element-text mee-token-text'}>
               <p>
-                You will receive ownership within the Born To Be Me brand in its entirety. Entitling you to a % of revenue shares! As the brand grows, we all reap the rewards of our success. (more info in our whitepaper)
+                You will receive ownership within the Born To Be Me brand in its
+                entirety. Entitling you to a % of revenue shares! As the brand
+                grows, we all reap the rewards of our success. (more info in our
+                whitepaper)
               </p>
             </div>
           </VerticalTimelineElement>
