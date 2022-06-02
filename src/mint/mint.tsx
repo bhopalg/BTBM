@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './mint.css';
 import { useMediaQuery } from 'react-responsive';
-import { Button, Col, Container, Form, Row, Spinner } from 'react-bootstrap';
+import { Button, Col, Container, Form, OverlayTrigger, Row, Spinner, Tooltip } from 'react-bootstrap';
 import Section1Image from '../assets/images/homepage-section-1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -204,16 +204,22 @@ function Mint(props: Props) {
             <Col xs={12}>
               <Row>
                 <Col>
-                  <Button
-                    onClick={(e) => handleMint(e)}
-                    type={'button'}
-                    disabled={true}
-                    className={'mint-button'}
-                    variant="outline-dark"
-                    href={'/mint'}
-                  >
-                    MINT
-                  </Button>
+                  <OverlayTrigger
+                    placement="bottom"
+                    overlay={<Tooltip id="tooltip-disabled">Mint not live</Tooltip>}>
+                    <span className="d-inline-block mint-page-button-span">
+                      <Button
+                        onClick={(e) => handleMint(e)}
+                        type={'button'}
+                        disabled={true}
+                        className={'mint-page-button mint-button'}
+                        variant="outline-dark"
+                        style={{ pointerEvents: 'none' }}
+                      >
+                        MINT
+                      </Button>
+                    </span>
+                  </OverlayTrigger>
                 </Col>
               </Row>
             </Col>

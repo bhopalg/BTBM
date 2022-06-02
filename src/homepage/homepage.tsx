@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 
 import './homepage.css';
 import Section1Image from '../assets/images/homepage-section-1.png';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import Mask from '../assets/images/mask.png';
 import MaskLeft from '../assets/images/mask-left.png';
 import { useMediaQuery } from 'react-responsive';
@@ -70,14 +70,20 @@ function Homepage() {
           </Row>
         </Col>
         <Col xs={12}>
-          <Button
-            disabled={true}
-            className={'mint-button'}
-            variant="outline-dark"
-            href={'/mint'}
-          >
-            MINT
-          </Button>
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip id="tooltip-disabled">Mint not live</Tooltip>}>
+            <span className="d-inline-block">
+                <Button
+                  disabled={true}
+                  className={'mint-button'}
+                  variant="outline-dark"
+                  href={'/mint'}
+                >
+                  MINT
+                </Button>
+            </span>
+          </OverlayTrigger>
         </Col>
       </Row>
       <Merch />
