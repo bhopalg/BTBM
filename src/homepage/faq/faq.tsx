@@ -29,7 +29,7 @@ function FAQ() {
                   rarer than others.
                   <br />
                   <br />
-                  We aim to build a global successful clothing brand both in
+                  We aim to build a global successful clothing brand in
                   both web3 & irl, whilst improving the merch space in web3.
                   consistently adding value to our project & holders.
                 </Accordion.Body>
