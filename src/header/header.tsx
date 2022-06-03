@@ -133,8 +133,6 @@ function Header(props: Props) {
                         props.account?.length - 5,
                         props.account?.length,
                       )}
-                      | 305
-                      <span className={'token-name'}>$mee</span>
                     </p>
                   </div>
                 )}
@@ -211,8 +209,11 @@ function Header(props: Props) {
               <div className={'wallet-display'}>
                 <p className={'wallet-display-text'}>
                   <span className={'wallet-connected-dot'}></span>
-                  0x74d...0de5 | 305
-                  <span className={'token-name'}>$mee</span>
+                  {props.account?.slice(0, 5)}...
+                  {props.account?.slice(
+                    props.account?.length - 5,
+                    props.account?.length,
+                  )}
                 </p>
               </div>
             </Col>
