@@ -123,7 +123,9 @@ function Mint(props: Props) {
       try {
         e.preventDefault();
 
-        const amountMinted: BigNumber = await contract.tokensMinted(props.account);
+        const amountMinted: BigNumber = await contract.tokensMinted(
+          props.account,
+        );
         if (amountMinted.toNumber() === maxQuantity) {
           openErrorSnackbar('You have minted the max allowed');
           return;
