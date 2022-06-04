@@ -19,6 +19,7 @@ import PreSaleList from '../assets/presale-list.json';
 import { BigNumber, ethers } from 'ethers';
 // @ts-ignore
 import { useSnackbar } from 'react-simple-snackbar';
+import { PreSale } from '../model/model';
 
 // TODO build WL checker page
 // TODO Switch to public mint
@@ -27,13 +28,6 @@ import { useSnackbar } from 'react-simple-snackbar';
 interface Props {
   account: string | null;
   setAccount: Dispatch<SetStateAction<string | null>>;
-}
-
-interface PreSale {
-  address: string | null;
-  max: number | null;
-  signature: string | null;
-  signer: string | null;
 }
 
 const BTBM_ADDRESS = '0x335B6Eb6E42d146fb28F7b0b618CeF44276D02d6';

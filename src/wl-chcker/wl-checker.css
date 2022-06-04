@@ -1,0 +1,78 @@
+.wl-checker-container .section-one-image {
+    max-width: 445px;
+    max-height: 445px;
+    width: 100%;
+}
+
+.wl-checker > .row {
+    justify-content: center;
+}
+
+.wl-checker {
+    padding-top: 15%;
+}
+
+.wl-checker-section {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.wl-checker-section {
+    display: flex;
+    justify-content: center;
+}
+
+.wl-checker .form-control {
+    text-align: center;
+}
+
+.wl-checker-button, .wl-checker-button:active, .wl-checker-button:focus {
+    font-weight: 400;
+    font-size: 67.7696px;
+    line-height: 70px;
+    border: 3.09804px solid #000000;
+    border-radius: 23.2353px;
+    max-width: 165.75px;
+    max-height: 79px;
+    background: transparent;
+    color: #000000;
+    transition: 0.3s;
+    font-family: 'Bebas Neue', sans-serif !important;
+    margin-top: 20px;
+    box-shadow: none;
+}
+
+.wl-checker-button:hover {
+    background: #000000;
+    color: #FFFFFF;
+    border-color: #000000;
+    box-shadow: none;
+}
+
+.btn-outline-dark {
+    color: #212529;
+    border-color: #212529;
+}
+
+.mobile-wl-checker .wl-checker-section {
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.tablet-wl-checker .wl-checker-section {
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.wl-checker-form, .wl-checker-section > .row {
+    width: 100%;
+}
+
+.wl-successful {
+    color: #238b00;
+}
+
+.wl-unsuccessful {
+    color: #8b0000;
+}
