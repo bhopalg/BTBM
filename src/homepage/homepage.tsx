@@ -26,7 +26,6 @@ function Homepage() {
   const [mintButtonEnabled, setMintButtonEnabled] = useState(false);
 
   useEffect(() => {
-    setMintButtonEnabled(true);
     const interval = setInterval(() => {
       const currentDateTime = new Date().getTime();
       if (currentDateTime >= WL_SALE_DATE.START.getTime()) {

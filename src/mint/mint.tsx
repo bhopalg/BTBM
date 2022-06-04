@@ -87,7 +87,7 @@ function Mint(props: Props) {
       ) {
         setMintButtonEnabled(true);
         setTypeOfSale('wl');
-      } else {
+      } else if (currentDateTime > WL_SALE_DATE.END.getTime()) {
         setMintButtonEnabled(true);
         setTypeOfSale('public');
       }
