@@ -129,7 +129,9 @@ function Mint(props: Props) {
       showSpinner = true;
       try {
         e.preventDefault();
-        await contract.mint(quantity, maxQuantity, signature, { value: MINT_PRICE_ETHER.mul(quantity) });
+        await contract.mint(quantity, maxQuantity, signature, {
+          value: MINT_PRICE_ETHER.mul(quantity),
+        });
         setMaxMinted(maxMinted + 1);
         openSuccessSnackBar('You have successfully minted');
         showSpinner = false;
