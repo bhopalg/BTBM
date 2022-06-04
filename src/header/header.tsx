@@ -206,16 +206,27 @@ function Header(props: Props) {
           </Row>
           <Row>
             <Col xs={12} className={'wallet-col'}>
-              <div className={'wallet-display'}>
-                <p className={'wallet-display-text'}>
-                  <span className={'wallet-connected-dot'}></span>
-                  {props.account?.slice(0, 5)}...
-                  {props.account?.slice(
-                    props.account?.length - 5,
-                    props.account?.length,
-                  )}
-                </p>
-              </div>
+              {!isConnected ? (
+                <Button
+                  variant="dark"
+                  className={'connect-wallet-button'}
+                  onClick={connectAccount}
+                >
+                  <span className={'wallet-disconnected-dot'}></span>
+                  Connect
+                </Button>
+              ) : (
+                <div className={'wallet-display'}>
+                  <p className={'wallet-display-text'}>
+                    <span className={'wallet-connected-dot'}></span>
+                    {props.account?.slice(0, 5)}...
+                    {props.account?.slice(
+                      props.account?.length - 5,
+                      props.account?.length,
+                    )}
+                  </p>
+                </div>
+              )}
             </Col>
           </Row>
         </Navbar.Collapse>
