@@ -28,7 +28,6 @@ function Homepage() {
   useEffect(() => {
     setMintButtonEnabled(true);
     const interval = setInterval(() => {
-
       const currentDateTime = new Date().getTime();
       if (currentDateTime >= WL_SALE_DATE.START.getTime()) {
         setMintButtonEnabled(true);
@@ -85,23 +84,23 @@ function Homepage() {
           </Row>
         </Col>
         <Col xs={12}>
-          {!mintButtonEnabled ?
+          {!mintButtonEnabled ? (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip id="tooltip-disabled">Mint not live</Tooltip>}
             >
-            <span className="d-inline-block">
-              <Button
-                disabled={true}
-                className={'mint-button'}
-                variant="outline-dark"
-                style={{ pointerEvents: 'none' }}
-              >
-                MINT
-              </Button>
-            </span>
+              <span className="d-inline-block">
+                <Button
+                  disabled={true}
+                  className={'mint-button'}
+                  variant="outline-dark"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  MINT
+                </Button>
+              </span>
             </OverlayTrigger>
-            :
+          ) : (
             <span className="d-inline-block">
               <Button
                 className={'mint-button'}
@@ -111,7 +110,7 @@ function Homepage() {
                 MINT
               </Button>
             </span>
-          }
+          )}
         </Col>
       </Row>
       <Merch />

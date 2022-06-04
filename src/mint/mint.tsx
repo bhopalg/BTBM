@@ -20,7 +20,12 @@ import { BigNumber, ethers } from 'ethers';
 // @ts-ignore
 import { useSnackbar } from 'react-simple-snackbar';
 import { PreSale } from '../model/model';
-import { BTBM_ADDRESS, MINT_PRICE_ETHER, MINUTE_MS, WL_SALE_DATE } from '../shared/variables';
+import {
+  BTBM_ADDRESS,
+  MINT_PRICE_ETHER,
+  MINUTE_MS,
+  WL_SALE_DATE,
+} from '../shared/variables';
 
 interface Props {
   account: string | null;
@@ -71,12 +76,15 @@ function Mint(props: Props) {
   const [openErrorSnackbar] = useSnackbar(errorSnackBar);
   const [openSuccessSnackBar] = useSnackbar(successSnackBar);
   const [mintButtonEnabled, setMintButtonEnabled] = useState(false);
-  const [typeOfSale, setTypeOfSale] = useState<'wl' | 'public' >('wl')
+  const [typeOfSale, setTypeOfSale] = useState<'wl' | 'public'>('wl');
 
   useEffect(() => {
     const interval = setInterval(() => {
       const currentDateTime = new Date().getTime();
-      if (currentDateTime >= WL_SALE_DATE.START.getTime() && currentDateTime <= WL_SALE_DATE.END.getTime()) {
+      if (
+        currentDateTime >= WL_SALE_DATE.START.getTime() &&
+        currentDateTime <= WL_SALE_DATE.END.getTime()
+      ) {
         setMintButtonEnabled(true);
         setTypeOfSale('wl');
       } else {
@@ -254,27 +262,27 @@ function Mint(props: Props) {
             <Col xs={12}>
               <Row>
                 <Col>
-                  {!mintButtonEnabled ?
+                  {!mintButtonEnabled ? (
                     <OverlayTrigger
                       placement="bottom"
                       overlay={
                         <Tooltip id="tooltip-disabled">Mint not live</Tooltip>
                       }
                     >
-                    <span className="d-inline-block mint-page-button-span">
-                      <Button
-                        onClick={(e) => handleMint(e)}
-                        type={'button'}
-                        disabled={true}
-                        className={'mint-page-button mint-button'}
-                        variant="outline-dark"
-                        style={{ pointerEvents: 'none' }}
-                      >
-                        MINT
-                      </Button>
-                    </span>
+                      <span className="d-inline-block mint-page-button-span">
+                        <Button
+                          onClick={(e) => handleMint(e)}
+                          type={'button'}
+                          disabled={true}
+                          className={'mint-page-button mint-button'}
+                          variant="outline-dark"
+                          style={{ pointerEvents: 'none' }}
+                        >
+                          MINT
+                        </Button>
+                      </span>
                     </OverlayTrigger>
-                      :
+                  ) : (
                     <span className="d-inline-block mint-page-button-span">
                       <Button
                         onClick={(e) => handleMint(e)}
@@ -285,7 +293,7 @@ function Mint(props: Props) {
                         MINT
                       </Button>
                     </span>
-                  }
+                  )}
                 </Col>
               </Row>
             </Col>
