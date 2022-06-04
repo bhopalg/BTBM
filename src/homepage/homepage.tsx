@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { fadeIn, merge, slideInLeft } from 'react-animations';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -16,12 +16,27 @@ import Timeline from './timeline/timeline';
 import MeetTeam from './meet-team/meet-team';
 import FAQ from './faq/faq';
 import Footer from '../footer/footer';
+import { MINUTE_MS, WL_SALE_DATE } from '../shared/variables';
 
 function Homepage() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 576px) and (max-width: 1224px)',
   });
+  const [mintButtonEnabled, setMintButtonEnabled] = useState(false);
+
+  useEffect(() => {
+    setMintButtonEnabled(true);
+    const interval = setInterval(() => {
+
+      const currentDateTime = new Date().getTime();
+      if (currentDateTime >= WL_SALE_DATE.START.getTime()) {
+        setMintButtonEnabled(true);
+      }
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const fadeInStyle = StyleSheet.create({
     bounce: {
@@ -70,13 +85,25 @@ function Homepage() {
           </Row>
         </Col>
         <Col xs={12}>
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip id="tooltip-disabled">Mint not live</Tooltip>}
-          >
+          {!mintButtonEnabled ?
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip id="tooltip-disabled">Mint not live</Tooltip>}
+            >
             <span className="d-inline-block">
               <Button
                 disabled={true}
+                className={'mint-button'}
+                variant="outline-dark"
+                style={{ pointerEvents: 'none' }}
+              >
+                MINT
+              </Button>
+            </span>
+            </OverlayTrigger>
+            :
+            <span className="d-inline-block">
+              <Button
                 className={'mint-button'}
                 variant="outline-dark"
                 href={'/mint'}
@@ -84,7 +111,7 @@ function Homepage() {
                 MINT
               </Button>
             </span>
-          </OverlayTrigger>
+          }
         </Col>
       </Row>
       <Merch />

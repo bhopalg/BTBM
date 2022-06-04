@@ -20,23 +20,12 @@ import { BigNumber, ethers } from 'ethers';
 // @ts-ignore
 import { useSnackbar } from 'react-simple-snackbar';
 import { PreSale } from '../model/model';
-
-// TODO build WL checker page
-// TODO Switch to public mint
-// TODO Work out how to disable tooltip
+import { BTBM_ADDRESS, MINT_PRICE_ETHER, MINUTE_MS, WL_SALE_DATE } from '../shared/variables';
 
 interface Props {
   account: string | null;
   setAccount: Dispatch<SetStateAction<string | null>>;
 }
-
-const BTBM_ADDRESS = '0x335B6Eb6E42d146fb28F7b0b618CeF44276D02d6';
-const MINT_PRICE_ETHER = ethers.utils.parseEther('.001');
-const MINUTE_MS = 5000;
-const WL_SALE_DATE = {
-  START: new Date(Date.UTC(2022, 6 + 1, 8, 14, 0, 0)),
-  END: new Date(Date.UTC(2022, 6 + 1, 8, 20, 0, 0)),
-};
 
 function Mint(props: Props) {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -82,12 +71,17 @@ function Mint(props: Props) {
   const [openErrorSnackbar] = useSnackbar(errorSnackBar);
   const [openSuccessSnackBar] = useSnackbar(successSnackBar);
   const [mintButtonEnabled, setMintButtonEnabled] = useState(false);
+  const [typeOfSale, setTypeOfSale] = useState<'wl' | 'public' >('wl')
 
   useEffect(() => {
     const interval = setInterval(() => {
       const currentDateTime = new Date().getTime();
-      if (currentDateTime >= WL_SALE_DATE.START.getTime()) {
+      if (currentDateTime >= WL_SALE_DATE.START.getTime() && currentDateTime <= WL_SALE_DATE.END.getTime()) {
         setMintButtonEnabled(true);
+        setTypeOfSale('wl');
+      } else {
+        setMintButtonEnabled(true);
+        setTypeOfSale('public');
       }
     }, MINUTE_MS);
 
@@ -97,6 +91,10 @@ function Mint(props: Props) {
   useEffect(() => {
     if (window.ethereum) {
       if (!props.account) return;
+      if (typeOfSale === 'public') {
+        setMaxQuantity(5);
+        return;
+      }
       const paeSaleList = PreSaleList as { [key: string]: PreSale };
       const preSaleData = paeSaleList[props.account];
 
@@ -129,15 +127,27 @@ function Mint(props: Props) {
 
       try {
         e.preventDefault();
-        const preSaleList = PreSaleList as { [key: string]: PreSale };
-        const preSaleData = preSaleList[props.account];
 
-        if (!preSaleData) return;
+        let max = 1;
+        let signature = null;
+        if (typeOfSale === 'wl') {
+          const preSaleList = PreSaleList as { [key: string]: PreSale };
+          const preSaleData = preSaleList[props.account];
+
+          if (!preSaleData) return;
+
+          signature = preSaleData.signature;
+          max = preSaleData.max ?? 1;
+        } else if (typeOfSale === 'public') {
+          max = 5;
+        } else {
+          return;
+        }
 
         const amountMinted: BigNumber = await contract.tokensMinted(
           props.account,
         );
-        if (amountMinted.toNumber() === (preSaleData.max ?? 1)) {
+        if (amountMinted.toNumber() === max) {
           openErrorSnackbar('MAX MINTED');
           return;
         }
@@ -152,9 +162,15 @@ function Mint(props: Props) {
 
         showSpinner = true;
 
-        await contract.mint(quantity, preSaleData.max, preSaleData.signature, {
-          value,
-        });
+        if (typeOfSale === 'wl') {
+          await contract.mint(quantity, max, signature, {
+            value,
+          });
+        } else {
+          await contract.mint(quantity, max, signature, {
+            value,
+          });
+        }
         openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
         showSpinner = false;
       } catch (e) {
@@ -238,33 +254,38 @@ function Mint(props: Props) {
             <Col xs={12}>
               <Row>
                 <Col>
-                  <Button
-                    onClick={(e) => handleMint(e)}
-                    type={'button'}
-                    className={'mint-page-button mint-button'}
-                    variant="outline-dark"
-                  >
-                    MINT
-                  </Button>
-                  {/*<OverlayTrigger*/}
-                  {/*  placement="bottom"*/}
-                  {/*  overlay={*/}
-                  {/*    <Tooltip id="tooltip-disabled">Mint not live</Tooltip>*/}
-                  {/*  }*/}
-                  {/*>*/}
-                  {/*  <span className="d-inline-block mint-page-button-span">*/}
-                  {/*    <Button*/}
-                  {/*      onClick={(e) => handleMint(e)}*/}
-                  {/*      type={'button'}*/}
-                  {/*      disabled={true}*/}
-                  {/*      className={'mint-page-button mint-button'}*/}
-                  {/*      variant="outline-dark"*/}
-                  {/*      style={{ pointerEvents: 'none' }}*/}
-                  {/*    >*/}
-                  {/*      MINT*/}
-                  {/*    </Button>*/}
-                  {/*  </span>*/}
-                  {/*</OverlayTrigger>*/}
+                  {!mintButtonEnabled ?
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={
+                        <Tooltip id="tooltip-disabled">Mint not live</Tooltip>
+                      }
+                    >
+                    <span className="d-inline-block mint-page-button-span">
+                      <Button
+                        onClick={(e) => handleMint(e)}
+                        type={'button'}
+                        disabled={true}
+                        className={'mint-page-button mint-button'}
+                        variant="outline-dark"
+                        style={{ pointerEvents: 'none' }}
+                      >
+                        MINT
+                      </Button>
+                    </span>
+                    </OverlayTrigger>
+                      :
+                    <span className="d-inline-block mint-page-button-span">
+                      <Button
+                        onClick={(e) => handleMint(e)}
+                        type={'button'}
+                        className={'mint-page-button mint-button'}
+                        variant="outline-dark"
+                      >
+                        MINT
+                      </Button>
+                    </span>
+                  }
                 </Col>
               </Row>
             </Col>
