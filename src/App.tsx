@@ -26,7 +26,7 @@ function App() {
                 path="mint"
                 element={<Mint account={account} setAccount={setAccount} />}
               />
-              <Route path="wl" element={<WLChecker></WLChecker>}/>
+              <Route path="wl" element={<WLChecker></WLChecker>} />
             </Route>
           </Routes>
         </BrowserRouter>

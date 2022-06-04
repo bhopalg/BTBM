@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import './wl-checker.css';
 import { useMediaQuery } from 'react-responsive';
-import {
-  Button,
-  Col,
-  Container, Form,
-  Row,
-} from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import Section1Image from '../assets/images/homepage-section-1.png';
 import PreSaleList from '../assets/presale-list.json';
 import { PreSale } from '../model/model';
-
 
 function WLChecker() {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -61,30 +55,40 @@ function WLChecker() {
         <Col sm={12} md={3} className={'wl-checker-section'}>
           <Row>
             <Col xs={12}>
-              {!showCheckerText ? null :
-                (
-                  isWL ?
-                    <div>
-                      <h3 className={'wl-checker-title wl-successful'}>CONGRATULATIONS YOUR ON THE WL!</h3>
-                      <p className={'wl-checker-text wl-successful'}>
-                        Address - {wallet}
-                        <br/>
-                        Max Mint Amount - {maxQuantity}
-                      </p>
-                    </div> :
-                    <div>
-                      <h3 className={'wl-checker-title wl-unsuccessful'}>WALLET NOT ON WL!</h3>
-                      <p className={'wl-checker-text wl-unsuccessful'}>Open a ticket in server to resolve the issue.</p>
-                    </div>
-                )
-              }
+              {!showCheckerText ? null : isWL ? (
+                <div>
+                  <h3 className={'wl-checker-title wl-successful'}>
+                    CONGRATULATIONS YOUR ON THE WL!
+                  </h3>
+                  <p className={'wl-checker-text wl-successful'}>
+                    Address - {wallet}
+                    <br />
+                    Max Mint Amount - {maxQuantity}
+                  </p>
+                </div>
+              ) : (
+                <div>
+                  <h3 className={'wl-checker-title wl-unsuccessful'}>
+                    WALLET NOT ON WL!
+                  </h3>
+                  <p className={'wl-checker-text wl-unsuccessful'}>
+                    Open a ticket in server to resolve the issue.
+                  </p>
+                </div>
+              )}
             </Col>
             <Col xs={12}>
               <Form className={'wl-checker-form'}>
                 <Form.Group>
-                  <Form.Control type="text" placeholder="COPY ETH WALLET ADDRESS NOT ENS NAME" onChange={e => setWallet(e.target.value)} />
+                  <Form.Control
+                    type="text"
+                    placeholder="COPY ETH WALLET ADDRESS NOT ENS NAME"
+                    onChange={(e) => setWallet(e.target.value)}
+                  />
                 </Form.Group>
-                <Button className={'wl-checker-button'} onClick={checkWL}>CHECK</Button>
+                <Button className={'wl-checker-button'} onClick={checkWL}>
+                  CHECK
+                </Button>
               </Form>
             </Col>
           </Row>
