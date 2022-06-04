@@ -20,6 +20,10 @@ import { BigNumber, ethers } from 'ethers';
 // @ts-ignore
 import { useSnackbar } from 'react-simple-snackbar';
 
+// TODO build WL checker page
+// TODO Switch to public mint
+// TODO Work out how to disable tooltip
+
 interface Props {
   account: string | null;
   setAccount: Dispatch<SetStateAction<string | null>>;
@@ -34,14 +38,17 @@ interface PreSale {
 
 const BTBM_ADDRESS = '0x335B6Eb6E42d146fb28F7b0b618CeF44276D02d6';
 const MINT_PRICE_ETHER = ethers.utils.parseEther('.001');
+const MINUTE_MS = 5000;
+const WL_SALE_DATE = {
+  START: new Date(Date.UTC(2022, 6 + 1, 8, 14, 0, 0)),
+  END: new Date(Date.UTC(2022, 6 + 1, 8, 20, 0, 0)),
+};
 
 function Mint(props: Props) {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 576px) and (max-width: 1224px)',
   });
-  const isConnected = Boolean(props.account);
-  let mintButtonEnabled = false;
   let showSpinner = false;
 
   const errorSnackBar = {
@@ -78,25 +85,31 @@ function Mint(props: Props) {
 
   const [quantity, setQuantity] = useState<number>(1);
   const [maxQuantity, setMaxQuantity] = useState<number>(1);
-  const [signature, setSignature] = useState<string | null>(null);
   const [openErrorSnackbar] = useSnackbar(errorSnackBar);
   const [openSuccessSnackBar] = useSnackbar(successSnackBar);
+  const [mintButtonEnabled, setMintButtonEnabled] = useState(false);
 
   useEffect(() => {
-    if (isConnected && window.ethereum) {
+    const interval = setInterval(() => {
+      const currentDateTime = new Date().getTime();
+      if (currentDateTime >= WL_SALE_DATE.START.getTime()) {
+        setMintButtonEnabled(true);
+      }
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (window.ethereum) {
       if (!props.account) return;
       const paeSaleList = PreSaleList as { [key: string]: PreSale };
       const preSaleData = paeSaleList[props.account];
 
       if (!preSaleData) {
-        mintButtonEnabled = false;
-        openErrorSnackbar('You are not on the WL list');
         return;
       }
-
-      mintButtonEnabled = true;
       setMaxQuantity(preSaleData.max ?? 1);
-      setSignature(preSaleData.signature);
     }
   }, [props.account]);
 
@@ -115,36 +128,48 @@ function Mint(props: Props) {
   }
 
   async function handleMint(e: any) {
-    if (window.ethereum) {
+    if (window.ethereum && props.account) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
 
       try {
         e.preventDefault();
+        const preSaleList = PreSaleList as { [key: string]: PreSale };
+        const preSaleData = preSaleList[props.account];
+
+        if (!preSaleData) return;
 
         const amountMinted: BigNumber = await contract.tokensMinted(
           props.account,
         );
-        if (amountMinted.toNumber() === maxQuantity) {
-          openErrorSnackbar('You have minted the max allowed');
+        if (amountMinted.toNumber() === (preSaleData.max ?? 1)) {
+          openErrorSnackbar('MAX MINTED');
+          return;
+        }
+
+        const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
+        const balance: BigNumber = await provider.getBalance(props.account);
+
+        if (balance.toNumber() < value.toNumber()) {
+          openErrorSnackbar('INSUFFICIENT WALLET BALANCE');
           return;
         }
 
         showSpinner = true;
 
-        await contract.mint(quantity, maxQuantity, signature, {
-          value: MINT_PRICE_ETHER.mul(quantity),
+        await contract.mint(quantity, preSaleData.max, preSaleData.signature, {
+          value,
         });
-        openSuccessSnackBar('Please check etherscan for pending tx');
+        openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
         showSpinner = false;
       } catch (e) {
         showSpinner = false;
         // @ts-ignore error is a type of any
         if (e.code === 4001) {
-          openErrorSnackbar('User denied transaction');
+          openErrorSnackbar('USER DENIED TRANSACTION!');
         } else {
-          openErrorSnackbar('Error minting');
+          openErrorSnackbar('ERROR MINTING!');
         }
       }
     }
