@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import BTBM from '../assets/contract/btbm.json';
 import PreSaleList from '../assets/presale-list.json';
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 // @ts-ignore
 import { useSnackbar } from 'react-simple-snackbar';
 
@@ -81,7 +81,6 @@ function Mint(props: Props) {
   const [signature, setSignature] = useState<string | null>(null);
   const [openErrorSnackbar] = useSnackbar(errorSnackBar);
   const [openSuccessSnackBar] = useSnackbar(successSnackBar);
-  const [maxMinted, setMaxMinted] = useState<number>(0);
 
   useEffect(() => {
     if (isConnected && window.ethereum) {
@@ -116,24 +115,26 @@ function Mint(props: Props) {
   }
 
   async function handleMint(e: any) {
-    if (maxMinted === maxQuantity) {
-      openErrorSnackbar('You have minted the max allowed');
-      return;
-    }
-
     if (window.ethereum) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
 
-      showSpinner = true;
       try {
         e.preventDefault();
+
+        const amountMinted: BigNumber = await contract.tokensMinted(props.account);
+        if (amountMinted.toNumber() === maxQuantity) {
+          openErrorSnackbar('You have minted the max allowed');
+          return;
+        }
+
+        showSpinner = true;
+
         await contract.mint(quantity, maxQuantity, signature, {
           value: MINT_PRICE_ETHER.mul(quantity),
         });
-        setMaxMinted(maxMinted + 1);
-        openSuccessSnackBar('You have successfully minted');
+        openSuccessSnackBar('Please check etherscan for pending tx');
         showSpinner = false;
       } catch (e) {
         showSpinner = false;
