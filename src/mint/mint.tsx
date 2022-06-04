@@ -33,6 +33,7 @@ interface PreSale {
 }
 
 const BTBM_ADDRESS = '0x335B6Eb6E42d146fb28F7b0b618CeF44276D02d6';
+const MINT_PRICE_ETHER = ethers.utils.parseEther('.001');
 
 function Mint(props: Props) {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
@@ -62,7 +63,7 @@ function Mint(props: Props) {
   const successSnackBar = {
     position: 'center',
     style: {
-      backgroundColor: '#8b0000',
+      backgroundColor: '#238b00',
       border: '2px solid #8b0000',
       color: 'white',
       fontFamily: 'Bebas Neue, monospace',
@@ -128,7 +129,7 @@ function Mint(props: Props) {
       showSpinner = true;
       try {
         e.preventDefault();
-        await contract.mint(quantity, maxQuantity, signature);
+        await contract.mint(quantity, maxQuantity, signature, { value: MINT_PRICE_ETHER.mul(quantity) });
         setMaxMinted(maxMinted + 1);
         openSuccessSnackBar('You have successfully minted');
         showSpinner = false;
@@ -213,25 +214,33 @@ function Mint(props: Props) {
             <Col xs={12}>
               <Row>
                 <Col>
-                  <OverlayTrigger
-                    placement="bottom"
-                    overlay={
-                      <Tooltip id="tooltip-disabled">Mint not live</Tooltip>
-                    }
+                  <Button
+                    onClick={(e) => handleMint(e)}
+                    type={'button'}
+                    className={'mint-page-button mint-button'}
+                    variant="outline-dark"
                   >
-                    <span className="d-inline-block mint-page-button-span">
-                      <Button
-                        onClick={(e) => handleMint(e)}
-                        type={'button'}
-                        disabled={true}
-                        className={'mint-page-button mint-button'}
-                        variant="outline-dark"
-                        style={{ pointerEvents: 'none' }}
-                      >
-                        MINT
-                      </Button>
-                    </span>
-                  </OverlayTrigger>
+                    MINT
+                  </Button>
+                  {/*<OverlayTrigger*/}
+                  {/*  placement="bottom"*/}
+                  {/*  overlay={*/}
+                  {/*    <Tooltip id="tooltip-disabled">Mint not live</Tooltip>*/}
+                  {/*  }*/}
+                  {/*>*/}
+                  {/*  <span className="d-inline-block mint-page-button-span">*/}
+                  {/*    <Button*/}
+                  {/*      onClick={(e) => handleMint(e)}*/}
+                  {/*      type={'button'}*/}
+                  {/*      disabled={true}*/}
+                  {/*      className={'mint-page-button mint-button'}*/}
+                  {/*      variant="outline-dark"*/}
+                  {/*      style={{ pointerEvents: 'none' }}*/}
+                  {/*    >*/}
+                  {/*      MINT*/}
+                  {/*    </Button>*/}
+                  {/*  </span>*/}
+                  {/*</OverlayTrigger>*/}
                 </Col>
               </Row>
             </Col>
