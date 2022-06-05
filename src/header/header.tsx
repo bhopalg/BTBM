@@ -93,7 +93,9 @@ function Header(props: Props) {
                     <a
                       rel={'noreferrer'}
                       className={'logo-container'}
-                      href={'https://meenft.notion.site/MEE-Whitepaper-c29eee9dde0541e38cbb6bd9a4798050'}
+                      href={
+                        'https://meenft.notion.site/MEE-Whitepaper-c29eee9dde0541e38cbb6bd9a4798050'
+                      }
                       target={'_blank'}
                     >
                       <img
@@ -149,8 +151,14 @@ function Header(props: Props) {
     <Navbar bg="light" expand="lg" className={'mobile-navbar'}>
       <Container>
         <Navbar.Brand className={'logo-container'}>
-          <a href={'https://meenft.notion.site/MEE-Whitepaper-c29eee9dde0541e38cbb6bd9a4798050'}
-               target={'_blank'} rel={'noreferrer'} className={'logo-name'}>
+          <a
+            href={
+              'https://meenft.notion.site/MEE-Whitepaper-c29eee9dde0541e38cbb6bd9a4798050'
+            }
+            target={'_blank'}
+            rel={'noreferrer'}
+            className={'logo-name'}
+          >
             BORN TO BE ME
           </a>
         </Navbar.Brand>
