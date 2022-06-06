@@ -93,7 +93,7 @@ function Mint(props: Props) {
     const signer = provider.getSigner();
     const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
 
-    if (window.ethereum && props.account) {
+    if (window.ethereum) {
       const publicSaleStarted = await contract.publicStarted();
       if (publicSaleStarted) {
         setMintButtonEnabled(true);
@@ -106,7 +106,7 @@ function Mint(props: Props) {
         setMintButtonEnabled(true);
         setTypeOfSale('wl');
         const paeSaleList = PreSaleList as { [key: string]: PreSale };
-        const preSaleData = paeSaleList[props.account];
+        const preSaleData = paeSaleList[props.account as string];
 
         if (!preSaleData) {
           return;
