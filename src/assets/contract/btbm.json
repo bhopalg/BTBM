@@ -6,6 +6,11 @@
   },
   {
     "inputs": [],
+    "name": "AlreadyMinted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
     "name": "ApprovalCallerNotOwnerNorApproved",
     "type": "error"
   },
@@ -286,35 +291,12 @@
     "name": "maxSupply",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "uint16",
         "name": "",
-        "type": "uint256"
+        "type": "uint16"
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "max",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "mint",
-    "outputs": [],
-    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -377,12 +359,70 @@
   },
   {
     "inputs": [],
+    "name": "presaleStarted",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "price",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "amount",
+        "type": "uint8"
+      }
+    ],
+    "name": "publicMint",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "publicStarted",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "publicTokensMinted",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
       }
     ],
     "stateMutability": "view",
@@ -454,19 +494,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "saleStarted",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -513,6 +540,19 @@
   {
     "inputs": [
       {
+        "internalType": "bool",
+        "name": "status",
+        "type": "bool"
+      }
+    ],
+    "name": "setPresaleStatus",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_newPrice",
         "type": "uint256"
@@ -531,7 +571,7 @@
         "type": "bool"
       }
     ],
-    "name": "setSaleStatus",
+    "name": "setPublicStatus",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -602,9 +642,9 @@
         "type": "address"
       },
       {
-        "internalType": "uint256",
+        "internalType": "uint8",
         "name": "amount",
-        "type": "uint256"
+        "type": "uint8"
       }
     ],
     "name": "teamMint",
@@ -642,9 +682,9 @@
     "name": "tokensMinted",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "uint8",
         "name": "",
-        "type": "uint256"
+        "type": "uint8"
       }
     ],
     "stateMutability": "view",
@@ -710,6 +750,29 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "amount",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint8",
+        "name": "max",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes",
+        "name": "signature",
+        "type": "bytes"
+      }
+    ],
+    "name": "whitelistMint",
+    "outputs": [],
+    "stateMutability": "payable",
     "type": "function"
   },
   {

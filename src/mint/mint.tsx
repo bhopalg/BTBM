@@ -21,7 +21,7 @@ import { BigNumber, ethers } from 'ethers';
 import { useSnackbar } from 'react-simple-snackbar';
 import { PreSale } from '../model/model';
 import {
-  BTBM_ADDRESS,
+  BTBM_ADDRESS, MAX_PUBLIC_QUANTITY,
   MINT_PRICE_ETHER,
   MINUTE_MS,
   WL_SALE_DATE,
@@ -79,28 +79,50 @@ function Mint(props: Props) {
   const [typeOfSale, setTypeOfSale] = useState<'wl' | 'public'>('wl');
 
   useEffect(() => {
+    checkMintStart();
     const interval = setInterval(() => {
-      const currentDateTime = new Date().getTime();
-      if (
-        currentDateTime >= WL_SALE_DATE.START.getTime() &&
-        currentDateTime <= WL_SALE_DATE.END.getTime()
-      ) {
-        setMintButtonEnabled(true);
-        setTypeOfSale('wl');
-      } else if (currentDateTime > WL_SALE_DATE.END.getTime()) {
-        setMintButtonEnabled(true);
-        setTypeOfSale('public');
-      }
+      checkMintStart();
     }, MINUTE_MS);
 
     return () => clearInterval(interval);
   }, []);
 
+  async function checkMintStart() {
+    setMintButtonEnabled(true);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
+
+    const currentDateTime = new Date().getTime();
+    if (
+      currentDateTime >= WL_SALE_DATE.START.getTime() &&
+      currentDateTime <= WL_SALE_DATE.END.getTime()
+    ) {
+      if (window.ethereum && props.account) {
+        const wlSaleStarted = await contract.presaleStarted();
+        if (wlSaleStarted) {
+          setMintButtonEnabled(true);
+          setTypeOfSale('wl');
+        }
+      }
+    } else if (currentDateTime > WL_SALE_DATE.END.getTime()) {
+      if (window.ethereum && props.account) {
+        const publicSaleStarted = await contract.publicStarted();
+        if (publicSaleStarted) {
+          setMintButtonEnabled(true);
+          setTypeOfSale('public');
+        } else {
+          setMintButtonEnabled(false);
+        }
+      }
+    }
+  }
+
   useEffect(() => {
     if (window.ethereum) {
       if (!props.account) return;
       if (typeOfSale === 'public') {
-        setMaxQuantity(5);
+        setMaxQuantity(MAX_PUBLIC_QUANTITY);
         return;
       }
       const paeSaleList = PreSaleList as { [key: string]: PreSale };
@@ -129,58 +151,79 @@ function Mint(props: Props) {
 
   async function handleMint(e: any) {
     if (window.ethereum && props.account) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
-
       try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
+
         e.preventDefault();
 
-        let max = 1;
-        let signature = null;
-        if (typeOfSale === 'wl') {
+        const wlSaleStarted = await contract.presaleStarted();
+        const publicSaleStarted = await contract.publicStarted();
+
+        if (wlSaleStarted) {
           const preSaleList = PreSaleList as { [key: string]: PreSale };
           const preSaleData = preSaleList[props.account];
 
-          if (!preSaleData) return;
+          if (!preSaleData) {
+            openErrorSnackbar('NOT ONE PRESALE LIST');
+            return;
+          }
 
-          signature = preSaleData.signature;
-          max = preSaleData.max ?? 1;
-        } else if (typeOfSale === 'public') {
-          max = 5;
+          const signature = preSaleData.signature;
+          const max = preSaleData.max ?? 1;
+
+          const amountMinted = await contract.tokensMinted(
+            props.account,
+          );
+
+          if (amountMinted === max) {
+            openErrorSnackbar('MAX MINTED');
+            return;
+          }
+
+          const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
+          const balance: BigNumber = await provider.getBalance(props.account);
+
+          if (balance.lt(value)) {
+            openErrorSnackbar('INSUFFICIENT WALLET BALANCE');
+            return;
+          }
+          showSpinner = true;
+          await contract.whitelistMint(quantity, max, signature, {
+            value,
+          });
+          openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
+          showSpinner = false;
+        } else if (publicSaleStarted) {
+          const amountMinted = await contract.publicTokensMinted(
+            props.account,
+          );
+
+          if (amountMinted === MAX_PUBLIC_QUANTITY) {
+            openErrorSnackbar('MAX MINTED');
+            return;
+          }
+
+          const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
+          const balance: BigNumber = await provider.getBalance(props.account);
+
+          if (balance.lt(value)) {
+            openErrorSnackbar('INSUFFICIENT WALLET BALANCE');
+            return;
+          }
+
+          showSpinner = true;
+
+          await contract.publicMint(quantity, {
+            value,
+          });
+
+          openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
+          showSpinner = false;
         } else {
           return;
         }
-
-        const amountMinted: BigNumber = await contract.tokensMinted(
-          props.account,
-        );
-        if (amountMinted.toNumber() === max) {
-          openErrorSnackbar('MAX MINTED');
-          return;
-        }
-
-        const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
-        const balance: BigNumber = await provider.getBalance(props.account);
-
-        if (balance.toNumber() < value.toNumber()) {
-          openErrorSnackbar('INSUFFICIENT WALLET BALANCE');
-          return;
-        }
-
-        showSpinner = true;
-
-        if (typeOfSale === 'wl') {
-          await contract.mint(quantity, max, signature, {
-            value,
-          });
-        } else {
-          await contract.mint(quantity, max, signature, {
-            value,
-          });
-        }
-        openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
-        showSpinner = false;
       } catch (e) {
         showSpinner = false;
         // @ts-ignore error is a type of any
