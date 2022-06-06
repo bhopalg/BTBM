@@ -21,7 +21,8 @@ import { BigNumber, ethers } from 'ethers';
 import { useSnackbar } from 'react-simple-snackbar';
 import { PreSale } from '../model/model';
 import {
-  BTBM_ADDRESS, MAX_PUBLIC_QUANTITY,
+  BTBM_ADDRESS,
+  MAX_PUBLIC_QUANTITY,
   MINT_PRICE_ETHER,
   MINUTE_MS,
   WL_SALE_DATE,
@@ -173,9 +174,7 @@ function Mint(props: Props) {
           const signature = preSaleData.signature;
           const max = preSaleData.max ?? 1;
 
-          const amountMinted = await contract.tokensMinted(
-            props.account,
-          );
+          const amountMinted = await contract.tokensMinted(props.account);
 
           if (amountMinted === max) {
             openErrorSnackbar('MAX MINTED');
@@ -196,9 +195,7 @@ function Mint(props: Props) {
           openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
           showSpinner = false;
         } else if (publicSaleStarted) {
-          const amountMinted = await contract.publicTokensMinted(
-            props.account,
-          );
+          const amountMinted = await contract.publicTokensMinted(props.account);
 
           if (amountMinted === MAX_PUBLIC_QUANTITY) {
             openErrorSnackbar('MAX MINTED');
