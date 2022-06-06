@@ -89,52 +89,34 @@ function Mint(props: Props) {
   }, []);
 
   async function checkMintStart() {
-    setMintButtonEnabled(true);
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
 
-    const currentDateTime = new Date().getTime();
-    if (
-      currentDateTime >= WL_SALE_DATE.START.getTime() &&
-      currentDateTime <= WL_SALE_DATE.END.getTime()
-    ) {
-      if (window.ethereum && props.account) {
-        const wlSaleStarted = await contract.presaleStarted();
-        if (wlSaleStarted) {
-          setMintButtonEnabled(true);
-          setTypeOfSale('wl');
-        }
+    if (window.ethereum && props.account) {
+      const publicSaleStarted = await contract.publicStarted();
+      if (publicSaleStarted) {
+        setMintButtonEnabled(true);
+        setMaxQuantity(MAX_PUBLIC_QUANTITY);
+        setTypeOfSale('public');
       }
-    } else if (currentDateTime > WL_SALE_DATE.END.getTime()) {
-      if (window.ethereum && props.account) {
-        const publicSaleStarted = await contract.publicStarted();
-        if (publicSaleStarted) {
-          setMintButtonEnabled(true);
-          setTypeOfSale('public');
-        } else {
-          setMintButtonEnabled(false);
+
+      const wlSaleStarted = await contract.presaleStarted();
+      if (wlSaleStarted) {
+        setMintButtonEnabled(true);
+        setTypeOfSale('wl');
+        const paeSaleList = PreSaleList as { [key: string]: PreSale };
+        const preSaleData = paeSaleList[props.account];
+
+        if (!preSaleData) {
+          return;
         }
+        setMaxQuantity(preSaleData.max ?? 1);
+      } else {
+        setMintButtonEnabled(false);
       }
     }
   }
-
-  useEffect(() => {
-    if (window.ethereum) {
-      if (!props.account) return;
-      if (typeOfSale === 'public') {
-        setMaxQuantity(MAX_PUBLIC_QUANTITY);
-        return;
-      }
-      const paeSaleList = PreSaleList as { [key: string]: PreSale };
-      const preSaleData = paeSaleList[props.account];
-
-      if (!preSaleData) {
-        return;
-      }
-      setMaxQuantity(preSaleData.max ?? 1);
-    }
-  }, [props.account]);
 
   function incrementMintAmount() {
     if (quantity === maxQuantity) {
@@ -158,11 +140,34 @@ function Mint(props: Props) {
         const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
 
         e.preventDefault();
-
         const wlSaleStarted = await contract.presaleStarted();
         const publicSaleStarted = await contract.publicStarted();
 
-        if (wlSaleStarted) {
+        if (publicSaleStarted) {
+          const amountMinted = await contract.publicTokensMinted(props.account);
+
+          if (amountMinted === MAX_PUBLIC_QUANTITY) {
+            openErrorSnackbar('MAX MINTED');
+            return;
+          }
+
+          const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
+          const balance: BigNumber = await provider.getBalance(props.account);
+
+          if (balance.lt(value)) {
+            openErrorSnackbar('INSUFFICIENT WALLET BALANCE');
+            return;
+          }
+
+          showSpinner = true;
+
+          await contract.publicMint(quantity, {
+            value,
+          });
+
+          openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
+          showSpinner = false;
+        } else if (wlSaleStarted) {
           const preSaleList = PreSaleList as { [key: string]: PreSale };
           const preSaleData = preSaleList[props.account];
 
@@ -192,30 +197,6 @@ function Mint(props: Props) {
           await contract.whitelistMint(quantity, max, signature, {
             value,
           });
-          openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
-          showSpinner = false;
-        } else if (publicSaleStarted) {
-          const amountMinted = await contract.publicTokensMinted(props.account);
-
-          if (amountMinted === MAX_PUBLIC_QUANTITY) {
-            openErrorSnackbar('MAX MINTED');
-            return;
-          }
-
-          const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
-          const balance: BigNumber = await provider.getBalance(props.account);
-
-          if (balance.lt(value)) {
-            openErrorSnackbar('INSUFFICIENT WALLET BALANCE');
-            return;
-          }
-
-          showSpinner = true;
-
-          await contract.publicMint(quantity, {
-            value,
-          });
-
           openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
           showSpinner = false;
         } else {
