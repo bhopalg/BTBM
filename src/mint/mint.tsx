@@ -13,12 +13,7 @@ import {
 } from 'react-bootstrap';
 import Section1Image from '../assets/images/homepage-section-1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faArrowLeft,
-  faArrowRight,
-  faPlus,
-  faSubtract,
-} from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSubtract } from '@fortawesome/free-solid-svg-icons';
 import BTBM from '../assets/contract/btbm.json';
 import PreSaleList from '../assets/presale-list.json';
 import { BigNumber, ethers } from 'ethers';
@@ -30,7 +25,6 @@ import {
   MAX_PUBLIC_QUANTITY,
   MINT_PRICE_ETHER,
   MINUTE_MS,
-  WL_SALE_DATE,
 } from '../shared/variables';
 
 interface Props {
@@ -147,6 +141,7 @@ function Mint(props: Props) {
         e.preventDefault();
         const wlSaleStarted = await contract.presaleStarted();
         const publicSaleStarted = await contract.publicStarted();
+        const mintEtherPrice: BigNumber = await contract.price();
 
         if (publicSaleStarted) {
           const amountMinted = await contract.publicTokensMinted(props.account);
@@ -156,7 +151,7 @@ function Mint(props: Props) {
             return;
           }
 
-          const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
+          const value: BigNumber = mintEtherPrice.mul(quantity);
           const balance: BigNumber = await provider.getBalance(props.account);
 
           if (balance.lt(value)) {
@@ -202,7 +197,7 @@ function Mint(props: Props) {
           await contract.whitelistMint(quantity, max, signature, {
             value,
           });
-          openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
+          openSuccessSnackBar('MINT INITIATED!');
           showSpinner = false;
         } else {
           return;
