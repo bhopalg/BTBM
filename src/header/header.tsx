@@ -93,7 +93,10 @@ function Header(props: Props) {
                     <a
                       rel={'noreferrer'}
                       className={'logo-container'}
-                      href={'/'}
+                      href={
+                        'https://meenft.notion.site/MEE-Whitepaper-c29eee9dde0541e38cbb6bd9a4798050'
+                      }
+                      target={'_blank'}
                     >
                       <img
                         alt="Logo"
@@ -147,8 +150,15 @@ function Header(props: Props) {
   const mobileNav = (
     <Navbar bg="light" expand="lg" className={'mobile-navbar'}>
       <Container>
-        <Navbar.Brand href="#home" className={'logo-container'}>
-          <a href={'/'} rel={'noreferrer'} className={'logo-name'}>
+        <Navbar.Brand className={'logo-container'}>
+          <a
+            href={
+              'https://meenft.notion.site/MEE-Whitepaper-c29eee9dde0541e38cbb6bd9a4798050'
+            }
+            target={'_blank'}
+            rel={'noreferrer'}
+            className={'logo-name'}
+          >
             BORN TO BE ME
           </a>
         </Navbar.Brand>
@@ -206,16 +216,27 @@ function Header(props: Props) {
           </Row>
           <Row>
             <Col xs={12} className={'wallet-col'}>
-              <div className={'wallet-display'}>
-                <p className={'wallet-display-text'}>
-                  <span className={'wallet-connected-dot'}></span>
-                  {props.account?.slice(0, 5)}...
-                  {props.account?.slice(
-                    props.account?.length - 5,
-                    props.account?.length,
-                  )}
-                </p>
-              </div>
+              {!isConnected ? (
+                <Button
+                  variant="dark"
+                  className={'connect-wallet-button'}
+                  onClick={connectAccount}
+                >
+                  <span className={'wallet-disconnected-dot'}></span>
+                  Connect
+                </Button>
+              ) : (
+                <div className={'wallet-display'}>
+                  <p className={'wallet-display-text'}>
+                    <span className={'wallet-connected-dot'}></span>
+                    {props.account?.slice(0, 5)}...
+                    {props.account?.slice(
+                      props.account?.length - 5,
+                      props.account?.length,
+                    )}
+                  </p>
+                </div>
+              )}
             </Col>
           </Row>
         </Navbar.Collapse>

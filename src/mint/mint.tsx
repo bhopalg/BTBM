@@ -13,34 +13,36 @@ import {
 } from 'react-bootstrap';
 import Section1Image from '../assets/images/homepage-section-1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faArrowRight,
+  faPlus,
+  faSubtract,
+} from '@fortawesome/free-solid-svg-icons';
 import BTBM from '../assets/contract/btbm.json';
 import PreSaleList from '../assets/presale-list.json';
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 // @ts-ignore
 import { useSnackbar } from 'react-simple-snackbar';
+import { PreSale } from '../model/model';
+import {
+  BTBM_ADDRESS,
+  MAX_PUBLIC_QUANTITY,
+  MINT_PRICE_ETHER,
+  MINUTE_MS,
+  WL_SALE_DATE,
+} from '../shared/variables';
 
 interface Props {
   account: string | null;
   setAccount: Dispatch<SetStateAction<string | null>>;
 }
 
-interface PreSale {
-  address: string | null;
-  max: number | null;
-  signature: string | null;
-  signer: string | null;
-}
-
-const BTBM_ADDRESS = '0x335B6Eb6E42d146fb28F7b0b618CeF44276D02d6';
-
 function Mint(props: Props) {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 576px) and (max-width: 1224px)',
   });
-  const isConnected = Boolean(props.account);
-  let mintButtonEnabled = false;
   let showSpinner = false;
 
   const errorSnackBar = {
@@ -62,7 +64,7 @@ function Mint(props: Props) {
   const successSnackBar = {
     position: 'center',
     style: {
-      backgroundColor: '#8b0000',
+      backgroundColor: '#238b00',
       border: '2px solid #8b0000',
       color: 'white',
       fontFamily: 'Bebas Neue, monospace',
@@ -77,28 +79,50 @@ function Mint(props: Props) {
 
   const [quantity, setQuantity] = useState<number>(1);
   const [maxQuantity, setMaxQuantity] = useState<number>(1);
-  const [signature, setSignature] = useState<string | null>(null);
   const [openErrorSnackbar] = useSnackbar(errorSnackBar);
   const [openSuccessSnackBar] = useSnackbar(successSnackBar);
-  const [maxMinted, setMaxMinted] = useState<number>(0);
+  const [mintButtonEnabled, setMintButtonEnabled] = useState(false);
+  const [typeOfSale, setTypeOfSale] = useState<'wl' | 'public'>('wl');
 
   useEffect(() => {
-    if (isConnected && window.ethereum) {
-      if (!props.account) return;
-      const paeSaleList = PreSaleList as { [key: string]: PreSale };
-      const preSaleData = paeSaleList[props.account];
+    setMintButtonEnabled(false);
+    // checkMintStart();
+    // const interval = setInterval(() => {
+    //   checkMintStart();
+    // }, MINUTE_MS);
+    //
+    // return () => clearInterval(interval);
+  }, []);
 
-      if (!preSaleData) {
-        mintButtonEnabled = false;
-        openErrorSnackbar('You are not on the WL list');
-        return;
+  async function checkMintStart() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
+
+    if (window.ethereum) {
+      const publicSaleStarted = await contract.publicStarted();
+      if (publicSaleStarted) {
+        setMintButtonEnabled(true);
+        setMaxQuantity(MAX_PUBLIC_QUANTITY);
+        setTypeOfSale('public');
       }
 
-      mintButtonEnabled = true;
-      setMaxQuantity(preSaleData.max ?? 1);
-      setSignature(preSaleData.signature);
+      const wlSaleStarted = await contract.presaleStarted();
+      if (wlSaleStarted) {
+        setMintButtonEnabled(true);
+        setTypeOfSale('wl');
+        const paeSaleList = PreSaleList as { [key: string]: PreSale };
+        const preSaleData = paeSaleList[props.account as string];
+
+        if (!preSaleData) {
+          return;
+        }
+        setMaxQuantity(preSaleData.max ?? 1);
+      } else {
+        setMintButtonEnabled(false);
+      }
     }
-  }, [props.account]);
+  }
 
   function incrementMintAmount() {
     if (quantity === maxQuantity) {
@@ -115,30 +139,82 @@ function Mint(props: Props) {
   }
 
   async function handleMint(e: any) {
-    if (maxMinted === maxQuantity) {
-      openErrorSnackbar('You have minted the max allowed');
-      return;
-    }
-
-    if (window.ethereum) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
-
-      showSpinner = true;
+    if (window.ethereum && props.account) {
       try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
+
         e.preventDefault();
-        await contract.mint(quantity, maxQuantity, signature);
-        setMaxMinted(maxMinted + 1);
-        openSuccessSnackBar('You have successfully minted');
-        showSpinner = false;
+        const wlSaleStarted = await contract.presaleStarted();
+        const publicSaleStarted = await contract.publicStarted();
+
+        if (publicSaleStarted) {
+          const amountMinted = await contract.publicTokensMinted(props.account);
+
+          if (amountMinted === MAX_PUBLIC_QUANTITY) {
+            openErrorSnackbar('MAX MINTED');
+            return;
+          }
+
+          const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
+          const balance: BigNumber = await provider.getBalance(props.account);
+
+          if (balance.lt(value)) {
+            openErrorSnackbar('INSUFFICIENT WALLET BALANCE');
+            return;
+          }
+
+          showSpinner = true;
+
+          await contract.publicMint(quantity, {
+            value,
+          });
+
+          openSuccessSnackBar('MINT INITIATED!');
+          showSpinner = false;
+        } else if (wlSaleStarted) {
+          const preSaleList = PreSaleList as { [key: string]: PreSale };
+          const preSaleData = preSaleList[props.account];
+
+          if (!preSaleData) {
+            openErrorSnackbar('NOT ONE PRESALE LIST');
+            return;
+          }
+
+          const signature = preSaleData.signature;
+          const max = preSaleData.max ?? 1;
+
+          const amountMinted = await contract.tokensMinted(props.account);
+
+          if (amountMinted === max) {
+            openErrorSnackbar('MAX MINTED');
+            return;
+          }
+
+          const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
+          const balance: BigNumber = await provider.getBalance(props.account);
+
+          if (balance.lt(value)) {
+            openErrorSnackbar('INSUFFICIENT WALLET BALANCE');
+            return;
+          }
+          showSpinner = true;
+          await contract.whitelistMint(quantity, max, signature, {
+            value,
+          });
+          openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
+          showSpinner = false;
+        } else {
+          return;
+        }
       } catch (e) {
         showSpinner = false;
         // @ts-ignore error is a type of any
         if (e.code === 4001) {
-          openErrorSnackbar('User denied transaction');
+          openErrorSnackbar('USER DENIED TRANSACTION!');
         } else {
-          openErrorSnackbar('Error minting');
+          openErrorSnackbar('ERROR MINTING!');
         }
       }
     }
@@ -183,7 +259,7 @@ function Mint(props: Props) {
                     onClick={decrementMintAmount}
                     disabled={quantity === 1}
                   >
-                    <FontAwesomeIcon icon={faArrowLeft} />
+                    <FontAwesomeIcon icon={faSubtract} />
                   </button>
                 </Col>
                 <Col xs={6}>
@@ -205,7 +281,7 @@ function Mint(props: Props) {
                     onClick={incrementMintAmount}
                     disabled={quantity === maxQuantity}
                   >
-                    <FontAwesomeIcon icon={faArrowRight} />
+                    <FontAwesomeIcon icon={faPlus} />
                   </button>
                 </Col>
               </Row>
@@ -213,25 +289,38 @@ function Mint(props: Props) {
             <Col xs={12}>
               <Row>
                 <Col>
-                  <OverlayTrigger
-                    placement="bottom"
-                    overlay={
-                      <Tooltip id="tooltip-disabled">Mint not live</Tooltip>
-                    }
-                  >
+                  {!mintButtonEnabled ? (
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={
+                        <Tooltip id="tooltip-disabled">Mint not live</Tooltip>
+                      }
+                    >
+                      <span className="d-inline-block mint-page-button-span">
+                        <Button
+                          onClick={(e) => handleMint(e)}
+                          type={'button'}
+                          disabled={true}
+                          className={'mint-page-button mint-button'}
+                          variant="outline-dark"
+                          style={{ pointerEvents: 'none' }}
+                        >
+                          MINT
+                        </Button>
+                      </span>
+                    </OverlayTrigger>
+                  ) : (
                     <span className="d-inline-block mint-page-button-span">
                       <Button
                         onClick={(e) => handleMint(e)}
                         type={'button'}
-                        disabled={true}
                         className={'mint-page-button mint-button'}
                         variant="outline-dark"
-                        style={{ pointerEvents: 'none' }}
                       >
                         MINT
                       </Button>
                     </span>
-                  </OverlayTrigger>
+                  )}
                 </Col>
               </Row>
             </Col>

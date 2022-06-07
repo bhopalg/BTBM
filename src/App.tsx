@@ -9,6 +9,7 @@ import './App.css';
 import Header from './header/header';
 import Homepage from './homepage/homepage';
 import Mint from './mint/mint';
+import WLChecker from './wl-chcker/wl-checker';
 
 function App() {
   const [account, setAccount] = useState<string | null>(null);
@@ -25,6 +26,7 @@ function App() {
                 path="mint"
                 element={<Mint account={account} setAccount={setAccount} />}
               />
+              <Route path="wl" element={<WLChecker></WLChecker>} />
             </Route>
           </Routes>
         </BrowserRouter>
