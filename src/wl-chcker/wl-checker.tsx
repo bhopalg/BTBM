@@ -83,7 +83,15 @@ function WLChecker() {
                   <Form.Control
                     type="text"
                     placeholder="copy ETH wallet address"
-                    onChange={(e) => setWallet(e.target.value)}
+                    onChange={(e) => {
+                      debugger;
+                      if (e.target.value.length === 42) {
+                        setWallet(e.target.value);
+                      } else {
+                        setWallet('');
+                        setShowCheckerText(false);
+                      }
+                    }}
                   />
                 </Form.Group>
                 <Button className={'wl-checker-button'} onClick={checkWL}>
