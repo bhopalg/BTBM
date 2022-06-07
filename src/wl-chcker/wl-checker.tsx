@@ -58,7 +58,7 @@ function WLChecker() {
               {!showCheckerText ? null : isWL ? (
                 <div>
                   <h3 className={'wl-checker-title wl-successful'}>
-                    CONGRATULATIONS! YOU ARE WHITELISTED!
+                    CONGRATULATIONS! YOU ARE WHITELISTED
                   </h3>
                   <p className={'wl-checker-text wl-successful'}>
                     Address - {wallet}
