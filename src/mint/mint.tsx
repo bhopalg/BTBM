@@ -13,7 +13,7 @@ import {
 } from 'react-bootstrap';
 import Section1Image from '../assets/images/homepage-section-1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faPlus, faSubtract } from '@fortawesome/free-solid-svg-icons';
 import BTBM from '../assets/contract/btbm.json';
 import PreSaleList from '../assets/presale-list.json';
 import { BigNumber, ethers } from 'ethers';
@@ -253,7 +253,7 @@ function Mint(props: Props) {
                     onClick={decrementMintAmount}
                     disabled={quantity === 1}
                   >
-                    <FontAwesomeIcon icon={faArrowLeft} />
+                    <FontAwesomeIcon icon={faSubtract} />
                   </button>
                 </Col>
                 <Col xs={6}>
@@ -275,7 +275,7 @@ function Mint(props: Props) {
                     onClick={incrementMintAmount}
                     disabled={quantity === maxQuantity}
                   >
-                    <FontAwesomeIcon icon={faArrowRight} />
+                    <FontAwesomeIcon icon={faPlus} />
                   </button>
                 </Col>
               </Row>

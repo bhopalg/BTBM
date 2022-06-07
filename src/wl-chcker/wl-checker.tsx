@@ -58,7 +58,7 @@ function WLChecker() {
               {!showCheckerText ? null : isWL ? (
                 <div>
                   <h3 className={'wl-checker-title wl-successful'}>
-                    CONGRATULATIONS YOUR ON THE WL!
+                    CONGRATULATIONS! YOU ARE WHITELISTED!
                   </h3>
                   <p className={'wl-checker-text wl-successful'}>
                     Address - {wallet}
@@ -69,10 +69,10 @@ function WLChecker() {
               ) : (
                 <div>
                   <h3 className={'wl-checker-title wl-unsuccessful'}>
-                    WALLET NOT ON WL!
+                    YOUR WALLET IS NOT ON THE WL!
                   </h3>
                   <p className={'wl-checker-text wl-unsuccessful'}>
-                    Open a ticket in server to resolve the issue.
+                    Please open a support ticket in the discord if you need help.
                   </p>
                 </div>
               )}
@@ -82,7 +82,7 @@ function WLChecker() {
                 <Form.Group>
                   <Form.Control
                     type="text"
-                    placeholder="COPY ETH WALLET ADDRESS NOT ENS NAME"
+                    placeholder="copy ETH wallet address"
                     onChange={(e) => setWallet(e.target.value)}
                   />
                 </Form.Group>
