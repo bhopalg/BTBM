@@ -73,7 +73,7 @@ function WLChecker() {
                   </h3>
                   <p className={'wl-checker-text wl-unsuccessful'}>
                     Please open a support ticket in the discord if you need
-                    help.
+                    help
                   </p>
                 </div>
               )}
