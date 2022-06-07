@@ -171,7 +171,7 @@ function Mint(props: Props) {
             value,
           });
 
-          openSuccessSnackBar('MINT SUCCESSFUL! WELCOME TO THE MEE FAMILY');
+          openSuccessSnackBar('MINT INITIATED!');
           showSpinner = false;
         } else if (wlSaleStarted) {
           const preSaleList = PreSaleList as { [key: string]: PreSale };
