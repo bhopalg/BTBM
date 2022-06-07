@@ -72,7 +72,8 @@ function WLChecker() {
                     YOUR WALLET IS NOT ON THE WL!
                   </h3>
                   <p className={'wl-checker-text wl-unsuccessful'}>
-                    Please open a support ticket in the discord if you need help.
+                    Please open a support ticket in the discord if you need
+                    help.
                   </p>
                 </div>
               )}

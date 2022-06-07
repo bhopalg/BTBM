@@ -13,7 +13,12 @@ import {
 } from 'react-bootstrap';
 import Section1Image from '../assets/images/homepage-section-1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight, faPlus, faSubtract } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faArrowRight,
+  faPlus,
+  faSubtract,
+} from '@fortawesome/free-solid-svg-icons';
 import BTBM from '../assets/contract/btbm.json';
 import PreSaleList from '../assets/presale-list.json';
 import { BigNumber, ethers } from 'ethers';
