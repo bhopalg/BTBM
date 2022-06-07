@@ -85,12 +85,13 @@ function Mint(props: Props) {
   const [typeOfSale, setTypeOfSale] = useState<'wl' | 'public'>('wl');
 
   useEffect(() => {
-    checkMintStart();
-    const interval = setInterval(() => {
-      checkMintStart();
-    }, MINUTE_MS);
-
-    return () => clearInterval(interval);
+    setMintButtonEnabled(false);
+    // checkMintStart();
+    // const interval = setInterval(() => {
+    //   checkMintStart();
+    // }, MINUTE_MS);
+    //
+    // return () => clearInterval(interval);
   }, []);
 
   async function checkMintStart() {
