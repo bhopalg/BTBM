@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Button, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 // @ts-ignore
@@ -25,7 +25,8 @@ function Header(props: Props) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       await provider.send('eth_requestAccounts', []);
       const signer = provider.getSigner();
-      props.setAccount(await signer.getAddress());
+      const account = await signer.getAddress();
+      props.setAccount(account);
     }
   }
 

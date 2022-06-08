@@ -108,6 +108,32 @@ function Mint(props: Props) {
     }
 
 
+  async function incrementAmountChosePublic() {
+    if(amountChose == 10){
+      return
+    }
+
+    await setAmountChose(amountChose +1);
+
+  }
+
+  async function publicMint(mintAmount: any){
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const _signer = provider.getSigner();
+    const address = await _signer.getAddress();
+
+
+    // @ts-ignore
+    const userBalance = await provider.getBalance(address);
+    if(Number(userBalance) < (.055 * (10**18) * amountChose)){
+      setNotEnoughFunds(true);
+      return;
+    }
+    const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, _signer);
+    await contract.publicMint(amountChose,{value:ethers.utils.parseEther(`${amountChose * .055}`)});
+  }
+
+
     // @ts-ignore
    async function decrementAmountChose(){
      if(amountChose <=1){
@@ -116,6 +142,15 @@ function Mint(props: Props) {
 
     await  setAmountChose(amountChose -1);
     }
+
+  // @ts-ignore
+  async function decrementAmountChosePublic(){
+    if(amountChose <=1){
+      return
+    }
+
+    await  setAmountChose(amountChose -1);
+  }
 
     async function whitelistMint(mintAmount:any) {
      
@@ -127,12 +162,12 @@ function Mint(props: Props) {
       try {
         const preSaleList = PreSaleList as { [key: string]: PreSale };
 
-        
+
         //@ts-ignore
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         //@ts-ignore
         const userBalance = await provider.getBalance(props.account);
-        if(Number(userBalance) < (.055 * 10e18 * amountChose)){
+        if(parseInt(userBalance.toString()) < (.055 * (10**18) * amountChose)){
           setNotEnoughFunds(true);
           return;
         } 
@@ -141,10 +176,10 @@ function Mint(props: Props) {
         const preSaleData = preSaleList[props.account];
 
       
-        // if (!preSaleData) {
-        //   setIsWl(false);
-        //   return;
-        // }
+        if (!preSaleData) {
+          setIsWl(false);
+          return;
+        }
 
         const signature = preSaleData.signature;
         const max = preSaleData.max;
@@ -422,7 +457,7 @@ function Mint(props: Props) {
               {totalSupply} / {maxSupply}
             </Col>
             <div style={{display:'flex', flexDirection:'row', alignItems:'center',justifyContent:'center',cursor:'pointer' }}>
-            <p   onClick={() => decrementAmountChose()} style={{display: 'inline-block', fontSize:'4rem',padding:'0 30px' , margin:'auto 0',cursor:'pointer'}}>-</p>
+            <p   onClick={() => decrementAmountChosePublic()} style={{display: 'inline-block', fontSize:'4rem',padding:'0 30px' , margin:'auto 0',cursor:'pointer'}}>-</p>
             <Col xs={6}>
                   <Form.Control
                     type="number"
@@ -432,7 +467,7 @@ function Mint(props: Props) {
                     value={amountChose}
                     readOnly={true}
                   />
-                </Col>            <p onClick={() => incrementAmountChose()} style={{display: 'inline-block', fontSize:'4rem', padding:'0 30px' , margin:'auto 0'}}>+</p>
+                </Col>            <p onClick={() => incrementAmountChosePublic()} style={{display: 'inline-block', fontSize:'4rem', padding:'0 30px' , margin:'auto 0'}}>+</p>
               </div>
           
         
@@ -453,7 +488,7 @@ function Mint(props: Props) {
               {notEnoughFunds && <h1>Insufficient Balance</h1>}
                {showAlreadyMinted && <h1>Already Minted On WL</h1>}
                {!isWl && <h1>Not on Whitelist</h1>}
-                <button style={{fontSize:'2rem'}} onClick={()=>whitelistMint(amountChose)}>MINT</button>
+                <button style={{fontSize:'2rem'}} onClick={()=>publicMint(amountChose)}>MINT</button>
               
                 <Col
                   xs={2}
