@@ -84,6 +84,7 @@ function Mint(props: Props) {
   const [maxSupply, setMaxSupply] = useState(0);
   const[showAlreadyMinted,setShowAlreadyMinted] = useState(false);
   const[isWl,setIsWl] = useState(true);
+  const[notEnoughFunds,setNotEnoughFunds] = useState(false);
   
 
   useEffect(() => {
@@ -130,6 +131,7 @@ function Mint(props: Props) {
         //@ts-ignore
         const preSaleData = preSaleList[props.account];
 
+      
         if (!preSaleData) {
           setIsWl(false);
           return;
@@ -138,8 +140,20 @@ function Mint(props: Props) {
         const signature = preSaleData.signature;
         const max = preSaleData.max;
         const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+        //@ts-ignore
+        const userBalance = await provider.getBalance(props.account);
+        if(userBalance < ethers.utils.parseEther(`${amountChose * .055}`)){
+          setNotEnoughFunds(true);
+          return;
+        }
+
+
+
         const signer = provider.getSigner();
         const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
+
+
 
         const didMint = await contract.tokensMinted(props.account) > 0 ? true : false
         if(didMint == true) {
@@ -431,6 +445,7 @@ function Mint(props: Props) {
                     <FontAwesomeIcon icon={faSubtract} />
                   </button> */}
                 </Col>
+              {notEnoughFunds && <h1>Insufficient Balance</h1>}
                {showAlreadyMinted && <h1>Already Minted On WL</h1>}
                {!isWl && <h1>Not on Whitelist</h1>}
                 <button style={{fontSize:'2rem'}} onClick={()=>whitelistMint(amountChose)}>MINT</button>
