@@ -125,7 +125,7 @@ function Mint(props: Props) {
 
     // @ts-ignore
     const userBalance = await provider.getBalance(address);
-    if(Number(userBalance) < (.055 * (10**18) * amountChose)){
+    if(Number(userBalance) < (.001 * (10**18) * amountChose)){
       setNotEnoughFunds(true);
       return;
     }
