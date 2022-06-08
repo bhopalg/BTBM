@@ -21,7 +21,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/">
-              <Route index element={<Homepage />} />
+              <Route index element={<Homepage account={account} setAccount={setAccount} />} />
               <Route
                 path="mint"
                 element={<Mint account={account} setAccount={setAccount} />}

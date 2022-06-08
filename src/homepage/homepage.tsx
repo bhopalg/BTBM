@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { fadeIn, merge, slideInLeft } from 'react-animations';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -16,9 +16,16 @@ import Timeline from './timeline/timeline';
 import MeetTeam from './meet-team/meet-team';
 import FAQ from './faq/faq';
 import Footer from '../footer/footer';
-import { MINUTE_MS, WL_SALE_DATE } from '../shared/variables';
+import { BTBM_ADDRESS, MINUTE_MS, WL_SALE_DATE } from '../shared/variables';
+import { ethers } from 'ethers';
+import BTBM from '../assets/contract/btbm.json';
 
-function Homepage() {
+interface Props {
+  account: string | null;
+  setAccount: Dispatch<SetStateAction<string | null>>;
+}
+
+function Homepage(props: Props) {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 576px) and (max-width: 1224px)',
@@ -42,6 +49,86 @@ function Homepage() {
       animationDuration: '2s',
     },
   });
+
+  const mintButton = <OverlayTrigger
+    placement="top"
+    overlay={<Tooltip id="tooltip-disabled">Please Connect Wallet</Tooltip>}
+  >
+              <span className="d-inline-block">
+                <Button
+                  disabled={true}
+                  className={'mint-button'}
+                  variant="outline-dark"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  MINT
+                </Button>
+              </span>
+  </OverlayTrigger>;
+
+  const [mintButtonState, setMintButtonState] = useState(mintButton);
+
+  useEffect(() => {
+    checkMintStarted();
+    const interval = setInterval(() => {
+      checkMintStarted();
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval);
+
+  }, [props.account]);
+
+  async function checkMintStarted() {
+    if (!props.account) {
+      setMintButtonState(mintButton);
+      return;
+    }
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
+
+    const wlSaleStarted = await contract.presaleStarted();
+    const publicSaleStarted = await contract.publicStarted();
+
+    if (wlSaleStarted || publicSaleStarted) {
+      setMintButtonState(
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip id="tooltip">Click to visit mint page</Tooltip>}
+        >
+              <span className="d-inline-block">
+                <Button
+                  className={'mint-button'}
+                  variant="outline-dark"
+                  href={'/mint'}
+                >
+                  MINT
+                </Button>
+              </span>
+        </OverlayTrigger>
+      );
+    } else {
+      setMintButtonState(
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip id="tooltip-disabled">Mint not live yet</Tooltip>}
+        >
+              <span className="d-inline-block">
+                <Button
+                  disabled={true}
+                  className={'mint-button'}
+                  variant="outline-dark"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  MINT
+                </Button>
+              </span>
+        </OverlayTrigger>
+      );
+    }
+
+  }
 
   let containerClassName = '';
   if (isMobile) {
@@ -83,33 +170,7 @@ function Homepage() {
           </Row>
         </Col>
         <Col xs={12}>
-          {!mintButtonEnabled ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip id="tooltip-disabled">Mint not live</Tooltip>}
-            >
-              <span className="d-inline-block">
-                <Button
-                  disabled={true}
-                  className={'mint-button'}
-                  variant="outline-dark"
-                  style={{ pointerEvents: 'none' }}
-                >
-                  MINT
-                </Button>
-              </span>
-            </OverlayTrigger>
-          ) : (
-            <span className="d-inline-block">
-              <Button
-                className={'mint-button'}
-                variant="outline-dark"
-                href={'/mint'}
-              >
-                MINT
-              </Button>
-            </span>
-          )}
+          {mintButtonState}
         </Col>
       </Row>
       <Merch />
