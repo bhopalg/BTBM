@@ -76,6 +76,7 @@ function Mint(props: Props) {
   };
 
   const [quantity, setQuantity] = useState<number>(1);
+  const[amountChose,setAmountChose] = useState<any>(1);
   const [maxQuantity, setMaxQuantity] = useState<number>(1);
   const [openErrorSnackbar] = useSnackbar(errorSnackBar);
   const [openSuccessSnackBar] = useSnackbar(successSnackBar);
@@ -90,6 +91,51 @@ function Mint(props: Props) {
 
     return () => clearInterval(interval);
   }, []);
+
+
+  // @ts-ignore
+    async function incrementAmountChose() {
+      if(amountChose == maxQuantity){
+        return
+      }
+
+      await setAmountChose(amountChose +1);
+
+    }
+
+
+    // @ts-ignore
+   async function decrementAmountChose(){
+     if(amountChose <=1){
+       return
+     }
+
+    await  setAmountChose(amountChose -1);
+    }
+
+    async function whitelistMint(mintAmount:any) {
+      console.log(mintAmount);
+
+      
+
+      try {
+        const preSaleList = PreSaleList as { [key: string]: PreSale };
+        //@ts-ignore
+        const preSaleData = preSaleList[props.account];
+        const signature = preSaleData.signature;
+        const max = preSaleData.max;
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
+
+        console.log(amountChose,max,signature);
+        await contract.whitelistMint(amountChose,max,signature,{value: ethers.utils.parseEther(`${amountChose * .055}`)});
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
 
   async function setUpCounter() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -156,7 +202,10 @@ function Mint(props: Props) {
           >
                 <span className="d-inline-block mint-page-button-span">
                   <Button
-                    onClick={() => {handleMint();}}
+                    onClick={() => {
+                      // //handleMint(amountChose);
+                      whitelistMint(amountChose);
+                    }}
                     type={'button'}
                     className={'mint-page-button mint-button'}
                     variant="outline-dark"
@@ -218,8 +267,8 @@ function Mint(props: Props) {
     setQuantity(quantity - 1);
   }
 
-  async function handleMint() {
-    console.log(quantity)
+  async function handleMint(mintAmount:any) {
+    console.log('quantity inside function =', mintAmount)
     if (window.ethereum && props.account) {
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -239,7 +288,7 @@ function Mint(props: Props) {
             return;
           }
 
-          const value: BigNumber = mintEtherPrice.mul(quantity);
+          const value: BigNumber = mintEtherPrice.mul(mintAmount);
           const balance: BigNumber = await provider.getBalance(props.account);
 
           if (balance.lt(value)) {
@@ -248,7 +297,7 @@ function Mint(props: Props) {
           }
 
           showSpinner = true;
-          await contract.publicMint(quantity, {
+          await contract.publicMint(mintAmount, {
             value,
           });
 
@@ -273,7 +322,7 @@ function Mint(props: Props) {
             return;
           }
 
-          const value: BigNumber = MINT_PRICE_ETHER.mul(quantity);
+          const value: BigNumber = MINT_PRICE_ETHER.mul(mintAmount);
           const balance: BigNumber = await provider.getBalance(props.account);
 
           if (balance.lt(value)) {
@@ -281,7 +330,7 @@ function Mint(props: Props) {
             return;
           }
           showSpinner = true;
-          await contract.whitelistMint(quantity, max, signature, {
+          await contract.whitelistMint(amountChose, max, signature, {
             value,
           });
           openSuccessSnackBar('MINT INITIATED!');
@@ -332,49 +381,56 @@ function Mint(props: Props) {
             <Col xs={12} className={'mint-counter'}>
               {totalSupply} / {maxSupply}
             </Col>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center',justifyContent:'center' }}>
+            <p   onClick={() => decrementAmountChose()} style={{display: 'inline-block', fontSize:'4rem',padding:'0 30px' , margin:'auto 0'}}>-</p>
+            <Col xs={6}>
+                  <Form.Control
+                    type="number"
+                    min={1}
+                    max={maxQuantity}
+                    aria-describedby="amount"
+                    value={amountChose}
+                    readOnly={true}
+                  />
+                </Col>            <p onClick={() => incrementAmountChose()} style={{display: 'inline-block', fontSize:'4rem', padding:'0 30px' , margin:'auto 0'}}>+</p>
+              </div>
+          
+        
             <Col xs={12}>
               <Row className={'mint-input-section'}>
                 <Col
                   xs={2}
                   className={'mint-input-arrows mint-input-arrow-left'}
                 >
-                  <button
+                  {/* <button
                     className={'mint-amount-buttons'}
-                    onClick={() => decrementMintAmount()}
+                    onClick={async () => {await decrementAmountChose(); console.log(amountChose)}}
                     //disabled={quantity === 1}
                   >
                     <FontAwesomeIcon icon={faSubtract} />
-                  </button>
+                  </button> */}
                 </Col>
-                <Col xs={6}>
-                  <Form.Control
-                    type="number"
-                    min={1}
-                    max={maxQuantity}
-                    aria-describedby="amount"
-                    value={quantity}
-                    readOnly={true}
-                  />
-                </Col>
+                <button style={{fontSize:'2rem'}} onClick={()=>whitelistMint(amountChose)}>MINT</button>
+              
                 <Col
                   xs={2}
                   className={'mint-input-arrows mint-input-arrow-right'}
                 >
-                  <button
+                  {/* <button
                     className={'mint-amount-buttons'}
-                    onClick={() => {incrementMintAmount(); console.log(quantity)}}
+                    onClick={async () => {await incrementAmountChose(); console.log(amountChose)}}
                     //disabled={quantity === maxQuantity}
                   >
                     <FontAwesomeIcon icon={faPlus} />
-                  </button>
+                  </button> */}
                 </Col>
               </Row>
             </Col>
             <Col xs={12}>
               <Row>
-                <Col>
+                {/* <Col>
                   {mintButtonState}
-                </Col>
+                </Col> */}
               </Row>
             </Col>
           </Row>
