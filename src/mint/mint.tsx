@@ -130,7 +130,7 @@ function Mint(props: Props) {
       return;
     }
     const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, _signer);
-    await contract.publicMint(amountChose,{value:ethers.utils.parseEther(`${amountChose * .055}`)});
+    await contract.publicMint(amountChose,{value:ethers.utils.parseEther(`${amountChose * .001}`)});
   }
 
 
