@@ -146,7 +146,7 @@ function Mint(props: Props) {
 
     if (window.ethereum) {
       const publicSaleStarted = await contract.publicStarted();
-      const wlSaleStarted = await contract.presaleStarted();
+      const wlSaleStarted = true
 
       if (wlSaleStarted || publicSaleStarted) {
         setMintButtonState(
@@ -156,7 +156,7 @@ function Mint(props: Props) {
           >
                 <span className="d-inline-block mint-page-button-span">
                   <Button
-                    onClick={(e) => handleMint(e)}
+                    onClick={() => {handleMint();}}
                     type={'button'}
                     className={'mint-page-button mint-button'}
                     variant="outline-dark"
@@ -205,28 +205,29 @@ function Mint(props: Props) {
   }
 
   function incrementMintAmount() {
-    if (quantity === maxQuantity) {
-      return;
-    }
+    // if (quantity === maxQuantity) {
+    //   return;
+    // }
 
     setQuantity(quantity + 1);
   }
 
   function decrementMintAmount() {
-    if (quantity === 1) return;
+    // if (quantity === 1) return;
 
     setQuantity(quantity - 1);
   }
 
-  async function handleMint(e: any) {
+  async function handleMint() {
+    console.log(quantity)
     if (window.ethereum && props.account) {
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
 
-        e.preventDefault();
-        const wlSaleStarted = await contract.presaleStarted();
+        //e.preventDefault();
+        const wlSaleStarted = true
         const publicSaleStarted = await contract.publicStarted();
         const mintEtherPrice: BigNumber = await contract.price();
 
@@ -247,7 +248,6 @@ function Mint(props: Props) {
           }
 
           showSpinner = true;
-
           await contract.publicMint(quantity, {
             value,
           });
@@ -340,8 +340,8 @@ function Mint(props: Props) {
                 >
                   <button
                     className={'mint-amount-buttons'}
-                    onClick={decrementMintAmount}
-                    disabled={quantity === 1}
+                    onClick={() => decrementMintAmount()}
+                    //disabled={quantity === 1}
                   >
                     <FontAwesomeIcon icon={faSubtract} />
                   </button>
@@ -362,8 +362,8 @@ function Mint(props: Props) {
                 >
                   <button
                     className={'mint-amount-buttons'}
-                    onClick={incrementMintAmount}
-                    disabled={quantity === maxQuantity}
+                    onClick={() => {incrementMintAmount(); console.log(quantity)}}
+                    //disabled={quantity === maxQuantity}
                   >
                     <FontAwesomeIcon icon={faPlus} />
                   </button>
