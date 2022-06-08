@@ -3,7 +3,8 @@ import { ethers } from 'ethers';
 const mainnetAddress = '0x114DD039F2575468dFe8312e22B58Aab9Af8482B';
 const testnetAddress = '0x33d7942424C39644475ae3911e09db6a866fE8d9';
 
-export const BTBM_ADDRESS = mainnetAddress;
+// TODO Change
+export const BTBM_ADDRESS = testnetAddress;
 
 export const MINT_PRICE_ETHER = ethers.utils.parseEther('.055');
 export const MINUTE_MS = 5000;
