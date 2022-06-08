@@ -381,8 +381,8 @@ function Mint(props: Props) {
             <Col xs={12} className={'mint-counter'}>
               {totalSupply} / {maxSupply}
             </Col>
-            <div style={{display:'flex', flexDirection:'row', alignItems:'center',justifyContent:'center' }}>
-            <p   onClick={() => decrementAmountChose()} style={{display: 'inline-block', fontSize:'4rem',padding:'0 30px' , margin:'auto 0'}}>-</p>
+            <div style={{display:'flex', flexDirection:'row', alignItems:'center',justifyContent:'center',cursor:'pointer' }}>
+            <p   onClick={() => decrementAmountChose()} style={{display: 'inline-block', fontSize:'4rem',padding:'0 30px' , margin:'auto 0',cursor:'pointer'}}>-</p>
             <Col xs={6}>
                   <Form.Control
                     type="number"
