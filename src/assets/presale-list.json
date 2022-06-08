@@ -31,7 +31,7 @@
   },
   "0x674f48a59e381be0a608bc6da3cce5521f718565": {
     "max": 1,
-    "address": "0x674f48a59e381be0a608bc6da3cce5521f718565",
+    "address": "0x674f48A59e381be0a608Bc6dA3cCe5521F718565",
     "signature": "0x88fb7a74419320ef67ab4a827f49b12f9b1b257d4981cb90c91f63dddfaf48486c94affeb4143cbc010f2038d414cb6fc7b67b753e4b5b49a935d18407dc92e61c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -301,7 +301,7 @@
   },
   "0xb4b977f93b260ba5aa46f5bb054acf31eea241b8": {
     "max": 1,
-    "address": "0xb4b977f93b260ba5aa46f5bb054acf31eea241b8",
+    "address": "0xb4b977f93B260BA5Aa46f5bB054ACf31Eea241b8",
     "signature": "0xd3c1a954342da7d3f7e3cee09f35acdde525cdecfc529c9b64e8d8556cef6b6a556a111570af5312b70129dd32a65762867825ca89e814d9badf2c4e20e1a3ca1b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -733,7 +733,7 @@
   },
   "0xc758921302a979fd28f6dba6b95276c93e6ade07": {
     "max": 1,
-    "address": "0xc758921302a979fd28f6dba6b95276c93e6ade07",
+    "address": "0xc758921302a979fd28f6DBA6b95276c93E6aDe07",
     "signature": "0xcfe3b3b5dfe3dabb6e1b60403f886ae236a776611f0aa06e1c026afb5cab4aaf76caafc04678ee6a30c0ae1d01c9fd1575ffb5d805c208ca8a5a9d73627ae6691c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -1513,7 +1513,7 @@
   },
   "0x9b49d5b5d938d60f6852ee4ea493009381e9417f": {
     "max": 1,
-    "address": "0x9b49d5b5d938d60f6852ee4ea493009381e9417f",
+    "address": "0x9b49d5b5D938D60F6852eE4ea493009381e9417F",
     "signature": "0x3c9b3d192d813cc9921e74aa97ac1f74fb6d109e931b3cec7bd925b6edd5c58c7f5898b4987939eb042aec7be44c13294bfd5b3fda012e3a44cbb8bd621a37781b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -2329,7 +2329,7 @@
   },
   "0xa5c08e76debbfcea4add1bf232e6728ad40b552d": {
     "max": 1,
-    "address": "0xa5c08e76debbfcea4add1bf232e6728ad40b552d",
+    "address": "0xa5C08e76dEbbFCea4aDd1bf232e6728Ad40B552d",
     "signature": "0x9c556ece0d6428e01765673ea102b5497d8b28264b41913b677d651b93bae3955fbed52eafc3888988d19cb94a1571074dfc8dbd48c813761db27f47c1d71a0e1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -2851,7 +2851,7 @@
   },
   "0xc5a18b90ac160f5e858a3ded971f391dcdeb08ae": {
     "max": 1,
-    "address": "0xc5a18b90ac160f5e858a3ded971f391dcdeb08ae",
+    "address": "0xc5a18b90aC160f5e858A3DEd971f391DCdeb08ae",
     "signature": "0x8284bf65c29612a21a89462b0a7b4affa7de9ff21e01d6ab1b91ff1cf666384e4a5241c78de2370aec246f41d7798dc90d39d74110fc26584c0fd5eebf482b4c1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -2977,7 +2977,7 @@
   },
   "0xf3c84e5cc17e59a78f2fdd5500babd61023ac830": {
     "max": 1,
-    "address": "0xf3c84e5cc17e59a78f2fdd5500babd61023ac830",
+    "address": "0xF3c84E5cc17E59a78F2fdd5500BABD61023aC830",
     "signature": "0xc522fdc6055526c1aa9702b3c9f0576fc17028eb31afc5a57e4591b9122ffdc84ae0a81529f3572db07e625a0bb6f0dd436ed2073dd47718be3eb958945c46b81b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -3217,7 +3217,7 @@
   },
   "0x58c6041b2de4eeeeb39689a20e057323704f8b87": {
     "max": 1,
-    "address": "0x58c6041b2de4eeeeb39689a20e057323704f8b87",
+    "address": "0x58C6041b2De4eeeeb39689A20e057323704F8B87",
     "signature": "0xa99d07b9c68e90689645f5a00b34bcb673023cc478582953867493213c91fe2b2ba729e651c60b0a37552c76265f4df2cc6a136f3293c374faddddbb878b9bda1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -3277,7 +3277,7 @@
   },
   "0xe1b44d41c19088959b0394c7f1a0211e5478622e": {
     "max": 1,
-    "address": "0xe1b44d41c19088959b0394c7f1a0211e5478622e",
+    "address": "0xE1B44D41C19088959B0394C7f1a0211e5478622E",
     "signature": "0x8a34a20fdc464aa753d203cbc18a9d30692c26c06dc9362c2e57f7b3adfb931209e75e9aa146b771429279526a6c9dc6c4d0cb4e3fd0e746d2e3e674823efd101c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -4495,7 +4495,7 @@
   },
   "0x7b9dbe2aa1df8a11ae5fd46f2b4d36ec0a4f3dce": {
     "max": 1,
-    "address": "0x7b9dbe2aa1df8a11ae5fd46f2b4d36ec0a4f3dce",
+    "address": "0x7B9DbE2Aa1Df8a11aE5FD46f2b4D36EC0a4F3Dce",
     "signature": "0xd2e5b112eabf2dc400b4fd3b24811f3ff67462c10225f6398f0d8b326499cc94522327173907393694fc8db79fa6cbadf9e4a917b541a1c9bbf97a52cb50a8691b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -4627,7 +4627,7 @@
   },
   "0x7b31b83bdac324d9b3004cf976b01c57e1617788": {
     "max": 1,
-    "address": "0x7b31b83bdac324d9b3004cf976b01c57e1617788",
+    "address": "0x7B31b83bdAC324D9b3004cf976b01c57e1617788",
     "signature": "0x9568af1f15676edc35397604c6d1deb29e931d605d8386819c8ace014b1048f90e7c85594f5d485514f71948283b95104d04c44590ecd7ff21f8aa266d9b249e1b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -5527,7 +5527,7 @@
   },
   "0x1feaccb479834998bd7750754062347a6fad8f9f": {
     "max": 1,
-    "address": "0x1feaccb479834998bd7750754062347a6fad8f9f",
+    "address": "0x1FEACcB479834998BD7750754062347A6FaD8F9F",
     "signature": "0xf9f6a08306f236e874134762e46062bddf3af387d064c7b2f4746842743e31644c9ff1f0c96ef031263d95b08cbbb314c0c95a3b94d91e00f15da0fd93b5e9b81c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -5551,7 +5551,7 @@
   },
   "0x4724fb7ec65e4360db673ce6354918b094315a85": {
     "max": 1,
-    "address": "0x4724fb7ec65e4360db673ce6354918b094315a85",
+    "address": "0x4724fB7Ec65E4360dB673ce6354918B094315A85",
     "signature": "0xfa98608e600e12c3b5e88af0fdeac1a87bea99b73957deda92b3f793c8ec74ee12a85396d9deb9243d3916bdb6a380a718786982813f028937201fa3c02a106b1b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -5737,7 +5737,7 @@
   },
   "0x2001d6d916246f4475aff9ca4093b5fc992142b5": {
     "max": 1,
-    "address": "0x2001d6d916246f4475aff9ca4093b5fc992142b5",
+    "address": "0x2001d6D916246f4475aff9Ca4093B5Fc992142b5",
     "signature": "0x45e1a1df205fdf6f01e764e9aeaa044ae45493c86df5ac72ca1ac2e3e615812b44d92c166ed363e4a4fbeeffe68770f73ae252d08616e35d07297b115311fa7a1b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -6013,7 +6013,7 @@
   },
   "0x83c1baf7de0f9846f0fac84fab2b3242e43c25a7": {
     "max": 1,
-    "address": "0x83c1baf7de0f9846f0fac84fab2b3242e43c25a7",
+    "address": "0x83C1BAF7DE0f9846F0faC84FaB2B3242E43C25A7",
     "signature": "0x6aae2fc56030532ce92a5447b2fb6e062b8281c41479f4eac3d31a2188d1e48533140c1006b211a8f1340cffd21cf2bce2715d2367dd0178c9c0e4e57e2eb6ae1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -6289,7 +6289,7 @@
   },
   "0x928d4a6d9baffca12e05bf005d5c8490ab7d7cb7": {
     "max": 1,
-    "address": "0x928d4a6d9baffca12e05bf005d5c8490ab7d7cb7",
+    "address": "0x928D4a6d9BAfFca12e05Bf005D5c8490Ab7D7cb7",
     "signature": "0x450c0463ed2b1cda582a65dabe7b6923ca32b0aa608dc283cedd6b665b195f3f2883f7b3648771e6146859dcd54d3e423809da1c5a206afb508d8492b530cae61c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -6613,7 +6613,7 @@
   },
   "0x1fda603bf6325d52d8213e873fb5c8c9ea68a74f": {
     "max": 1,
-    "address": "0x1fda603bf6325d52d8213e873fb5c8c9ea68a74f",
+    "address": "0x1fdA603Bf6325D52D8213e873FB5c8c9EA68a74f",
     "signature": "0xcc733fc964eccfa6319c826c1b1957217aba50f55e5a299e5a11587f3c64faee40191bff927466881683736308961c3ea7024df03a33e43e9dce1d731351c5ae1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -6649,7 +6649,7 @@
   },
   "0x8c3045bf1ff5937cf4e942ce2a71158da6215925": {
     "max": 1,
-    "address": "0x8c3045bf1ff5937cf4e942ce2a71158da6215925",
+    "address": "0x8C3045Bf1FF5937cF4E942CE2A71158Da6215925",
     "signature": "0x08e515f56d6d925851514a7aa097662671d546fb52661cc1555116839259623737db42d5fa6f53c872e1fb930e909118151ca267aa75c98636e746f068595dff1b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -6931,7 +6931,7 @@
   },
   "0x4a8eb23221975417dd5bf41347bdca2c88833ebd": {
     "max": 1,
-    "address": "0x4a8eb23221975417dd5bf41347bdca2c88833ebd",
+    "address": "0x4a8eb23221975417DD5BF41347bdCA2c88833EBD",
     "signature": "0x7e615e38c0625bddfe1cd6f73e1d43ec0b629374561ba56c7118437a8616c28e2b13777fa88afd34df7f101303b2b7c0578f155e149ac137b4eff03d6a44e41a1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -7225,7 +7225,7 @@
   },
   "0x6f0ec51a64ed261f3a0f7a6c3ea9dc7934462144": {
     "max": 1,
-    "address": "0x6f0ec51a64ed261f3a0f7a6c3ea9dc7934462144",
+    "address": "0x6F0Ec51a64ed261f3A0F7a6c3Ea9dC7934462144",
     "signature": "0x32c1ad8be4e024e0ea4ea84e38f53c46c26ea33c05bbd364c97523910a2c620b2aedd8c28bc086f7c2b70afa5a99f451353f8496972337d5075150b85c55a85b1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -9787,7 +9787,7 @@
   },
   "0x9384765bd7da4db4ae1c72de789052cb6de67bf4": {
     "max": 2,
-    "address": "0x9384765bd7da4db4ae1c72de789052cb6de67bf4",
+    "address": "0x9384765bd7DA4db4ae1c72De789052cB6dE67bf4",
     "signature": "0xe2afec4cc977db500506fce6ac1d15b8f227b1f7e935f646bd76388bc83a7f3f738737ef27a2f2409ab4706b991d42b19624f461b4227606d1482fd3e5547b5c1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -9931,7 +9931,7 @@
   },
   "0x3723ffcc9007567d1ed7fbf624e5b2430ae30760": {
     "max": 2,
-    "address": "0x3723ffcc9007567d1ed7fbf624e5b2430ae30760",
+    "address": "0x3723ffCC9007567D1ed7FbF624E5b2430ae30760",
     "signature": "0x296ac3e91880b940b53f9594330b3859a8c0ee821583426338bc70bb94f122d16e53c6d28d8f41a87da2ec428a1b97a17adbfffd411801d094c777d17215941e1c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -10345,7 +10345,7 @@
   },
   "0x528d8d094a5816a29bf99e2acdf50c4b2ce7ce94": {
     "max": 2,
-    "address": "0x528d8d094a5816a29bf99e2acdf50c4b2ce7ce94",
+    "address": "0x528d8d094A5816A29BF99E2acDf50C4B2Ce7ce94",
     "signature": "0x3a82cf7d6df89d0839100008a5576f73634d26d4c6ca236002945383da9b7dd95d69effd2677dfab0e60cea0e24f133a977551e7d6adcfba3d94a43787c5725d1b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -10699,7 +10699,7 @@
   },
   "0x6f79367180eb7467595a37741766c5a9bc7e180d": {
     "max": 2,
-    "address": "0x6f79367180eb7467595a37741766c5a9bc7e180d",
+    "address": "0x6f79367180Eb7467595A37741766C5a9bc7e180d",
     "signature": "0xbb6c534c645baa161bb77a0eadde1c0ef09bdd335ab6c9487f325b6eb4e370e16c5090dba430dfe3e2a0aff61e743e80ef426e79c4304a27ee36a8b8898268651c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -10855,7 +10855,7 @@
   },
   "0xfb537262f8d7cb5aa9bccb2b7d0201b6048aefa3": {
     "max": 2,
-    "address": "0xfb537262f8d7cb5aa9bccb2b7d0201b6048aefa3",
+    "address": "0xFB537262f8d7cB5Aa9bCcB2b7d0201B6048AefA3",
     "signature": "0xdd4d3b57447a4a22852ceae58587611bfb377c9e03ba10c6be08cc616804c9c040ee7cbaaf5379b6da49a681454c77f699c10a147afa737190fc3c1594a0a7921c",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
@@ -12313,7 +12313,7 @@
   },
   "0x4c695a0bcff2c690689fc2ecf8f803fbe3d0943f": {
     "max": 3,
-    "address": "0x4c695a0bcff2c690689fc2ecf8f803fbe3d0943f",
+    "address": "0x4C695a0bCFf2C690689fC2EcF8F803Fbe3d0943f",
     "signature": "0xf2bad82706e4295be280c8e898064f74895ff22e85010668ba5edede23f5f032356fddaf7a32b1b2a6908daf6d9f3382428983294b4415526c5585d9d418547a1b",
     "signer": "0xB4383955C070a2C49FefC940d4aCADE471cBcE2b"
   },
