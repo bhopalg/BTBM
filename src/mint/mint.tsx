@@ -32,6 +32,10 @@ interface Props {
   setAccount: Dispatch<SetStateAction<string | null>>;
 }
 
+//   and the tooltip should change to say : please connect wallet
+// and when they have connected it should say : mint not live yet
+// and if mint is live - should say nothing ; just hit mint
+
 function Mint(props: Props) {
   const isMobile = useMediaQuery({ query: '(max-width: 576px)' });
   const isTablet = useMediaQuery({
@@ -75,15 +79,12 @@ function Mint(props: Props) {
   const [maxQuantity, setMaxQuantity] = useState<number>(1);
   const [openErrorSnackbar] = useSnackbar(errorSnackBar);
   const [openSuccessSnackBar] = useSnackbar(successSnackBar);
-  const [mintButtonEnabled, setMintButtonEnabled] = useState(false);
   const [totalSupply, setTotalSupply] = useState(0);
   const [maxSupply, setMaxSupply] = useState(0);
 
   useEffect(() => {
-    checkMintStart();
     setUpCounter();
     const interval = setInterval(() => {
-      checkMintStart();
       setUpCounter();
     }, MINUTE_MS);
 
@@ -104,30 +105,101 @@ function Mint(props: Props) {
     }
   }
 
-  async function checkMintStart() {
+  const mintButton = <OverlayTrigger
+    placement="bottom"
+    overlay={
+      <Tooltip id="tooltip-disabled">Please Connect Wallet</Tooltip>
+    }>
+        <span className="d-inline-block mint-page-button-span">
+          <Button
+            type={'button'}
+            disabled={true}
+            className={'mint-page-button mint-button'}
+            variant="outline-dark"
+            style={{ pointerEvents: 'none' }}
+          >
+            MINT
+          </Button>
+        </span>
+  </OverlayTrigger>;
+
+  const [mintButtonState, setMintButtonState] = useState(mintButton);
+
+  useEffect(() => {
+    checkMintStarted();
+    const interval = setInterval(() => {
+      checkMintStarted();
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval);
+  }, [props.account]);
+
+  async function checkMintStarted() {
+    if (!props.account) {
+      setMintButtonState(mintButton);
+      return;
+    }
+
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
 
     if (window.ethereum) {
       const publicSaleStarted = await contract.publicStarted();
-      if (publicSaleStarted) {
-        setMintButtonEnabled(true);
-        setMaxQuantity(MAX_PUBLIC_QUANTITY);
-      }
-
       const wlSaleStarted = await contract.presaleStarted();
-      if (wlSaleStarted) {
-        setMintButtonEnabled(true);
-        const paeSaleList = PreSaleList as { [key: string]: PreSale };
-        const preSaleData = paeSaleList[props.account as string];
 
-        if (!preSaleData) {
-          return;
+      if (wlSaleStarted || publicSaleStarted) {
+        setMintButtonState(
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip id="tooltip">Just hit mint</Tooltip>}
+          >
+                <span className="d-inline-block mint-page-button-span">
+                  <Button
+                    onClick={(e) => handleMint(e)}
+                    type={'button'}
+                    className={'mint-page-button mint-button'}
+                    variant="outline-dark"
+                  >
+                    MINT
+                  </Button>
+                </span>
+          </OverlayTrigger>
+        );
+
+        if (publicSaleStarted) {
+          setMaxQuantity(MAX_PUBLIC_QUANTITY);
+        } else if (wlSaleStarted) {
+          const paeSaleList = PreSaleList as { [key: string]: PreSale };
+          const preSaleData = paeSaleList[props.account as string];
+
+          if (!preSaleData) {
+            return;
+          }
+          setMaxQuantity(preSaleData.max ?? 1);
+        } else {
+          setMaxQuantity(0);
         }
-        setMaxQuantity(preSaleData.max ?? 1);
       } else {
-        setMintButtonEnabled(false);
+        setMintButtonState(
+          <OverlayTrigger
+            placement="bottom"
+            overlay={
+              <Tooltip id="tooltip-disabled">Mint not live yet</Tooltip>
+            }>
+              <span className="d-inline-block mint-page-button-span">
+                <Button
+                  type={'button'}
+                  disabled={true}
+                  className={'mint-page-button mint-button'}
+                  variant="outline-dark"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  MINT
+                </Button>
+              </span>
+          </OverlayTrigger>
+        );
       }
     }
   }
@@ -301,38 +373,7 @@ function Mint(props: Props) {
             <Col xs={12}>
               <Row>
                 <Col>
-                  {!mintButtonEnabled ? (
-                    <OverlayTrigger
-                      placement="bottom"
-                      overlay={
-                        <Tooltip id="tooltip-disabled">Mint not live</Tooltip>
-                      }
-                    >
-                      <span className="d-inline-block mint-page-button-span">
-                        <Button
-                          onClick={(e) => handleMint(e)}
-                          type={'button'}
-                          disabled={true}
-                          className={'mint-page-button mint-button'}
-                          variant="outline-dark"
-                          style={{ pointerEvents: 'none' }}
-                        >
-                          MINT
-                        </Button>
-                      </span>
-                    </OverlayTrigger>
-                  ) : (
-                    <span className="d-inline-block mint-page-button-span">
-                      <Button
-                        onClick={(e) => handleMint(e)}
-                        type={'button'}
-                        className={'mint-page-button mint-button'}
-                        variant="outline-dark"
-                      >
-                        MINT
-                      </Button>
-                    </span>
-                  )}
+                  {mintButtonState}
                 </Col>
               </Row>
             </Col>
