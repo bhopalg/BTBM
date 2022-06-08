@@ -68,7 +68,6 @@
     "@types/react-vertical-timeline-component": "^3.3.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^8.0.1",
     "prettier": "^2.6.2"
   }
 }

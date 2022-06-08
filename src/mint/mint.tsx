@@ -76,17 +76,33 @@ function Mint(props: Props) {
   const [openErrorSnackbar] = useSnackbar(errorSnackBar);
   const [openSuccessSnackBar] = useSnackbar(successSnackBar);
   const [mintButtonEnabled, setMintButtonEnabled] = useState(false);
-  const [typeOfSale, setTypeOfSale] = useState<'wl' | 'public'>('wl');
+  const [totalSupply, setTotalSupply] = useState(0);
+  const [maxSupply, setMaxSupply] = useState(0);
 
   useEffect(() => {
-    setMintButtonEnabled(false);
-    // checkMintStart();
-    // const interval = setInterval(() => {
-    //   checkMintStart();
-    // }, MINUTE_MS);
-    //
-    // return () => clearInterval(interval);
+    checkMintStart();
+    setUpCounter();
+    const interval = setInterval(() => {
+      checkMintStart();
+      setUpCounter();
+    }, MINUTE_MS);
+
+    return () => clearInterval(interval);
   }, []);
+
+  async function setUpCounter() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(BTBM_ADDRESS, BTBM, signer);
+
+    const _totalSupply = await contract.totalSupply();
+    const _maxSupply = await contract.maxSupply();
+    setMaxSupply(_maxSupply);
+
+    if (_totalSupply < _maxSupply) {
+      setTotalSupply(_totalSupply.toNumber());
+    }
+  }
 
   async function checkMintStart() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -98,13 +114,11 @@ function Mint(props: Props) {
       if (publicSaleStarted) {
         setMintButtonEnabled(true);
         setMaxQuantity(MAX_PUBLIC_QUANTITY);
-        setTypeOfSale('public');
       }
 
       const wlSaleStarted = await contract.presaleStarted();
       if (wlSaleStarted) {
         setMintButtonEnabled(true);
-        setTypeOfSale('wl');
         const paeSaleList = PreSaleList as { [key: string]: PreSale };
         const preSaleData = paeSaleList[props.account as string];
 
@@ -243,6 +257,9 @@ function Mint(props: Props) {
                 </Spinner>
               </Col>
             ) : null}
+            <Col xs={12} className={'mint-counter'}>
+              {totalSupply} / {maxSupply}
+            </Col>
             <Col xs={12}>
               <Row className={'mint-input-section'}>
                 <Col

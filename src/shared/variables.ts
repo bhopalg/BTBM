@@ -1,6 +1,8 @@
 import { ethers } from 'ethers';
 
 export const BTBM_ADDRESS = '0x33d7942424C39644475ae3911e09db6a866fE8d9';
+// TODO 0x114DD039F2575468dFe8312e22B58Aab9Af8482B
+
 export const MINT_PRICE_ETHER = ethers.utils.parseEther('.055');
 export const MINUTE_MS = 5000;
 export const WL_SALE_DATE = {
