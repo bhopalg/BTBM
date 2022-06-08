@@ -129,24 +129,29 @@ function Mint(props: Props) {
 
         
         //@ts-ignore
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        //@ts-ignore
+        const userBalance = await provider.getBalance(props.account);
+        if(Number(userBalance) < (.055 * 10e18 * amountChose)){
+          setNotEnoughFunds(true);
+          return;
+        } 
+
+          //@ts-ignore
         const preSaleData = preSaleList[props.account];
 
       
-        if (!preSaleData) {
-          setIsWl(false);
-          return;
-        }
+        // if (!preSaleData) {
+        //   setIsWl(false);
+        //   return;
+        // }
 
         const signature = preSaleData.signature;
         const max = preSaleData.max;
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
 
         //@ts-ignore
-        const userBalance = await provider.getBalance(props.account);
-        if(userBalance < ethers.utils.parseEther(`${amountChose * .055}`)){
-          setNotEnoughFunds(true);
-          return;
-        }
+        //@ts-ignore
+    
 
 
 
